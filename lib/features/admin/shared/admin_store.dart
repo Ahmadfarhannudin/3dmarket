@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import 'package:_3dmarket/core/data/purchase_store.dart';
 import 'package:_3dmarket/features/admin/catalog/data/admin_catalog_repository.dart';
 import 'package:_3dmarket/features/admin/orders/data/admin_orders_repository.dart';
 
@@ -10,7 +11,44 @@ import 'package:_3dmarket/features/admin/orders/data/admin_orders_repository.dar
 class AdminStore extends ChangeNotifier {
   AdminStore()
       : assets = [...demoAdminAssets],
-        orders = [...demoAdminOrders];
+        orders = [...demoAdminOrders] {
+    PurchaseStore.instance.addListener(_syncPurchasesToOrders);
+  }
+
+  @override
+  void dispose() {
+    PurchaseStore.instance.removeListener(_syncPurchasesToOrders);
+    super.dispose();
+  }
+
+  void _syncPurchasesToOrders() {
+    final purchases = PurchaseStore.instance.items;
+    if (purchases.isEmpty) return;
+
+    // Ambil ID pesanan admin yang sudah ada agar tidak menduplikat.
+    final existingIds = {for (final o in orders) o.id};
+    final fresh = purchases
+        .where((p) => !existingIds.contains(p.orderId))
+        .toList();
+    if (fresh.isEmpty) return;
+
+    for (final p in fresh) {
+      orders.add(AdminOrder(
+        id: p.orderId,
+        time: formatPurchaseDate(p.purchasedAt),
+        title: p.title,
+        payment: p.paymentMethod,
+        amount: p.totalLabel,
+        status: AdminOrderStatus.paid,
+        note: 'Auto-Sync',
+        assetFormat: p.format,
+        creator: p.creator,
+        sizeLabel: p.sizeLabel,
+        description: p.description,
+      ));
+    }
+    notifyListeners();
+  }
 
   final List<AdminAsset> assets;
   final List<AdminOrder> orders;

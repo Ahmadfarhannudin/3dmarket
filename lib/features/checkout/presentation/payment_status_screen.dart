@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:_3dmarket/core/data/license_pdf_generator.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/data/purchase_store.dart';
 import 'package:_3dmarket/core/utils/model_source.dart';
@@ -410,11 +411,14 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
           ),
           const SizedBox(height: 6),
           TextButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              final record = PurchaseStore.instance.latest;
+              if (record != null) LicensePdfGenerator.showPreview(context, record);
+            },
             style: TextButton.styleFrom(foregroundColor: AppColors.secondary),
-            icon: const Icon(Icons.receipt_long, size: 16),
+            icon: const Icon(Icons.picture_as_pdf, size: 16),
             label: const Text(
-              'Unduh Faktur / Invoice PDF',
+              'Preview & Unduh Sertifikat Lisensi',
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,

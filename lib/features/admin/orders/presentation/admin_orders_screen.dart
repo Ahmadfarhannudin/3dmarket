@@ -209,6 +209,58 @@ class AdminOrderRow extends StatelessWidget {
                         ),
                       ],
                     ),
+                    if (paid) ...[
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 5,
+                              vertical: 1.5,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.tertiaryFixed.withValues(
+                                alpha: 0.25,
+                              ),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              order.assetFormat,
+                              style: const TextStyle(
+                                fontFamily: 'Public Sans',
+                                fontSize: 8,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.tertiary,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          const Icon(
+                            Icons.arrow_right_rounded,
+                            size: 12,
+                            color: AppColors.outline,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            order.creator,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 8.5,
+                              color: AppColors.outline,
+                            ),
+                          ),
+                          const Spacer(),
+                          Text(
+                            order.sizeLabel,
+                            style: const TextStyle(
+                              fontSize: 8.5,
+                              color: AppColors.outline,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ],
                 ),
               ),
