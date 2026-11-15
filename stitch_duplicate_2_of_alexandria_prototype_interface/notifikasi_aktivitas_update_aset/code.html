@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#001946", "secondary-fixed": "#dfe3e8", "surface-container": "#efedee", "surface-container-high": "#e9e8e9", "surface-container-low": "#f5f3f4", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "error": "#ba1a1a", "surface-container-highest": "#e3e2e3", "surface-dim": "#dbdadb", "on-primary-container": "#e7ebff", "surface-tint": "#2259bf", "secondary": "#5a5f63", "on-error": "#ffffff", "on-surface": "#1b1c1d", "on-primary-fixed-variant": "#00419d", "on-secondary": "#ffffff", "primary-fixed": "#d9e2ff", "primary": "#094cb2", "on-surface-variant": "#434653", "primary-fixed-dim": "#b1c5ff", "on-secondary-container": "#606569", "tertiary-container": "#bfab49", "tertiary": "#6d5e00", "surface-container-lowest": "#ffffff", "surface": "#faf9fa", "on-tertiary-container": "#4a3f00", "inverse-surface": "#303031", "on-secondary-fixed": "#171c20", "inverse-on-surface": "#f2f0f1", "on-tertiary-fixed": "#211b00", "on-secondary-fixed-variant": "#42474b", "surface-variant": "#e3e2e3", "on-tertiary-fixed-variant": "#524600", "on-error-container": "#93000a", "background": "#faf9fa", "tertiary-fixed": "#f9e37a", "error-container": "#ffdad6", "secondary-fixed-dim": "#c2c7cc", "on-background": "#1b1c1d", "inverse-primary": "#b1c5ff", "on-primary": "#ffffff", "surface-bright": "#faf9fa", "tertiary-fixed-dim": "#dcc661", "secondary-container": "#dfe3e8", "primary-container": "#3366cc", "outline": "#737784" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": {}, "fontFamily": { "headline": ["Noto Serif"], "display": ["Noto Serif"], "body": ["Inter"], "label": ["Public Sans"] }, "fontSize": {} } } }</script><style>body { min-height: max(884px, 100dvh); }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-3 flex items-center justify-between gap-2"><div class="flex items-center gap-1.5 flex-1 min-w-0"><button aria-label="Kembali" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors shrink-0" onclick="history.back()"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button><h1 class="font-headline font-semibold text-base text-on-surface tracking-tight truncate pl-0.5">Notifikasi</h1></div><div class="flex items-center gap-1 shrink-0"><button aria-label="Bagikan" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">share</span></button><img alt="Profile Avatar" class="w-8 h-8 rounded-full object-cover ml-1 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy0oFGuznKCUhf-qa5wXD6d6pmOCOBZW_L2D4NTWDu4Uwq80-S1RVzKxqRqbUhXZMnUdF1fBBgZRSk0Som9Ppq_SwIBXLXob8nmaUhXmI-R26akQcPWkO-9FCdHMSQagPXp6Wo_v1kp737N95HfHHJYVIZQuC9DV9n2kvXB2M3NguO3UOAOVzaDmPGse93uW39kGR145FfnNXHd19iW6qLrySYMWXFbO0qCzznqoY"/></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface"><div class="flex flex-col w-full pb-10">
+<!-- Top Auxiliary Action Row (Aligns with Page Title 'Notifikasi' in Header Shell) -->
+<section class="px-5 pt-3 pb-2 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label text-xs uppercase tracking-wider font-semibold text-on-surface-variant">Arsip Aktivitas</span>
+</div>
+<button class="font-label text-xs font-semibold text-primary hover:text-primary-container active:scale-95 transition-all flex items-center gap-1 py-1 px-2 rounded-lg hover:bg-surface-container" id="markAllReadBtn">
+<span class="material-symbols-outlined text-base">done_all</span>
+<span>Tandai Semua Dibaca</span>
+</button>
+</section>
+<!-- Filter Chips with Archival Editorial Styling -->
+<section class="px-5 py-2">
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+<button class="filter-chip active flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-label font-semibold bg-primary text-on-primary shadow-sm shrink-0 transition-all">
+<span>Semua</span>
+<span class="bg-primary-container/40 text-on-primary px-1.5 py-0.2 rounded-full text-[10px]">4</span>
+</button>
+<button class="filter-chip flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high shrink-0 transition-all">
+<span>Pembaruan Aset</span>
+<span class="bg-surface-container-highest text-on-surface px-1.5 py-0.2 rounded-full text-[10px]">2</span>
+</button>
+<button class="filter-chip flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high shrink-0 transition-all">
+<span>Transaksi</span>
+<span class="bg-surface-container-highest text-on-surface px-1.5 py-0.2 rounded-full text-[10px]">1</span>
+</button>
+<button class="filter-chip flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high shrink-0 transition-all">
+<span>Promo &amp; Kurasi</span>
+<span class="bg-surface-container-highest text-on-surface px-1.5 py-0.2 rounded-full text-[10px]">1</span>
+</button>
+</div>
+</section>
+<!-- Feed Container -->
+<div class="flex flex-col gap-6 px-4 mt-3">
+<!-- Group: Hari Ini -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-headline font-semibold text-xs tracking-wider uppercase text-secondary">Hari Ini</h2>
+<span class="font-label text-[11px] text-on-surface-variant/70">2 item baru</span>
+</div>
+<!-- Card 1: Asset Update (Rich Card with Action & Model Preview) -->
+<article class="notification-item unread relative flex flex-col bg-surface-container-lowest rounded-xl p-4 shadow-sm transition-all hover:bg-surface-bright">
+<div class="flex items-start gap-3.5">
+<!-- Icon Badge -->
+<div class="relative shrink-0">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">deployed_code_update</span>
+</div>
+<span class="unread-dot absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-primary"></span>
+</div>
+<!-- Content Body -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="font-label text-[10px] tracking-wide uppercase font-semibold text-primary">Pembaruan Versi</span>
+<time class="font-label text-[11px] text-secondary">15 mnt lalu</time>
+</div>
+<h3 class="font-headline font-semibold text-sm text-on-surface leading-snug">Update File: Cybernetic Arm Rigged v2.1</h3>
+<p class="font-body text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+<span class="font-medium text-on-surface">Obsidian X Lab</span> baru saja memperbarui rig IK/FK untuk Blender 4.2 LTS. Unduh pembaruan sekarang tanpa biaya tambahan.
+            </p>
+<!-- Embedded Asset Spec & Visual Thumbnail -->
+<div class="mt-3 p-2.5 rounded-lg bg-surface-container-low flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover bg-surface-dim shrink-0 shadow-sm" data-alt="Cybernetic futuristic mechanical prosthetic arm 3D render, dark titanium metallic texture, emissive blue LED accents, isolated studio lighting on neutral background, highly detailed editorial 3D asset showcase" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxNn9a5n_XHnm3JG4hzV6JRhA4mY9oTug0dDKQmaJevvN8IsGrpZu7Fo2ub-LAgC9uvOIwFNcA6p-8BUbCEj7bdFawUj7HLJi9qjB9vaxQVb2lZ3ZzMsdjQ1xjky-zIdHrD9lneeeXItu5iLTtw7npy21xU2j9cK8h7wp2_jiE6BSVuDuxv3aJ3_pycLaSKago6jqeRpGoQ3DjBlJ1VfBJYYPrHUqv4o6NHqSDRGk"/>
+<div class="flex-1 min-w-0">
+<p class="font-body text-xs font-semibold text-on-surface truncate">Cybernetic Arm Rigged</p>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-label text-[10px] text-secondary">Blend 4.2 • FBX</span>
+<span class="text-secondary/40 text-[10px]">•</span>
+<span class="font-label text-[10px] text-secondary font-medium">184 MB</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-3.5 flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-xs font-semibold flex items-center gap-1.5 shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Unduh Update</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-label text-xs font-medium active:scale-95 transition-all">
+                Detail Versi
+              </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Transaction Verified -->
+<article class="notification-item unread relative flex flex-col bg-surface-container-lowest rounded-xl p-4 shadow-sm transition-all hover:bg-surface-bright">
+<div class="flex items-start gap-3.5">
+<!-- Icon Badge -->
+<div class="relative shrink-0">
+<div class="w-10 h-10 rounded-xl bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="unread-dot absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-primary"></span>
+</div>
+<!-- Content Body -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="font-label text-[10px] tracking-wide uppercase font-semibold text-secondary">Faktur Pembelian</span>
+<time class="font-label text-[11px] text-secondary">2 jam lalu</time>
+</div>
+<h3 class="font-headline font-semibold text-sm text-on-surface leading-snug">Pembayaran Berhasil — #ORD-202611-8921</h3>
+<p class="font-body text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+              Lisensi komersial <span class="font-medium text-on-surface">Cyberpunk Cybernetic Arm</span> telah aktif di vault akun Anda. Sertifikat lisensi kriptografis tersedia untuk diunduh.
+            </p>
+<div class="mt-2.5 flex items-center justify-between">
+<span class="font-label text-[11px] font-semibold text-primary">Rp 285.000 (Lunas)</span>
+<a class="font-label text-xs text-primary hover:underline font-semibold flex items-center gap-0.5" href="#">
+<span>Lihat Faktur</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Group: Kemarin & Minggu Ini -->
+<div class="flex flex-col gap-3 pt-2">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-headline font-semibold text-xs tracking-wider uppercase text-secondary">Kemarin &amp; Minggu Ini</h2>
+<span class="font-label text-[11px] text-on-surface-variant/70">Arsip kurasi</span>
+</div>
+<!-- Card 3: Editorial Curation Alexandria -->
+<article class="notification-item flex flex-col bg-surface-container-lowest rounded-xl p-4 shadow-sm transition-all hover:bg-surface-bright">
+<div class="flex items-start gap-3.5">
+<!-- Icon Badge with Archival Gold/Tertiary -->
+<div class="shrink-0 w-10 h-10 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="font-label text-[10px] tracking-wide uppercase font-semibold text-tertiary">Editorial Alexandria</span>
+<time class="font-label text-[11px] text-secondary">1 hari lalu</time>
+</div>
+<h3 class="font-headline font-semibold text-sm text-on-surface leading-snug">Koleksi Baru: Pilihan Kurator Minggu Ini</h3>
+<p class="font-body text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+              Kumpulan shader procedural arsitektur Cycles telah diterbitkan dengan diskon pembeli pertama 30%. Teruji untuk visualisasi arsitektural resolusi ultra.
+            </p>
+<!-- Visual Preview Banner -->
+<div class="mt-3 relative rounded-lg overflow-hidden h-24 bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="High-end procedural architectural materials shaders test sphere render with polished terrazzo, travertine marble, brushed bronze, and fluted glass textures in an open sunlit gallery, photorealistic editorial rendering with natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLCcjiTE_qdOVMJINrBQWWgwyD2r5tXRF7WITKlKO7ct5nqLB2yf8AgFIDyfO09uks6KF2LDrQbZnx2urJjS6VzDeNClu5lKf7GbQGuIKyup0U_ynmOqLI_3QWFLLXdbpXyX4ZZWK3gTcoOOzp6I9QhrLv_zhRrgqsRYW3g3KOo_lbughxQ-8SNfzfzp5EVnLu71vz3aHP3AJdqCXWZuTjOkaIswg4gsiTf_y-6n8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-2.5">
+<span class="font-label text-[10px] font-semibold text-white tracking-wider uppercase bg-on-surface/50 backdrop-blur-md px-2 py-0.5 rounded">Kurasi Edisi No. 42</span>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between pt-1">
+<span class="font-label text-[11px] text-secondary">Berakhir dalam 48 jam</span>
+<a class="font-label text-xs text-primary hover:underline font-semibold flex items-center gap-0.5" href="#">
+<span>Jelajahi Kurasi</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</a>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4: Price Drop Alert (Wishlist) -->
+<article class="notification-item flex flex-col bg-surface-container-lowest rounded-xl p-4 shadow-sm transition-all hover:bg-surface-bright">
+<div class="flex items-start gap-3.5">
+<!-- Icon Badge -->
+<div class="shrink-0 w-10 h-10 rounded-xl bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">sell</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2 mb-1">
+<span class="font-label text-[10px] tracking-wide uppercase font-semibold text-primary">Penurunan Harga</span>
+<time class="font-label text-[11px] text-secondary">3 hari lalu</time>
+</div>
+<h3 class="font-headline font-semibold text-sm text-on-surface leading-snug">Aset Wishlist Anda Sedang Diskon!</h3>
+<p class="font-body text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+<span class="font-medium text-on-surface">Chronograph Horology Masterpiece</span> sekarang <span class="font-semibold text-on-surface">Rp 115.000</span> (Hemat 40% dari harga normal Rp 192.000).
+            </p>
+<div class="mt-3 p-2 rounded-lg bg-surface-container-low flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-md object-cover bg-surface-dim shrink-0" data-alt="Luxury mechanical watch movement skeleton tourbillon chronograph 3D model, macro view of intricate brass gears, ruby jewels, and polished steel springs, soft museum lighting against a dark neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOCWu4YH4bAwa7uGmktlwlhLjlzMns3owCPbJ12YWvDjmpvy7smHfIATFsG8zaSeXJdbiw5mMskXQhL0fLmxQ_EB1rci6bGxdiRFai_HoNBHhkHMjqN8cw6LiWLqOryZX5Fs_qhvvbOd8TtAVMqprrY9rdGaPUuy6HM2FCMMdVAt5fXyKWz2b_X_QIcWX6oed2abPoklZWKWIw1fvds8BqBzbwT5kLo_4Cpaysk6E"/>
+<div class="flex-1 min-w-0">
+<p class="font-body text-xs font-semibold text-on-surface truncate">Chronograph Horology Masterpiece</p>
+<div class="flex items-center gap-1.5">
+<span class="font-label text-xs font-bold text-primary">Rp 115.000</span>
+<span class="font-label text-[10px] text-secondary line-through">Rp 192.000</span>
+</div>
+</div>
+<button class="shrink-0 px-2.5 py-1 rounded bg-primary text-on-primary text-[11px] font-label font-semibold shadow-xs active:scale-95 transition-all">
+                Beli
+              </button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Empty State / All-Caught-Up Archival Card -->
+<section class="mt-2 p-5 rounded-xl bg-surface-container-low text-center flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary mb-2.5">
+<span class="material-symbols-outlined text-xl">mark_chat_read</span>
+</div>
+<p class="font-headline font-semibold text-sm text-on-surface">Semua Notifikasi Terbaca</p>
+<p class="font-body text-xs text-secondary mt-1 max-w-xs leading-relaxed">
+        Kelola preferensi notifikasi push, pembaruan rilis 3D, dan sinyal kurasi di Pengaturan Profil.
+      </p>
+<a class="mt-3.5 inline-flex items-center gap-1.5 font-label text-xs font-semibold text-primary hover:text-primary-container transition-colors py-1.5 px-3 rounded-lg hover:bg-surface-container" href="#">
+<span class="material-symbols-outlined text-base">tune</span>
+<span>Atur Preferensi Notifikasi</span>
+</a>
+</section>
+</div>
+</div>
+<script>
+  // Filter chips micro-interaction
+  const filterChips = document.querySelectorAll('.filter-chip');
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      filterChips.forEach(c => {
+        c.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        c.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      chip.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+    });
+  });
+
+  // Mark all as read micro-interaction
+  const markBtn = document.getElementById('markAllReadBtn');
+  if (markBtn) {
+    markBtn.addEventListener('click', () => {
+      const dots = document.querySelectorAll('.unread-dot');
+      dots.forEach(dot => {
+        dot.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        dot.style.opacity = '0';
+        dot.style.transform = 'scale(0.5)';
+        setTimeout(() => dot.remove(), 300);
+      });
+      markBtn.innerHTML = '<span class="material-symbols-outlined text-base">check</span><span>Sudah Dibaca</span>';
+      markBtn.classList.remove('text-primary');
+      markBtn.classList.add('text-secondary', 'cursor-default');
+    });
+  }
+</script></main></body></html>

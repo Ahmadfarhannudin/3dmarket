@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#001946", "secondary-fixed": "#dfe3e8", "surface-container": "#efedee", "surface-container-high": "#e9e8e9", "surface-container-low": "#f5f3f4", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "error": "#ba1a1a", "surface-container-highest": "#e3e2e3", "surface-dim": "#dbdadb", "on-primary-container": "#e7ebff", "surface-tint": "#2259bf", "secondary": "#5a5f63", "on-error": "#ffffff", "on-surface": "#1b1c1d", "on-primary-fixed-variant": "#00419d", "on-secondary": "#ffffff", "primary-fixed": "#d9e2ff", "primary": "#094cb2", "on-surface-variant": "#434653", "primary-fixed-dim": "#b1c5ff", "on-secondary-container": "#606569", "tertiary-container": "#bfab49", "tertiary": "#6d5e00", "surface-container-lowest": "#ffffff", "surface": "#faf9fa", "on-tertiary-container": "#4a3f00", "inverse-surface": "#303031", "on-secondary-fixed": "#171c20", "inverse-on-surface": "#f2f0f1", "on-tertiary-fixed": "#211b00", "on-secondary-fixed-variant": "#42474b", "surface-variant": "#e3e2e3", "on-tertiary-fixed-variant": "#524600", "on-error-container": "#93000a", "background": "#faf9fa", "tertiary-fixed": "#f9e37a", "error-container": "#ffdad6", "secondary-fixed-dim": "#c2c7cc", "on-background": "#1b1c1d", "inverse-primary": "#b1c5ff", "on-primary": "#ffffff", "surface-bright": "#faf9fa", "tertiary-fixed-dim": "#dcc661", "secondary-container": "#dfe3e8", "primary-container": "#3366cc", "outline": "#737784" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": {}, "fontFamily": { "headline": ["Noto Serif"], "display": ["Noto Serif"], "body": ["Inter"], "label": ["Public Sans"] }, "fontSize": {} } } }</script><style>body { min-height: max(884px, 100dvh); }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-3 flex items-center justify-between gap-2"><div class="flex items-center gap-1.5 flex-1 min-w-0"><button aria-label="Kembali" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors shrink-0" onclick="history.back()"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button><h1 class="font-headline font-semibold text-base text-on-surface tracking-tight truncate pl-0.5">Riwayat Transaksi</h1></div><div class="flex items-center gap-1 shrink-0"><button aria-label="Bagikan" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">share</span></button><img alt="Profile Avatar" class="w-8 h-8 rounded-full object-cover ml-1 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy0oFGuznKCUhf-qa5wXD6d6pmOCOBZW_L2D4NTWDu4Uwq80-S1RVzKxqRqbUhXZMnUdF1fBBgZRSk0Som9Ppq_SwIBXLXob8nmaUhXmI-R26akQcPWkO-9FCdHMSQagPXp6Wo_v1kp737N95HfHHJYVIZQuC9DV9n2kvXB2M3NguO3UOAOVzaDmPGse93uW39kGR145FfnNXHd19iW6qLrySYMWXFbO0qCzznqoY"/></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface"><div class="flex flex-col w-full pb-8">
+<!-- Search & Sub-Bar Utility Header -->
+<section class="px-4 py-3 bg-surface flex items-center justify-between gap-3">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="w-full bg-surface-container-lowest text-on-surface text-xs font-body pl-9 pr-3 py-2.5 rounded-lg shadow-sm placeholder:text-outline focus:outline-none transition-all" placeholder="Cari ID pesanan, nama aset 3D..." type="text"/>
+</div>
+<button aria-label="Filter Arsip" class="w-10 h-10 flex items-center justify-center rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors shrink-0">
+<span class="material-symbols-outlined text-xl">tune</span>
+</button>
+</section>
+<!-- Editorial Category Chips / Status Filter -->
+<nav aria-label="Filter status transaksi" class="w-full overflow-x-auto px-4 py-2 flex items-center gap-2 no-scrollbar">
+<button class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-label font-semibold bg-primary text-on-primary shadow-sm tracking-wide">
+      Semua Status
+    </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors">
+      Berhasil <span class="text-tertiary font-bold ml-0.5">5</span>
+</button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors">
+      Menunggu <span class="text-tertiary font-bold ml-0.5">1</span>
+</button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors opacity-70">
+      Dibatalkan <span class="font-normal ml-0.5">0</span>
+</button>
+</nav>
+<!-- Curated Transaction Ledger / List -->
+<div class="px-4 mt-3 flex flex-col gap-4">
+<!-- Card 1: ORD-202611-8921 -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-3 relative transition-all duration-200">
+<div class="flex items-center justify-between text-xs pb-1">
+<div class="flex flex-col">
+<span class="font-label tracking-wider text-[11px] font-semibold text-secondary">#ORD-202611-8921</span>
+<span class="font-body text-[11px] text-on-surface-variant">10 Nov 2026, 14:32</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-label font-semibold bg-emerald-50 text-emerald-800">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          Berhasil
+        </span>
+</div>
+<div class="flex gap-3 items-center">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A cinematic 3D model render of an intricate cyberpunk mechanical arm with matte titanium plates, visible servomotors, neon blue micro-wiring, and weathered textures, set against an editorial soft-lit neutral studio backdrop, high poly architectural detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXSdc3OB26f5vo9PkNAaVq1M8ICegN7SZJzLlpBGIMOPWQ4Wm9uNyFkJwBC3omivjua4ehCMNeVUN14RkCyECcasNSO_pJSpACamN4dVlXHB7MuhihJl59oWcchZ0TPI8DqnsPA0Bw8SrZhWepoGH4YfEnn0X_qEdkvb1fj0exeGBF_3nNrlNBxavWwvgAFVhc3uFG8U2pAGLItZ3NIoS7DV5SUHnj0rqOtBsjfek"/>
+<span class="absolute bottom-1 right-1 bg-surface-dim/80 backdrop-blur-sm text-[9px] font-label font-semibold px-1 rounded text-on-surface">3D</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-semibold text-sm text-on-surface leading-snug truncate">Cyberpunk Cybernetic Arm Rigged</h3>
+<p class="font-body text-xs text-on-surface-variant mt-0.5">1 Aset 3D (.blend, .glb)</p>
+<div class="flex items-center gap-1.5 mt-1 text-[11px] text-secondary font-label">
+<span class="material-symbols-outlined text-[14px]">qr_code_2</span>
+<span>QRIS Instant</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-[10px] font-label uppercase text-on-surface-variant tracking-wider block">Total</span>
+<span class="font-headline font-bold text-sm text-primary">Rp 91.000</span>
+</div>
+</div>
+<div class="pt-2 flex items-center justify-end gap-2 bg-surface-container-lowest">
+<a class="px-3 py-1.5 rounded-lg text-xs font-label font-semibold text-primary bg-surface-container-low hover:bg-surface-container transition-colors" href="/transactions/ORD-202611-8921">
+          Lihat Detail Transaksi
+        </a>
+<button class="px-3.5 py-1.5 rounded-lg text-xs font-label font-semibold text-on-primary bg-gradient-to-r from-primary to-primary-container shadow-sm hover:opacity-95 transition-opacity flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span>
+          Unduh Aset
+        </button>
+</div>
+</article>
+<!-- Card 2: ORD-202610-7412 -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-3 relative transition-all duration-200">
+<div class="flex items-center justify-between text-xs pb-1">
+<div class="flex flex-col">
+<span class="font-label tracking-wider text-[11px] font-semibold text-secondary">#ORD-202610-7412</span>
+<span class="font-body text-[11px] text-on-surface-variant">28 Okt 2026, 09:15</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-label font-semibold bg-emerald-50 text-emerald-800">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          Berhasil
+        </span>
+</div>
+<div class="flex gap-3 items-center">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Exquisite macro 3D render of an open-worked chronograph luxury mechanical watch with exposed rose gold tourbillon gears, sapphire glass facets, precision craftsmanship, illuminated by diffuse ambient gallery lighting with elegant shadow play." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4rLJid9JK5TVQSKt7hzpsiqhxi8aZHiDIm3-pk3K3miYQc5xoXwTvIZUkOlKvGBS9Ma6yEtsX_el4-AzIOx0auPHIKv4khHpDHQB5q3NSaQy-5gqyA_bD1vByO1spX43GvDBn0WgwOoJ0Bcc9kotapx-r1v1DmZ0jDFNJTHZwM2alvVn57-QBRmdwJ8Pe4fZ2wfDB0WZjjdgHAswwdc4rXVC7eYUrfUqeMVrA5nE"/>
+<span class="absolute bottom-1 right-1 bg-surface-dim/80 backdrop-blur-sm text-[9px] font-label font-semibold px-1 rounded text-on-surface">3D</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-semibold text-sm text-on-surface leading-snug truncate">Chronograph Horology Masterpiece</h3>
+<p class="font-body text-xs text-on-surface-variant mt-0.5">Kompatibel Unreal &amp; Unity</p>
+<div class="flex items-center gap-1.5 mt-1 text-[11px] text-secondary font-label">
+<span class="material-symbols-outlined text-[14px]">account_balance</span>
+<span>BCA Virtual Account</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-[10px] font-label uppercase text-on-surface-variant tracking-wider block">Total</span>
+<span class="font-headline font-bold text-sm text-primary">Rp 115.000</span>
+</div>
+</div>
+<div class="pt-2 flex items-center justify-end gap-2 bg-surface-container-lowest">
+<a class="px-3 py-1.5 rounded-lg text-xs font-label font-semibold text-primary bg-surface-container-low hover:bg-surface-container transition-colors" href="/transactions/ORD-202610-7412">
+          Lihat Detail Transaksi
+        </a>
+<button class="px-3 py-1.5 rounded-lg text-xs font-label font-medium text-secondary hover:text-on-surface flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">receipt_long</span>
+          Unduh Faktur
+        </button>
+</div>
+</article>
+<!-- Card 3: ORD-202610-6190 -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-3 relative transition-all duration-200">
+<div class="flex items-center justify-between text-xs pb-1">
+<div class="flex flex-col">
+<span class="font-label tracking-wider text-[11px] font-semibold text-secondary">#ORD-202610-6190</span>
+<span class="font-body text-[11px] text-on-surface-variant">14 Okt 2026, 18:20</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-label font-semibold bg-emerald-50 text-emerald-800">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          Berhasil
+        </span>
+</div>
+<div class="flex gap-3 items-center">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Historical photorealistic 3D asset of a weathered medieval fortress gatehouse with carved stone battlements, heavy iron-studded portcullis, moss in crevices, dramatic golden hour architectural rendering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD223u5yWKxtn8HUEEWndtQz5VeEhzVBYdH7SRLQSZCSZQlrNJ1jJVZer0SNqelzXV7QupokmMJVUeeEVE4eaLbr3s7aj9e-mM6zcoANTrVX_BRxQxf6XMersLYVPRoFxW6cOmDwj38EKN_lROGNgDghSL_y3vH68N3GVvKsV18pf_6TwtVHIj4z7b62EEt5RhUmzQRVw-RdG-1l_k0mzvJjTj1hapfsnqjbu0oiWs"/>
+<span class="absolute bottom-1 right-1 bg-surface-dim/80 backdrop-blur-sm text-[9px] font-label font-semibold px-1 rounded text-on-surface">3D</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-semibold text-sm text-on-surface leading-snug truncate">Medieval Fortress Gate</h3>
+<p class="font-body text-xs text-on-surface-variant mt-0.5">PBR 4K Textures Included</p>
+<div class="flex items-center gap-1.5 mt-1 text-[11px] text-secondary font-label">
+<span class="material-symbols-outlined text-[14px]">account_balance_wallet</span>
+<span>GoPay Direct</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-[10px] font-label uppercase text-on-surface-variant tracking-wider block">Total</span>
+<span class="font-headline font-bold text-sm text-primary">Rp 85.000</span>
+</div>
+</div>
+<div class="pt-2 flex items-center justify-end gap-2 bg-surface-container-lowest">
+<a class="px-3 py-1.5 rounded-lg text-xs font-label font-semibold text-primary bg-surface-container-low hover:bg-surface-container transition-colors" href="/transactions/ORD-202610-6190">
+          Lihat Detail Transaksi
+        </a>
+</div>
+</article>
+<!-- Card 4: ORD-202609-3104 (Pending Action Required) -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-3 relative transition-all duration-200">
+<div class="flex items-center justify-between text-xs pb-1">
+<div class="flex flex-col">
+<span class="font-label tracking-wider text-[11px] font-semibold text-secondary">#ORD-202609-3104</span>
+<span class="font-body text-[11px] text-on-surface-variant">02 Sep 2026, 11:04</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-label font-semibold bg-amber-50 text-amber-900">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
+          Menunggu Pembayaran
+        </span>
+</div>
+<div class="flex gap-3 items-center">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="High-speed racing FPV drone 3D render with lightweight woven carbon-fiber chassis, neon yellow aerodynamic propellers, miniature action camera mounted on top, dynamic studio lighting with crisp highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCne9DMuGj0TwSAtklJBTLddZQSab6LS21hD7cno7A1E3N6zHeODZm8gtPUqqo7iuJ-B44wcgqoEkPHXnDp1Kr56AcX9IRsHZ4Yxu3NMQJMeCs5xy26V55c4LQZz5jZhzV7ybf525mnlzAo_cNxTUBM_wsQLXsw3AajYQTiIjnKgCJazuv7MTqRkKqda5Hhz7MFdkQscKFuw58YAg8-WlkHxa7QajIRBaLTBGO0vuo"/>
+<span class="absolute bottom-1 right-1 bg-surface-dim/80 backdrop-blur-sm text-[9px] font-label font-semibold px-1 rounded text-on-surface">3D</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-headline font-semibold text-sm text-on-surface leading-snug truncate">Futuristic Racing Drone</h3>
+<div class="flex items-center gap-1 text-[11px] text-amber-900 font-label font-medium mt-1">
+<span class="material-symbols-outlined text-[13px]">timer</span>
+<span>Batas waktu: 45 menit lagi</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-[10px] font-label uppercase text-on-surface-variant tracking-wider block">Total</span>
+<span class="font-headline font-bold text-sm text-primary">Rp 65.000</span>
+</div>
+</div>
+<div class="pt-2 flex items-center justify-between gap-2 bg-surface-container-lowest">
+<span class="text-[11px] text-on-surface-variant font-label">Briva / Mandiri VA</span>
+<button class="px-4 py-2 rounded-lg text-xs font-label font-semibold text-on-primary bg-gradient-to-r from-primary to-primary-container shadow-sm hover:opacity-95 transition-opacity flex items-center gap-1.5">
+<span>Lanjutkan Pembayaran</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Editorial Security & Trust Ledger Footer -->
+<section class="mt-8 mx-4 p-4 rounded-xl bg-surface-container-low text-center flex flex-col items-center justify-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant leading-relaxed max-w-xs">
+      Semua transaksi dilindungi enkripsi SSL 256-Bit dan diverifikasi otomatis.
+    </p>
+<span class="text-[10px] font-label uppercase tracking-widest text-secondary mt-1">PolyCraft Digital Vault • 2026</span>
+</section>
+</div></main></body></html>

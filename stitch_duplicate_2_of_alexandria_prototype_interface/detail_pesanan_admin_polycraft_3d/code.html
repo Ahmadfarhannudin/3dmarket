@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "surface-bright": "#faf9fa", "primary": "#094cb2", "surface-variant": "#e3e2e3", "on-secondary-fixed-variant": "#42474b", "surface-dim": "#dbdadb", "surface-container": "#efedee", "on-surface": "#1b1c1d", "inverse-surface": "#303031", "tertiary-container": "#bfab49", "on-tertiary-fixed-variant": "#524600", "on-secondary-fixed": "#171c20", "surface-tint": "#2259bf", "on-error-container": "#93000a", "on-primary-container": "#e7ebff", "tertiary-fixed": "#f9e37a", "surface-container-lowest": "#ffffff", "error": "#ba1a1a", "background": "#faf9fa", "on-tertiary-container": "#4a3f00", "on-primary-fixed-variant": "#00419d", "surface-container-highest": "#e3e2e3", "on-secondary-container": "#606569", "surface-container-high": "#e9e8e9", "inverse-on-surface": "#f2f0f1", "on-primary": "#ffffff", "outline": "#737784", "surface": "#faf9fa", "secondary": "#5a5f63", "primary-container": "#3366cc", "primary-fixed-dim": "#b1c5ff", "secondary-container": "#dfe3e8", "on-primary-fixed": "#001946", "on-error": "#ffffff", "inverse-primary": "#b1c5ff", "on-background": "#1b1c1d", "on-secondary": "#ffffff", "surface-container-low": "#f5f3f4", "on-surface-variant": "#434653", "primary-fixed": "#d9e2ff", "secondary-fixed-dim": "#c2c7cc", "tertiary-fixed-dim": "#dcc661", "tertiary": "#6d5e00", "error-container": "#ffdad6", "outline-variant": "#c3c6d5", "on-tertiary-fixed": "#211b00", "secondary-fixed": "#dfe3e8" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": {}, "fontFamily": { "headline": ["Noto Serif"], "display": ["Noto Serif"], "body": ["Inter"], "label": ["Public Sans"] }, "fontSize": {} } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-4 flex items-center justify-between"><div class="flex items-center gap-2"><button aria-label="Kembali" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:bg-surface-container-high transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><h1 class="text-base font-headline font-semibold tracking-tight text-on-surface line-clamp-1">Detail Pesanan Admin</h1></div><div class="flex items-center gap-1"><button aria-label="Tindakan Lainnya" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">more_vert</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface pb-safe"><div class="flex flex-col w-full pb-8">
+<!-- Status Strip & Quick Meta -->
+<div class="px-5 pt-3 pb-4 bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-900/15 text-emerald-800 text-xs font-label font-semibold tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+          LUNAS (PAID)
+        </span>
+<span class="text-xs font-label text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">Digital Delivery</span>
+</div>
+<span class="font-label text-xs font-medium text-on-surface-variant">#ORD-20261110-8921</span>
+</div>
+<div class="flex items-center justify-between text-xs text-secondary pt-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+        10 Nov 2026, 14:32:15 WIB
+      </span>
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">verified</span>
+        Auto-Settled
+      </span>
+</div>
+</div>
+<div class="px-4 py-5 flex flex-col gap-5">
+<!-- Payment Gateway & Transaction Summary -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between border-b-0 pb-1">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+<h2 class="text-xs font-label font-bold uppercase tracking-wider text-secondary">Rincian Gateway</h2>
+</div>
+<span class="text-[11px] font-label font-medium px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed">Midtrans Snap</span>
+</div>
+<div class="grid grid-cols-2 gap-3 text-xs pt-1">
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col gap-0.5">
+<span class="text-[10px] font-label text-secondary uppercase">Kanal Pembayaran</span>
+<span class="font-medium text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">qr_code_2</span>
+            QRIS ShopeePay
+          </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col gap-0.5">
+<span class="text-[10px] font-label text-secondary uppercase">No. Referensi Acuan</span>
+<span class="font-mono text-[11px] font-medium text-on-surface truncate">TRX-MID-9921048</span>
+</div>
+</div>
+</section>
+<!-- Purchased 3D Asset Card -->
+<section class="flex flex-col gap-2">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-label font-bold uppercase tracking-wider text-secondary">Aset 3D Terverifikasi (1 Item)</h2>
+<span class="text-xs font-label text-tertiary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+          Standard Commercial
+        </span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-3.5 shadow-sm flex flex-col gap-3">
+<div class="flex gap-3">
+<div class="relative w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A pristine cinematic 3D render of a cybernetic robotic chrono arm Mk IV with glowing brass filaments, brushed obsidian metal plates, and mechanical micro-gears, hyper-detailed hard-surface modeling, dark studio lighting with soft gold and cobalt rim highlights, premium product presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7yTl9s7_aJU7ka_pmKXFKbtWI8gyVuEsQD07KU04xYSOsnkCWuT7uulVBItfqwjoaWkMGkkYAcE4GfAn4nDi08ZoewOYWdi3kawkdwaQX5ocFRSgg6EPYh6h6bG9QFwTIogvhViKzMGVm9-UOzAkknon16Tz7qJIXVFHrACrAe-naANch3E4I__Y8jhKK3L4Q0GiJAkwMaTVo7ogXeIuBomdlnM55PRANU-cmrpw"/>
+<div class="absolute bottom-1 right-1 bg-surface-dim/80 backdrop-blur-sm text-[9px] font-mono font-bold text-on-surface px-1 rounded">
+              v4.2 LTS
+            </div>
+</div>
+<div class="flex flex-col justify-between min-w-0 flex-1">
+<div class="flex flex-col">
+<span class="text-[10px] font-label font-bold uppercase text-tertiary tracking-wide">Karakter &amp; Siber</span>
+<h3 class="font-headline font-semibold text-sm text-on-surface leading-tight truncate">
+                Cybernetic Chrono Arm Mk. IV
+              </h3>
+<p class="text-[11px] text-secondary mt-0.5">Lisensi Komersial (Perpetual)</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-headline font-bold text-sm text-primary">Rp 89.000</span>
+<span class="text-[10px] font-label text-secondary bg-surface-container px-1.5 py-0.5 rounded">Qty: 1</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">folder_zip</span>
+<span class="text-[11px] font-medium font-mono">.blend, .fbx, 4K PBR Texture Maps</span>
+</div>
+<span class="text-[10px] font-label font-semibold text-primary uppercase">Ready (1.2 GB)</span>
+</div>
+</div>
+</section>
+<!-- Buyer Information Section -->
+<section class="flex flex-col gap-2">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-label font-bold uppercase tracking-wider text-secondary">Profil Pembeli</h2>
+<span class="text-xs font-label text-primary font-medium flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">history_edu</span> Riwayat (14)
+        </span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-headline font-bold text-sm">
+              DP
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-medium text-sm text-on-surface">Deva Praditya</span>
+<span class="material-symbols-outlined text-[15px] text-primary" title="Verified Creator">verified</span>
+</div>
+<span class="text-xs text-secondary">deva@studio.id</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-label font-bold uppercase tracking-wider">
+            Studio Pro
+          </span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-3 flex flex-col gap-2 text-xs">
+<div class="flex items-center justify-between">
+<span class="text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">public</span>
+              IP Asal Transaksi
+            </span>
+<span class="font-mono text-on-surface font-medium">182.253.14.88</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pin_drop</span>
+              Estimasi Lokasi
+            </span>
+<span class="text-on-surface font-medium">Jakarta, Indonesia</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">badge</span>
+              Peran Akun
+            </span>
+<span class="text-on-surface font-medium">Lead Architect</span>
+</div>
+</div>
+</div>
+</section>
+<!-- License Certificate & Delivery Status -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">key</span>
+<h2 class="text-xs font-label font-bold uppercase tracking-wider text-secondary">Lisensi &amp; Pengiriman File</h2>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-label text-emerald-800 bg-emerald-900/10 px-2 py-0.5 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[12px]">done_all</span> Terkirim
+        </span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-label uppercase text-secondary">Nomor Lisensi Unik</span>
+<button class="text-[10px] font-label font-bold text-primary hover:underline transition-all" id="copy-btn" onclick="navigator.clipboard.writeText('PLC-2026-CCARM-4892-A9F1'); this.innerText='Tersalin!';" type="button">
+            Salin Kunci
+          </button>
+</div>
+<p class="font-mono text-xs font-semibold text-on-surface tracking-wider select-all">
+          PLC-2026-CCARM-4892-A9F1
+        </p>
+</div>
+<div class="flex flex-col gap-2 pt-1 text-xs text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-emerald-600 mt-0.5 shrink-0">mark_email_read</span>
+<p class="text-[11px] leading-relaxed">
+            Arsip lisensi &amp; direct download link telah diteruskan ke email <strong class="text-on-surface">deva@studio.id</strong> dan otomatis tersemat di repositori <span class="text-primary font-medium">'Aset Saya'</span>.
+          </p>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low px-3 py-2 rounded-lg text-[11px]">
+<span class="text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">download</span>
+            Aktivitas Unduhan
+          </span>
+<span class="font-medium text-on-surface">2x diunduh (IP 182.253.14.88)</span>
+</div>
+</div>
+</section>
+<!-- Financial Breakdown Card -->
+<section class="bg-surface-container-high rounded-xl p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">pie_chart</span>
+<h2 class="text-xs font-label font-bold uppercase tracking-wider text-secondary">Pembagian Keuangan (Split Settlement)</h2>
+</div>
+<div class="flex flex-col gap-2.5 text-xs">
+<div class="flex items-center justify-between text-secondary">
+<span>Subtotal Aset 3D</span>
+<span class="font-mono text-on-surface font-medium">Rp 89.000</span>
+</div>
+<div class="flex items-center justify-between text-secondary">
+<span class="flex items-center gap-1">
+            Fee Layanan Platform (10%)
+            <span class="material-symbols-outlined text-[13px] text-primary" title="Platform Revenue">insights</span>
+</span>
+<span class="font-mono text-emerald-700 font-medium">+ Rp 8.900</span>
+</div>
+<div class="flex items-center justify-between text-secondary">
+<span class="flex items-center gap-1">
+            Creator Net Payout (90%)
+            <span class="text-[10px] font-label text-on-surface-variant bg-surface-container px-1 rounded">#CR-104</span>
+</span>
+<span class="font-mono text-primary font-medium">Rp 80.100</span>
+</div>
+<div class="flex items-center justify-between text-secondary">
+<span>PPN (0% Fasilitas Bebas Pajak)</span>
+<span class="font-mono text-on-surface">Rp 0</span>
+</div>
+<div class="h-px bg-outline-variant/30 my-1"></div>
+<div class="flex items-baseline justify-between pt-0.5">
+<div class="flex flex-col">
+<span class="font-headline font-semibold text-sm text-on-surface">Total Nilai Transaksi</span>
+<span class="text-[10px] font-label text-secondary">Dana Masuk ke Escrow Alexandria</span>
+</div>
+<span class="font-headline font-bold text-lg text-primary tracking-tight">Rp 89.000</span>
+</div>
+</div>
+</section>
+<!-- Action Section -->
+<section class="flex flex-col gap-2.5 pt-2">
+<button class="w-full h-12 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-xs font-bold tracking-wide uppercase shadow-md flex items-center justify-center gap-2 hover:opacity-95 active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+        Kirim Ulang Lisensi &amp; Faktur
+      </button>
+<button class="w-full h-11 rounded-xl bg-surface-container-high text-primary font-label text-xs font-bold tracking-wide uppercase flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+        Unduh Bukti Settlement (PDF)
+      </button>
+<button class="w-full py-2.5 rounded-lg text-error hover:bg-error-container/20 text-xs font-label font-semibold flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">assignment_return</span>
+        Ajukan Pengembalian Dana (Refund Manual)
+      </button>
+</section>
+</div>
+</div></main></body></html>

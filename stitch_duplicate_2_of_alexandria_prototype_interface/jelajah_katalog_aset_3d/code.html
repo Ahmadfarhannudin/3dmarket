@@ -1,0 +1,461 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#001946", "secondary-fixed": "#dfe3e8", "surface-container": "#efedee", "surface-container-high": "#e9e8e9", "surface-container-low": "#f5f3f4", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "error": "#ba1a1a", "surface-container-highest": "#e3e2e3", "surface-dim": "#dbdadb", "on-primary-container": "#e7ebff", "surface-tint": "#2259bf", "secondary": "#5a5f63", "on-error": "#ffffff", "on-surface": "#1b1c1d", "on-primary-fixed-variant": "#00419d", "on-secondary": "#ffffff", "primary-fixed": "#d9e2ff", "primary": "#094cb2", "on-surface-variant": "#434653", "primary-fixed-dim": "#b1c5ff", "on-secondary-container": "#606569", "tertiary-container": "#bfab49", "tertiary": "#6d5e00", "surface-container-lowest": "#ffffff", "surface": "#faf9fa", "on-tertiary-container": "#4a3f00", "inverse-surface": "#303031", "on-secondary-fixed": "#171c20", "inverse-on-surface": "#f2f0f1", "on-tertiary-fixed": "#211b00", "on-secondary-fixed-variant": "#42474b", "surface-variant": "#e3e2e3", "on-tertiary-fixed-variant": "#524600", "on-error-container": "#93000a", "background": "#faf9fa", "tertiary-fixed": "#f9e37a", "error-container": "#ffdad6", "secondary-fixed-dim": "#c2c7cc", "on-background": "#1b1c1d", "inverse-primary": "#b1c5ff", "on-primary": "#ffffff", "surface-bright": "#faf9fa", "tertiary-fixed-dim": "#dcc661", "secondary-container": "#dfe3e8", "primary-container": "#3366cc", "outline": "#737784" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": {}, "fontFamily": { "headline": ["Noto Serif"], "display": ["Noto Serif"], "body": ["Inter"], "label": ["Public Sans"] }, "fontSize": {} } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-4 flex items-center justify-between"><div class="flex items-center gap-3"><img alt="PolyCraft 3D Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDxtyhHkAjs5Cw_1bj7GVc1Lot-4iKn9dCCYEF3vuFgxqV87amGhutTlsjlyoEuVIob_WRc0kiNeE-anVKsz-EPwlNvBudVW5pGbULFYQ0db42OoC3fAM399hhe_qkY3xoMHtQY6O60NBCOSEGlGtQozK_7g-OfyRoJ4k-BB9R6hn2a7osA5pqsg754AYw4ZZi4f05PShnEnY__Ohb1NqzpdJT8g3-giKgxaAzf9Ksb"><div class="flex flex-col"><span class="font-headline font-bold text-base text-on-surface leading-tight tracking-tight">3DMARKET</span><span class="font-label text-[10px] tracking-widest uppercase text-tertiary font-semibold">Jelajah</span></div></div><div class="flex items-center gap-3"><button class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy0oFGuznKCUhf-qa5wXD6d6pmOCOBZW_L2D4NTWDu4Uwq80-S1RVzKxqRqbUhXZMnUdF1fBBgZRSk0Som9Ppq_SwIBXLXob8nmaUhXmI-R26akQcPWkO-9FCdHMSQagPXp6Wo_v1kp737N95HfHHJYVIZQuC9DV9n2kvXB2M3NguO3UOAOVzaDmPGse93uW39kGR145FfnNXHd19iW6qLrySYMWXFbO0qCzznqoY"></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full pb-8">
+<!-- Search & Exploration Header -->
+<section class="px-4 pt-4 pb-2">
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant/70 pointer-events-none text-xl">search</span>
+<input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/60 font-body text-xs sm:text-sm pl-11 pr-10 py-3 rounded-xl focus:outline-none focus:bg-surface-container-low shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all" id="exploreSearchInput" placeholder="Cari model 3D, kategori, tag (.blend)..." type="search">
+<button aria-label="Bersihkan pencarian" class="absolute right-3 text-on-surface-variant/50 hover:text-on-surface text-lg hidden" id="clearSearchBtn" type="button">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</section>
+<!-- Quick Filter Horizon Chips -->
+<section class="w-full overflow-x-auto no-scrollbar py-2 px-4 flex items-center gap-2">
+<button class="filter-chip whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-primary text-on-primary shadow-sm transition-all" data-category="all" type="button">Semua</button>
+<button class="filter-chip whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all" data-category="free" type="button">Hanya Gratis</button>
+<button class="filter-chip whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all" data-category="premium" type="button">Premium / Berbayar</button>
+<button class="filter-chip whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all" data-category="rigged" type="button">Rigged &amp; Animated</button>
+<button class="filter-chip whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-label font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all" data-category="lowpoly" type="button">Low Poly</button>
+</section>
+<!-- Controls: Sort, Filter Trigger, Total Count -->
+<section class="px-4 py-2 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<div class="relative">
+<select class="appearance-none bg-surface-container-low text-on-surface font-label text-xs font-semibold py-2 pl-3 pr-8 rounded-lg focus:outline-none cursor-pointer" id="sortSelector">
+<option value="popular">Terpopuler</option>
+<option value="newest">Terbaru</option>
+<option value="price-low">Harga Terendah</option>
+<option value="price-high">Harga Tertinggi</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2.5 text-xs text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+<span class="text-[11px] font-label text-secondary tracking-wide">328 kurasi</span>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-2 bg-surface-container text-on-surface rounded-lg font-label text-xs font-medium hover:bg-surface-container-high active:scale-95 transition-all" id="openFilterSheet" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">tune</span>
+<span>Filter</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block ml-0.5"></span>
+</button>
+</section>
+<!-- Active Filter Pills (Removable) -->
+<section class="px-4 py-1.5 flex flex-wrap gap-1.5" id="activePillsContainer">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container-high rounded-full text-[11px] font-label text-on-surface">
+<span>Format: .blend</span>
+<button aria-label="Hapus filter format .blend" class="remove-pill flex items-center justify-center text-on-surface-variant hover:text-error">
+<span class="material-symbols-outlined text-xs">close</span>
+</button>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container-high rounded-full text-[11px] font-label text-on-surface">
+<span>Kompatibel: Blender 4.2+</span>
+<button aria-label="Hapus filter Blender 4.2" class="remove-pill flex items-center justify-center text-on-surface-variant hover:text-error">
+<span class="material-symbols-outlined text-xs">close</span>
+</button>
+</div>
+<button class="text-[11px] font-label text-primary font-medium px-2 py-1 hover:underline" id="clearAllFilters">Reset Semua</button>
+</section>
+<!-- Product Catalog: 2-Column Responsive Grid -->
+<section class="px-4 pt-3">
+<div class="grid grid-cols-2 gap-3 sm:gap-4">
+<!-- Item 1: Floating Fantasy Island -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative w-full aspect-[4/3] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Editorial rendering of an intricate floating fantasy island 3D model with waterfalls, miniature ruins, glowing crystals, stylized moss and clouds, high quality Blender Cycles clay and material pass, warm cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoPbAIe24MwyPndjkOaNrhE6HZ0iQjh2krJV9oBkClNYMS8D8jpCWQskuak9Yk5q0lEP81VBnYeG3BlS7VGM4RSPuCUNry5IgWIg6yIGFkEcnm7SWv5ZBxBizqC6gSqp7mdIiWt1LkI19f-Ie8al6epT0S0CYCFJePfNFhEQWfz09YJ79XTbbVAIyj0kd1Y0a0sMRADJFlebiNnf2NaP-5nTODAkd-XJA_7O3rjhE">
+<div class="absolute top-2 left-2 flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded text-[9px] font-label font-semibold tracking-wider uppercase bg-tertiary text-on-tertiary shadow-sm">Premium</span>
+</div>
+<button aria-label="Favoritkan" class="favorite-toggle absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-on-surface/70 text-on-primary backdrop-blur-sm text-[9px] font-label">
+<span>28.4k tris</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div>
+<div class="flex items-center justify-between text-[10px] font-label text-secondary mb-0.5">
+<div class="flex items-center gap-1">
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.blend</span>
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.glb</span>
+</div>
+<div class="flex items-center gap-0.5 text-tertiary">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-[10px]">4.9</span>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-xs sm:text-sm text-on-surface line-clamp-1 leading-snug">Floating Fantasy Island</h3>
+<p class="font-body text-[10px] text-secondary line-clamp-1">Environment &amp; Nature</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label font-bold text-xs sm:text-sm text-on-surface">Rp 95.000</span>
+<button aria-label="Tambah ke keranjang" class="w-7 h-7 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">shopping_bag</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 2: Stylized Weapon Arsenal -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative w-full aspect-[4/3] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Collection of stylized RPG weapons, swords, shields, enchanted staves, arranged cleanly in an isometric 3D asset presentation studio with soft diffuse studio lighting, blender asset showcase" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4Q7hG81VTYh4NsNAyHeIeftjYYKHpRgS4RmK94cidkBYjftv8mBeSgSbPic6C_c3xNjoxb1LYvxRTY_wZYkHC-gPgxJ8YBBh2cL1YAay-NhQYO597TbDspz2ASg0KxEdppMc9g3HRMHE5EAYLu5OlkevT31FKidTsL5DdcX3duycldU8Fj_DECfBE-l6XtPVBdowOJVkxUPLAQ8uJ0iuqgdcqnfic3bDyjTQB1pk">
+<div class="absolute top-2 left-2 flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded text-[9px] font-label font-semibold tracking-wider uppercase bg-surface-container-highest text-on-surface-variant shadow-sm">GRATIS</span>
+</div>
+<button aria-label="Favoritkan" class="favorite-toggle absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-on-surface/70 text-on-primary backdrop-blur-sm text-[9px] font-label">
+<span>12.1k tris</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div>
+<div class="flex items-center justify-between text-[10px] font-label text-secondary mb-0.5">
+<div class="flex items-center gap-1">
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.blend</span>
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.fbx</span>
+</div>
+<div class="flex items-center gap-0.5 text-tertiary">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-[10px]">4.8</span>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-xs sm:text-sm text-on-surface line-clamp-1 leading-snug">Stylized Weapon Arsenal</h3>
+<p class="font-body text-[10px] text-secondary line-clamp-1">Game Ready • Weapons</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label font-bold text-xs sm:text-sm text-primary">GRATIS</span>
+<button aria-label="Unduh model" class="w-7 h-7 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 3: Futuristic Racing Drone -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative w-full aspect-[4/3] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Futuristic sci-fi racing quadcopter drone model with neon LED accents, carbon fiber textures, detailed rotors, rendered in a sleek high tech neutral 3D studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaeFlsqVj8qdT_C0aUsECsIKWsj7c_iupn3kkKdy4Ba67_RRB9aAz34Uw1pRKo_0fbWe0oeJyE6kJShRUGCMK9qfgjhmlAQqFBu_nKd3O4gF33nmufv5GHxTS1uxQ-am5fFwHOn1zZvGdol0HiczyqsBEAZup9tJ_1zjhHou9ZwZZGczI-7Fpdh5h2B89Dti__kzoZ7eQAo18GgRryQCWUxzHBPYw3aLtb5PdB5b0">
+<div class="absolute top-2 left-2 flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded text-[9px] font-label font-semibold tracking-wider uppercase bg-tertiary text-on-tertiary shadow-sm">Premium</span>
+</div>
+<button aria-label="Favoritkan" class="favorite-toggle absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-on-surface/70 text-on-primary backdrop-blur-sm text-[9px] font-label">
+<span>42.6k tris</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div>
+<div class="flex items-center justify-between text-[10px] font-label text-secondary mb-0.5">
+<div class="flex items-center gap-1">
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.blend</span>
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.obj</span>
+</div>
+<div class="flex items-center gap-0.5 text-secondary">
+<span class="material-symbols-outlined text-[13px]">reviews</span>
+<span class="font-medium text-[10px]">Baru</span>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-xs sm:text-sm text-on-surface line-clamp-1 leading-snug">Futuristic Racing Drone</h3>
+<p class="font-body text-[10px] text-secondary line-clamp-1">Sci-Fi • Vehicles</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label font-bold text-xs sm:text-sm text-on-surface">Rp 65.000</span>
+<button aria-label="Tambah ke keranjang" class="w-7 h-7 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">shopping_bag</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 4: Modular Dungeon Tileset -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative w-full aspect-[4/3] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Isometric modular dungeon tileset featuring stone archways, flagstone tiles, wooden doors, torches, and treasure chests, crisp PBR hand-painted materials, modular game level kit 3D asset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAltFejHl1rcSvwqZbo7dK4AlRsQZ3RsR2DKFKgvzx4uVpgZeXl-v2iaAqIOmF78ws8Z98KPySaqPHK4Q7OkT2s9Uffu3NkLC8SWRHFHz7uwmNELQuVeZRX8IXwrqTvLoZnwCpORGC5e3Nv1HcwUTsjljEfy6X2DCIl7CGkUE7gqpZYeThtpk1yh151e0c38VZDzTR7lsz7MbDRb0kwzlOjGZhc-FHXiDEFNchjSJ4">
+<div class="absolute top-2 left-2 flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded text-[9px] font-label font-semibold tracking-wider uppercase bg-surface-container-highest text-on-surface-variant shadow-sm">GRATIS</span>
+</div>
+<button aria-label="Favoritkan" class="favorite-toggle absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-on-surface/70 text-on-primary backdrop-blur-sm text-[9px] font-label">
+<span>8.4k tris/kit</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div>
+<div class="flex items-center justify-between text-[10px] font-label text-secondary mb-0.5">
+<div class="flex items-center gap-1">
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.blend</span>
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.glb</span>
+</div>
+<div class="flex items-center gap-0.5 text-tertiary">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-[10px]">4.7</span>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-xs sm:text-sm text-on-surface line-clamp-1 leading-snug">Modular Dungeon Tileset</h3>
+<p class="font-body text-[10px] text-secondary line-clamp-1">Modular Kit • Fantasy</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label font-bold text-xs sm:text-sm text-primary">GRATIS</span>
+<button aria-label="Unduh model" class="w-7 h-7 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 5: Isometric Room Interior -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative w-full aspect-[4/3] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Cozy modern isometric bedroom interior with workstation, plants, bookshelf, warm ambient sunlight streaming through a window, highly aesthetic Blender architectural 3D rendering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiYKT02jmZMt13kuQYEer2ncxCyF3kDrG6jFr3EMwnDtzqqtp4zokFX4BaWMPvm2Ik2iXlHwz_jeTOzSGku0-ZcLW2KuZPM2ahOUu_qoek_bpMSJb0N-0jo1Caf6uzJV7q5aiv0NkY7etyJfuY0wrCqJ5J9Eipace7UH-BeP74rZwio0ZoPwZGVUhFPovgw16JEQTiBp4miK4esFC1RboYIWXP0HgJEj6YnV5Isew">
+<div class="absolute top-2 left-2 flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded text-[9px] font-label font-semibold tracking-wider uppercase bg-tertiary text-on-tertiary shadow-sm">Premium</span>
+</div>
+<button aria-label="Favoritkan" class="favorite-toggle absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-on-surface/70 text-on-primary backdrop-blur-sm text-[9px] font-label">
+<span>56.1k tris</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div>
+<div class="flex items-center justify-between text-[10px] font-label text-secondary mb-0.5">
+<div class="flex items-center gap-1">
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.blend</span>
+</div>
+<div class="flex items-center gap-0.5 text-tertiary">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-[10px]">5.0</span>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-xs sm:text-sm text-on-surface line-clamp-1 leading-snug">Isometric Room Interior</h3>
+<p class="font-body text-[10px] text-secondary line-clamp-1">Architecture • Interior</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label font-bold text-xs sm:text-sm text-on-surface">Rp 110.000</span>
+<button aria-label="Tambah ke keranjang" class="w-7 h-7 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">shopping_bag</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 6: Subdivision Surface Sports Car -->
+<article class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative w-full aspect-[4/3] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Photorealistic sleek aerodynamic concept supercar model shown in Blender wireframe and polished chrome car paint studio turntable showcase, deep blue reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzvoqcqkGSYpAk26BtS0JP_fzo5l9utZFoALMCcW8AxyPB3mp_iaRKpw9wYQSn3_rijrW2avIVMy6S6NOjyphX9uOwOa-4lGuaSN3ddYO5TptKb3wOBNDMHSP_8iLdQTU6EM9jVq6DRFibZN9xi5NO7RDT1kzx-7nvBIcfSkl0nZWA7mEeNuTFitYzHdt0xIcVU82rFJusa-aICto42POoIsbgSuk8ZW47S-D3Ytk">
+<div class="absolute top-2 left-2 flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded text-[9px] font-label font-semibold tracking-wider uppercase bg-tertiary text-on-tertiary shadow-sm">Premium</span>
+</div>
+<button aria-label="Favoritkan" class="favorite-toggle absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-on-surface/70 text-on-primary backdrop-blur-sm text-[9px] font-label">
+<span>184k tris</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div>
+<div class="flex items-center justify-between text-[10px] font-label text-secondary mb-0.5">
+<div class="flex items-center gap-1">
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.blend</span>
+<span class="px-1 py-0.2 bg-surface-container rounded text-[9px]">.fbx</span>
+</div>
+<div class="flex items-center gap-0.5 text-tertiary">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-[10px]">4.9</span>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-xs sm:text-sm text-on-surface line-clamp-1 leading-snug">Subdivision Surface Sports Car</h3>
+<p class="font-body text-[10px] text-secondary line-clamp-1">Vehicles • High Poly</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label font-bold text-xs sm:text-sm text-on-surface">Rp 175.000</span>
+<button aria-label="Tambah ke keranjang" class="w-7 h-7 rounded-lg bg-surface-container-high hover:bg-primary hover:text-on-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px]">shopping_bag</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Editorial Inspiration Banner -->
+<section class="px-4 mt-6">
+<div class="relative rounded-2xl bg-gradient-to-r from-primary to-primary-container p-5 text-on-primary overflow-hidden shadow-sm">
+<div class="relative z-10 flex flex-col max-w-[70%]">
+<span class="font-label text-[10px] uppercase tracking-widest text-tertiary-fixed font-semibold">Tantangan Mingguan</span>
+<h4 class="font-headline text-base font-bold mt-1">Blender Node Masters</h4>
+<p class="font-body text-xs text-on-primary-container mt-1 line-clamp-2">Jelajahi shader procedural dan material nodes terpilih minggu ini dari kreator tanah air.</p>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-8xl text-white/10 select-none pointer-events-none">hub</span>
+</div>
+</section>
+<!-- Filter Bottom Sheet Drawer (Hidden initially) -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm hidden items-end justify-center transition-opacity" id="filterSheetModal">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-t-2xl p-5 shadow-2xl flex flex-col max-h-[707px] overflow-y-auto">
+<div class="flex items-center justify-between pb-3">
+<h3 class="font-headline font-bold text-base text-on-surface">Filter Pencarian</h3>
+<button class="text-on-surface-variant hover:text-on-surface p-1" id="closeFilterSheet">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="space-y-4 py-2 font-body text-xs">
+<!-- License Format -->
+<div>
+<label class="font-label font-semibold text-secondary uppercase tracking-wider text-[10px] block mb-2">Format File</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-medium">.blend (Blender Asli)</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface">.glb / .gltf</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface">.fbx</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface">.obj</span>
+</div>
+</div>
+<!-- Poly Count -->
+<div>
+<label class="font-label font-semibold text-secondary uppercase tracking-wider text-[10px] block mb-2">Kompleksitas Poligon</label>
+<div class="grid grid-cols-2 gap-2">
+<div class="p-2.5 bg-surface-container rounded-lg flex items-center justify-between">
+<span>Low-Poly (&lt; 15k)</span>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<div class="p-2.5 bg-surface-container rounded-lg flex items-center justify-between">
+<span>Mid-Poly (15k - 50k)</span>
+</div>
+<div class="p-2.5 bg-surface-container rounded-lg flex items-center justify-between">
+<span>High-Poly (&gt; 50k)</span>
+</div>
+<div class="p-2.5 bg-surface-container rounded-lg flex items-center justify-between">
+<span>Subdivision Ready</span>
+</div>
+</div>
+</div>
+<!-- License / Status -->
+<div>
+<label class="font-label font-semibold text-secondary uppercase tracking-wider text-[10px] block mb-2">Lisensi &amp; Fitur</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface">Royalty Free Komersil</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface">PBR Textures Included</span>
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface">Rigged Skeletons</span>
+</div>
+</div>
+</div>
+<div class="pt-4 mt-2 flex items-center gap-3">
+<button class="flex-1 py-2.5 rounded-lg bg-surface-container-high text-on-surface font-label font-semibold text-xs" id="resetSheetFilters">Reset</button>
+<button class="flex-1 py-2.5 rounded-lg bg-primary text-on-primary font-label font-semibold text-xs shadow-sm" id="applySheetFilters">Terapkan Filter</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initExploreInteractions() {
+    // Search input clear toggling
+    const searchInput = document.getElementById('exploreSearchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+    if (searchInput && clearSearchBtn) {
+      searchInput.addEventListener('input', (e) => {
+        if (e.target.value.trim().length > 0) {
+          clearSearchBtn.classList.remove('hidden');
+        } else {
+          clearSearchBtn.classList.add('hidden');
+        }
+      });
+
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearSearchBtn.classList.add('hidden');
+        searchInput.focus();
+      });
+    }
+
+    // Filter Chips selection
+    const filterChips = document.querySelectorAll('.filter-chip');
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => {
+          c.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+          c.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        chip.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+      });
+    });
+
+    // Favorites Heart Toggle
+    const favoriteBtns = document.querySelectorAll('.favorite-toggle');
+    favoriteBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          const isFilled = icon.style.fontVariationSettings && icon.style.fontVariationSettings.includes("'FILL' 1");
+          if (isFilled) {
+            icon.style.fontVariationSettings = "'FILL' 0";
+            btn.classList.remove('text-error');
+            btn.classList.add('text-on-surface-variant');
+          } else {
+            icon.style.fontVariationSettings = "'FILL' 1";
+            btn.classList.add('text-error');
+            btn.classList.remove('text-on-surface-variant');
+          }
+        }
+      });
+    });
+
+    // Removable pills
+    const removePillBtns = document.querySelectorAll('.remove-pill');
+    removePillBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const pill = e.currentTarget.closest('div');
+        if (pill) pill.remove();
+      });
+    });
+
+    const clearAllBtn = document.getElementById('clearAllFilters');
+    if (clearAllBtn) {
+      clearAllBtn.addEventListener('click', () => {
+        const container = document.getElementById('activePillsContainer');
+        if (container) {
+          container.querySelectorAll('div').forEach(el => el.remove());
+          clearAllBtn.classList.add('hidden');
+        }
+      });
+    }
+
+    // Modal Sheet toggle
+    const filterModal = document.getElementById('filterSheetModal');
+    const openFilterBtn = document.getElementById('openFilterSheet');
+    const closeFilterBtn = document.getElementById('closeFilterSheet');
+    const applyFilterBtn = document.getElementById('applySheetFilters');
+
+    function openModal() {
+      if (!filterModal) return;
+      filterModal.classList.remove('hidden');
+      filterModal.classList.add('flex');
+    }
+
+    function closeModal() {
+      if (!filterModal) return;
+      filterModal.classList.add('hidden');
+      filterModal.classList.remove('flex');
+    }
+
+    if (openFilterBtn) openFilterBtn.addEventListener('click', openModal);
+    if (closeFilterBtn) closeFilterBtn.addEventListener('click', closeModal);
+    if (applyFilterBtn) applyFilterBtn.addEventListener('click', closeModal);
+    if (filterModal) {
+      filterModal.addEventListener('click', (e) => {
+        if (e.target === filterModal) closeModal();
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.03)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-2"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-3 py-1 text-on-surface-variant transition-colors" data-path="beranda" href="#"><span class="material-symbols-outlined text-2xl">home</span><span class="font-label text-[10px] tracking-tight mt-0.5">Beranda</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-3 py-1 transition-colors text-primary font-semibold" data-path="jelajah" href="#"><span class="material-symbols-outlined text-2xl">explore</span><span class="font-label text-[10px] tracking-tight mt-0.5">Jelajah</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-3 py-1 text-on-surface-variant transition-colors" data-path="aset-saya" href="#"><span class="material-symbols-outlined text-2xl">view_in_ar</span><span class="font-label text-[10px] tracking-tight mt-0.5">Aset Saya</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-3 py-1 text-on-surface-variant transition-colors" data-path="profil" href="#"><span class="material-symbols-outlined text-2xl">account_circle</span><span class="font-label text-[10px] tracking-tight mt-0.5">Profil</span></a></div></nav>
+
+</body></html>

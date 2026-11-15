@@ -1,0 +1,301 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-background": "#1b1c1d", "on-secondary": "#ffffff", "on-tertiary-fixed": "#211b00", "outline": "#737784", "error-container": "#ffdad6", "on-primary-container": "#e7ebff", "on-primary-fixed": "#001946", "on-tertiary-fixed-variant": "#524600", "inverse-on-surface": "#f2f0f1", "surface-container-high": "#e9e8e9", "on-surface-variant": "#434653", "on-tertiary-container": "#4a3f00", "outline-variant": "#c3c6d5", "inverse-surface": "#303031", "secondary": "#5a5f63", "tertiary-container": "#bfab49", "surface-bright": "#faf9fa", "inverse-primary": "#b1c5ff", "on-secondary-fixed": "#171c20", "primary-container": "#3366cc", "surface-container": "#efedee", "on-tertiary": "#ffffff", "on-surface": "#1b1c1d", "primary-fixed-dim": "#b1c5ff", "primary-fixed": "#d9e2ff", "tertiary": "#6d5e00", "secondary-container": "#dfe3e8", "surface-tint": "#2259bf", "on-error": "#ffffff", "surface-dim": "#dbdadb", "surface-variant": "#e3e2e3", "tertiary-fixed-dim": "#dcc661", "secondary-fixed": "#dfe3e8", "on-primary": "#ffffff", "primary": "#094cb2", "background": "#faf9fa", "surface": "#faf9fa", "surface-container-highest": "#e3e2e3", "on-secondary-container": "#606569", "surface-container-low": "#f5f3f4", "error": "#ba1a1a", "on-error-container": "#93000a", "secondary-fixed-dim": "#c2c7cc", "tertiary-fixed": "#f9e37a", "on-primary-fixed-variant": "#00419d", "on-secondary-fixed-variant": "#42474b", "surface-container-lowest": "#ffffff" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: {}, fontFamily: { "headline": ["Noto Serif"], "display": ["Noto Serif"], "body": ["Inter"], "label": ["Public Sans"] }, fontSize: {} } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-4 flex items-center justify-between"><div class="flex items-center gap-3 min-w-0"><div class="flex flex-col min-w-0"><div class="flex items-center gap-1.5"><span class="font-label font-bold text-[10px] tracking-widest uppercase px-1.5 py-0.5 rounded bg-surface-container-highest text-tertiary">3DMarket</span><span class="font-label text-[10px] uppercase font-semibold text-primary tracking-wider">Studio Admin</span></div><h1 class="text-lg font-headline font-semibold text-on-surface truncate leading-tight mt-0.5">Katalog</h1></div></div><div class="flex items-center gap-2 flex-shrink-0"><button aria-label="Notifikasi" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-tertiary ring-2 ring-surface"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-4 space-y-5">
+<!-- Header & Quick Metrics -->
+<div class="flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label text-[10px] uppercase tracking-widest font-bold text-tertiary">
+          ARSIP KATALOG 3D &amp; INVENTARIS
+        </span>
+<h2 class="font-headline text-2xl font-bold text-on-surface tracking-tight mt-0.5">
+          Kelola Katalog Model
+        </h2>
+</div>
+<a href="{{DATA:SCREEN:SCREEN_12}}" class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-xs font-semibold shadow-sm active:scale-95 transition-all" id="btn-upload-top"><span class="material-symbols-outlined text-[18px]">cloud_upload</span><span>+ Upload Model</span></a>
+</div>
+<!-- Quick Stats Metric Band -->
+<div class="grid grid-cols-3 gap-2 p-1.5 bg-surface-container rounded-xl">
+<div class="bg-surface-container-lowest p-2.5 rounded-lg text-center flex flex-col justify-center">
+<span class="font-label text-[10px] text-on-surface-variant uppercase font-medium">Total Model</span>
+<span class="font-headline text-lg font-bold text-primary mt-0.5">48</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-lg text-center flex flex-col justify-center">
+<span class="font-label text-[10px] text-on-surface-variant uppercase font-medium">Bulan Ini</span>
+<span class="font-headline text-lg font-bold text-tertiary mt-0.5">Rp 14.8M</span>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-lg text-center flex flex-col justify-center">
+<span class="font-label text-[10px] text-on-surface-variant uppercase font-medium">Tingkat Retensi</span>
+<span class="font-headline text-lg font-bold text-on-surface mt-0.5">99.2%</span>
+</div>
+</div>
+</div>
+<!-- Search & Dynamic Filter Controls -->
+<div class="flex flex-col space-y-2.5">
+<!-- Search Bar -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">
+        search
+      </span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-xl font-body text-xs text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:ring-1 focus:ring-primary shadow-sm" placeholder="Cari judul aset, format (.blend/.fbx), ID..." type="text">
+</div>
+<!-- Status Tabs (Horizontal Scroll) -->
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" id="status-chips">
+<button class="chip active flex-shrink-0 px-3 py-1.5 rounded-full bg-primary text-on-primary font-label text-xs font-medium transition-colors" type="button">
+        Semua (48)
+      </button>
+<button class="chip flex-shrink-0 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label text-xs font-medium transition-colors" type="button">
+        Dipublikasikan (42)
+      </button>
+<button class="chip flex-shrink-0 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label text-xs font-medium transition-colors" type="button">
+        Draft (4)
+      </button>
+<button class="chip flex-shrink-0 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label text-xs font-medium transition-colors" type="button">
+        Diarsipkan (2)
+      </button>
+</div>
+<!-- Secondary Filter Bar -->
+<div class="flex items-center justify-between gap-2 pt-0.5 font-label text-[11px] text-on-surface-variant">
+<div class="flex items-center gap-1 bg-surface-container-low px-2.5 py-1.5 rounded-lg cursor-pointer">
+<span>Urutkan:</span>
+<span class="font-semibold text-on-surface flex items-center">
+          Terbaru Ditambahkan
+          <span class="material-symbols-outlined text-[16px] ml-0.5">expand_more</span>
+</span>
+</div>
+<a href="{{DATA:SCREEN:SCREEN_8}}" class="flex items-center gap-1 bg-surface-container-low px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-surface-container-high transition-colors"><span>Kategori:</span><span class="font-semibold text-on-surface flex items-center">Semua Kategori<span class="material-symbols-outlined text-[16px] ml-0.5">tune</span></span></a>
+</div>
+</div>
+<!-- Asset Inventory List -->
+<div class="flex flex-col space-y-3">
+<!-- Card 1: Cybernetic Chrono Arm Mk. IV -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col space-y-3">
+<div class="flex gap-3">
+<div class="relative w-24 h-24 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Editorial close-up 3D render of a futuristic cybernetic chrono robotic mechanical arm, polished titanium and gold filigree components, volumetric cinematic studio illumination, high fidelity, 3D artist portfolio view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf0z38zGX9B1sJ1m2g82We-yEFyW5wWN6iEIL7_ZOenDntuY2RbQLu39uTTEly-Eke8VCskaaap9ZaTTmZflZStEtsplS7j9eZoV8Kiz5ar45RIamulsGeg9qdMAXKNlJ-NN75Tlf1dKKoTGzU4g_Ijnm2NYFnNLrqRUNoaEikFbMnvMchvpaLcHDz-KCwQRuEJcMIqn7BpILoUma27OV7laGTiQ2GLJPfUZDub5c">
+<span class="absolute top-1 left-1 px-1.5 py-0.5 bg-surface-container-lowest/90 backdrop-blur rounded font-label text-[9px] font-bold text-tertiary">
+            .blend
+          </span>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label text-[9px] font-bold uppercase tracking-wider">
+                PUBLIK
+              </span>
+<span class="text-[10px] font-label text-on-surface-variant/80">
+                Blender 4.2 LTS
+              </span>
+</div>
+<h3 class="font-headline font-semibold text-sm text-on-surface truncate mt-1 leading-tight">
+              Cybernetic Chrono Arm Mk. IV
+            </h3>
+<p class="font-body text-[11px] text-on-surface-variant truncate mt-0.5">
+              Karakter &amp; Siber · 48.6 MB · 48.2k Quads
+            </p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-headline text-sm font-bold text-primary">
+              Rp 89.000 <span class="font-body text-[10px] text-on-surface-variant font-normal">· 128 Terjual</span>
+</span>
+<!-- Interactive Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer toggle-status" type="checkbox">
+<div class="w-8 h-4 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center gap-2 pt-1">
+<a href="{{DATA:SCREEN:SCREEN_12}}" class="flex-1 py-1.5 px-3 rounded-lg bg-surface-container-high text-on-surface text-xs font-label font-medium flex items-center justify-center gap-1 active:bg-surface-variant transition-colors"><span class="material-symbols-outlined text-[15px]">edit</span><span>Edit Detail</span></a>
+<button class="py-1.5 px-3 rounded-lg bg-primary/10 text-primary text-xs font-label font-semibold flex items-center justify-center gap-1 active:bg-primary/20 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">view_in_ar</span>
+<span>Preview 3D</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Tactical Exo Helmet Armor Mk. II -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col space-y-3">
+<div class="flex gap-3">
+<div class="relative w-24 h-24 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Photorealistic 3D game asset render of a sci-fi tactical exo helmet visor, carbon fiber textures, matte black finish with vibrant blue emissive neon vents, 4k clean studio lighting on neutral studio pedestal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnbwOWsZsoGtp2duIYsOooayJUWps0XUB8Iy62j4vJ6bjsCrq9-4wIqdF5Bljr9Kw4Arip3tKRVkPomLA-iQAXpqFUIDaT56Fx7ssDliRBMQMr3VMoNCs4H9GCnXliHXRkNFgyN2R1omTWU2B2FBTDGc5Oj0CfmiWgGNlR-ZCmS1V5a9nl7dnQPEicEg5xa0AihQfpyrgSCJRmKIO6WNUw30agtvN9rH9m8anQNs4">
+<span class="absolute top-1 left-1 px-1.5 py-0.5 bg-surface-container-lowest/90 backdrop-blur rounded font-label text-[9px] font-bold text-primary">
+            UDIM 4K
+          </span>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label text-[9px] font-bold uppercase tracking-wider">
+                PUBLIK
+              </span>
+<span class="text-[10px] font-label text-on-surface-variant/80">
+                Sub-D Ready
+              </span>
+</div>
+<h3 class="font-headline font-semibold text-sm text-on-surface truncate mt-1 leading-tight">
+              Tactical Exo Helmet Armor Mk. II
+            </h3>
+<p class="font-body text-[11px] text-on-surface-variant truncate mt-0.5">
+              Karakter · 34.2 MB · 4K PBR
+            </p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-headline text-sm font-bold text-primary">
+              Rp 75.000 <span class="font-body text-[10px] text-on-surface-variant font-normal">· 84 Terjual</span>
+</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer toggle-status" type="checkbox">
+<div class="w-8 h-4 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center gap-2 pt-1">
+<a href="{{DATA:SCREEN:SCREEN_12}}" class="w-full py-1.5 px-3 rounded-lg bg-surface-container-high text-on-surface text-xs font-label font-medium flex items-center justify-center gap-1 active:bg-surface-variant transition-colors"><span class="material-symbols-outlined text-[15px]">edit</span><span>Edit Detail &amp; Lisensi</span></a>
+</div>
+</div>
+<!-- Card 3: Aetherial Vanguard Heavy Mech (Draft) -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col space-y-3 opacity-95">
+<div class="flex gap-3">
+<div class="relative w-24 h-24 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Dramatic 3D rendered concept art of an industrial heavy bipedal mech walker robot, unfinished wireframe overlay on one limb, ambient occlusion shading, cinematic lighting, editorial 3D model clay preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNzFd1QYJYlfTivyn6c8so_ZEKnlgNZcZsW-cr1AzBzphWRw86pImOcbKgf6DsXycysvuvGmezcQVgGdSFVx1UcFOb5UnimHYZStq0-4KBz83ZzWHE9g8cKBDUfwYH28TdJ4Ka9dCK_G7-fDO7wPFawnEslRrJkivzW1dj8pliSt7jkUhkcydnlzIAR-XIfBUBiYN_krKMCVPF6_WFGWpv28qJ7hw5Tffr5OXAwxU">
+<span class="absolute top-1 left-1 px-1.5 py-0.5 bg-surface-dim text-on-surface rounded font-label text-[9px] font-bold">
+            Draft
+          </span>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label text-[9px] font-bold uppercase tracking-wider">
+                DRAFT / VERIFIKASI
+              </span>
+</div>
+<h3 class="font-headline font-semibold text-sm text-on-surface truncate mt-1 leading-tight">
+              Aetherial Vanguard Heavy Mech
+            </h3>
+<p class="font-body text-[11px] text-error truncate mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+              Belum ada file .glb web preview
+            </p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label text-xs font-semibold text-on-surface-variant">
+              Target: Rp 149.000
+            </span>
+<span class="font-label text-[10px] text-tertiary font-bold px-1.5 py-0.5 rounded bg-surface-container-high">
+              Reviewing
+            </span>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center gap-2 pt-1">
+<a href="{{DATA:SCREEN:SCREEN_12}}" class="w-full py-2 px-3 rounded-lg bg-tertiary text-on-tertiary text-xs font-label font-bold flex items-center justify-center gap-1.5 active:scale-[0.99] transition-transform shadow-sm"><span class="material-symbols-outlined text-[16px]">task_alt</span><span>Lengkapi Aset &amp; Publikasi</span></a>
+</div>
+</div>
+<!-- Card 4: Stylized Fantasy Weapon Arsenal (Free Asset) -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col space-y-3">
+<div class="flex gap-3">
+<div class="relative w-24 h-24 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Stylized hand-painted 3D fantasy weapons arsenal bundle 3DMarket, magical glowing runes, broadsword, ornate battle axe and wizard staff, vibrant colors, clean mobile game ready render on soft backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCnuSxplju8ri1eQ_nH0nwXSOJ3zT5iFOTYD6xuyqRihYWO6X11Kw0Qty0ozSST6gT9cvDiiKgwvvCc54xGh4j7imug4UHQ51qwTxQthnLgOwj4C5lZSDs5mnlQakufzwJZsVT14u77XmtfPQPn2XNyBOoqTQoC_B1ozTjVCPtFjAYL0tbsNyyzSVJw4HkNUgxufkiD0llOpg1bHsDqIey4uOy8aVLX0qJAG9RRe0">
+<span class="absolute top-1 left-1 px-1.5 py-0.5 bg-surface-container-lowest/90 backdrop-blur rounded font-label text-[9px] font-bold text-on-surface">
+            FBX/OBJ
+          </span>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label text-[9px] font-bold uppercase tracking-wider">
+                GRATIS / PROMO
+              </span>
+<span class="text-[10px] font-label text-on-surface-variant/80">
+                Low Poly PBR
+              </span>
+</div>
+<h3 class="font-headline font-semibold text-sm text-on-surface truncate mt-1 leading-tight">
+              Stylized Fantasy Weapon Arsenal
+            </h3>
+<p class="font-body text-[11px] text-on-surface-variant truncate mt-0.5">
+              Game Asset · 12.1 MB · Mobile Ready
+            </p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-headline text-sm font-bold text-on-surface">
+              Gratis <span class="font-body text-[10px] text-on-surface-variant font-normal">· 312 Unduhan</span>
+</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer toggle-status" type="checkbox">
+<div class="w-8 h-4 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center gap-2 pt-1">
+<a href="{{DATA:SCREEN:SCREEN_12}}" class="w-full py-1.5 px-3 rounded-lg bg-surface-container-high text-on-surface text-xs font-label font-medium flex items-center justify-center gap-1 active:bg-surface-variant transition-colors"><span class="material-symbols-outlined text-[15px]">edit</span><span>Edit Detail &amp; Tag</span></a>
+</div>
+</div>
+</div>
+<!-- Batch / Compatibility Management Notice -->
+<div class="bg-surface-container-low p-3.5 rounded-xl flex items-start gap-3">
+<div class="w-7 h-7 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">info</span>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-label text-xs font-bold text-on-surface leading-snug">
+        2 Aset Membutuhkan Penyesuaian
+      </h4>
+<p class="font-body text-[11px] text-on-surface-variant mt-0.5 leading-relaxed">
+        Update kompatibilitas mesh &amp; shader untuk Blender 4.2 LTS tersedia.
+      </p>
+<a class="inline-flex items-center gap-1 font-label text-xs font-semibold text-primary mt-1.5 hover:underline" href="#">
+        Periksa Sekarang
+        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Floating Quick Upload Action Button -->
+<div class="fixed right-5 bottom-20 z-40">
+<a href="{{DATA:SCREEN:SCREEN_12}}" aria-label="Upload Model Baru" class="w-13 h-13 p-3.5 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary shadow-xl active:scale-90 transition-transform flex items-center justify-center ring-4 ring-surface/40" id="fab-upload"><span class="material-symbols-outlined text-[28px]">add</span></a>
+</div>
+</div>
+<script>
+  // Simple interactive chips handling for UI preview delight
+  document.querySelectorAll('#status-chips .chip').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('#status-chips .chip').forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary', 'active');
+        b.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+      });
+      button.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+      button.classList.add('bg-primary', 'text-on-primary', 'active');
+    });
+  });
+
+  // Toggle feedback
+  document.querySelectorAll('.toggle-status').forEach(toggle => {
+    toggle.addEventListener('change', (e) => {
+      const card = e.target.closest('.bg-surface-container-lowest');
+      if (!e.target.checked && card) {
+        card.classList.add('opacity-60');
+      } else if (card) {
+        card.classList.remove('opacity-60');
+      }
+    });
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-semibold"><div class="grid grid-cols-4 items-center h-16 px-2"><a class="flex flex-col items-center justify-center gap-0.5 h-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="{{DATA:SCREEN:SCREEN_16}}"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label text-[10px] tracking-tight">Dashboard</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 h-full transition-colors text-primary font-semibold" data-path="katalog" href="#"><span class="material-symbols-outlined text-[22px]">inventory_2</span><span class="font-label text-[10px] tracking-tight">Katalog</span></a><a class="flex flex-col items-center justify-center gap-0.5 h-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="pesanan" href="{{DATA:SCREEN:SCREEN_18}}"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="font-label text-[10px] tracking-tight">Pesanan</span></a><a class="flex flex-col items-center justify-center gap-0.5 h-full text-on-surface-variant hover:text-on-surface transition-colors" data-path="pengaturan" href="{{DATA:SCREEN:SCREEN_14}}"><span class="material-symbols-outlined text-[22px]">settings</span><span class="font-label text-[10px] tracking-tight">Pengaturan</span></a></div></nav>
+
+
+
+
+
+
+
+</body></html>

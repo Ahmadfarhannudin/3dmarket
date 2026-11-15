@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#001946", "secondary-fixed": "#dfe3e8", "surface-container": "#efedee", "surface-container-high": "#e9e8e9", "surface-container-low": "#f5f3f4", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "error": "#ba1a1a", "surface-container-highest": "#e3e2e3", "surface-dim": "#dbdadb", "on-primary-container": "#e7ebff", "surface-tint": "#2259bf", "secondary": "#5a5f63", "on-error": "#ffffff", "on-surface": "#1b1c1d", "on-primary-fixed-variant": "#00419d", "on-secondary": "#ffffff", "primary-fixed": "#d9e2ff", "primary": "#094cb2", "on-surface-variant": "#434653", "primary-fixed-dim": "#b1c5ff", "on-secondary-container": "#606569", "tertiary-container": "#bfab49", "tertiary": "#6d5e00", "surface-container-lowest": "#ffffff", "surface": "#faf9fa", "on-tertiary-container": "#4a3f00", "inverse-surface": "#303031", "on-secondary-fixed": "#171c20", "inverse-on-surface": "#f2f0f1", "on-tertiary-fixed": "#211b00", "on-secondary-fixed-variant": "#42474b", "surface-variant": "#e3e2e3", "on-tertiary-fixed-variant": "#524600", "on-error-container": "#93000a", "background": "#faf9fa", "tertiary-fixed": "#f9e37a", "error-container": "#ffdad6", "secondary-fixed-dim": "#c2c7cc", "on-background": "#1b1c1d", "inverse-primary": "#b1c5ff", "on-primary": "#ffffff", "surface-bright": "#faf9fa", "tertiary-fixed-dim": "#dcc661", "secondary-container": "#dfe3e8", "primary-container": "#3366cc", "outline": "#737784" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": {}, "fontFamily": { "headline": ["Noto Serif"], "display": ["Noto Serif"], "body": ["Inter"], "label": ["Public Sans"] }, "fontSize": {} } } }</script><style>body { min-height: max(884px, 100dvh); }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-3 flex items-center justify-between gap-2"><div class="flex items-center gap-1.5 flex-1 min-w-0"><button aria-label="Kembali" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors shrink-0" onclick="history.back()"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button><h1 class="font-headline font-semibold text-base text-on-surface tracking-tight truncate pl-0.5">Kategori Aset</h1></div><div class="flex items-center gap-1 shrink-0"><button aria-label="Bagikan" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">share</span></button><img alt="Profile Avatar" class="w-8 h-8 rounded-full object-cover ml-1 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy0oFGuznKCUhf-qa5wXD6d6pmOCOBZW_L2D4NTWDu4Uwq80-S1RVzKxqRqbUhXZMnUdF1fBBgZRSk0Som9Ppq_SwIBXLXob8nmaUhXmI-R26akQcPWkO-9FCdHMSQagPXp6Wo_v1kp737N95HfHHJYVIZQuC9DV9n2kvXB2M3NguO3UOAOVzaDmPGse93uW39kGR145FfnNXHd19iW6qLrySYMWXFbO0qCzznqoY"/></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface"><div class="flex flex-col w-full pb-10">
+<!-- Editorial Archival Banner -->
+<div class="relative w-full bg-surface-container-low px-5 pt-6 pb-7 overflow-hidden">
+<div class="absolute -right-8 -top-8 w-44 h-44 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-10 -bottom-10 w-36 h-36 rounded-full bg-tertiary-fixed/20 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-3">
+<!-- Collection Pill Metadata -->
+<div class="inline-flex items-center gap-2 self-start bg-surface-container-lowest px-3 py-1 rounded-full shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Arsip Kurasi No. 04</span>
+</div>
+<!-- Editorial Headline -->
+<h2 class="font-headline text-2xl font-bold tracking-tight text-on-surface leading-tight">
+        Karakter &amp; Siber <span class="font-normal italic text-secondary">(Sci-Fi)</span>
+</h2>
+<!-- Scholarly / Curated Description -->
+<p class="font-body text-xs leading-relaxed text-on-surface-variant max-w-sm">
+        Koleksi model manusia bionik, mech robotik, dan prostetik cyberpunk yang di-rig siap pakai untuk animasi Blender.
+      </p>
+<!-- Stats Pill & Spec Quality Badges -->
+<div class="pt-1 flex flex-wrap items-center gap-2 font-label">
+<div class="inline-flex items-center gap-1.5 bg-primary-container/10 px-2.5 py-1 rounded-full text-primary text-xs font-semibold">
+<span class="material-symbols-outlined text-[15px]">inventory_2</span>
+<span>84 Model Tersedia</span>
+</div>
+<div class="inline-flex items-center gap-1.5 bg-surface-container-highest px-2.5 py-1 rounded-full text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-[15px] text-tertiary">verified</span>
+<span>100% Quad Topology</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Subcategory Filter Chips (Horizontal Scroll) -->
+<div class="w-full bg-surface py-3 px-4 overflow-x-auto no-scrollbar scroll-smooth">
+<div class="flex items-center gap-2 min-w-max" id="categoryChips">
+<button class="chip-item px-3.5 py-1.5 rounded-full text-xs font-label font-semibold tracking-wide transition-all bg-primary text-on-primary shadow-sm flex items-center gap-1" data-active="true">
+<span>Semua Subkategori</span>
+</button>
+<button class="chip-item px-3.5 py-1.5 rounded-full text-xs font-label font-medium tracking-wide transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center gap-1" data-active="false">
+<span>Rigged Character</span>
+</button>
+<button class="chip-item px-3.5 py-1.5 rounded-full text-xs font-label font-medium tracking-wide transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center gap-1" data-active="false">
+<span>Robot &amp; Mecha</span>
+</button>
+<button class="chip-item px-3.5 py-1.5 rounded-full text-xs font-label font-medium tracking-wide transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center gap-1" data-active="false">
+<span>Prostetik &amp; Siber</span>
+</button>
+<button class="chip-item px-3.5 py-1.5 rounded-full text-xs font-label font-medium tracking-wide transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center gap-1" data-active="false">
+<span>Aksesoris &amp; Helm</span>
+</button>
+</div>
+</div>
+<!-- Filter & Sorting Control Strip -->
+<div class="px-4 py-2 bg-surface-container-lowest flex items-center justify-between gap-2 shadow-sm">
+<!-- Sort Dropdown Trigger -->
+<div class="relative">
+<button class="flex items-center gap-1.5 text-xs font-label font-semibold text-on-surface bg-surface-container-low px-2.5 py-1.5 rounded-lg active:scale-95 transition-transform" id="sortMenuBtn">
+<span class="material-symbols-outlined text-[16px] text-primary">swap_vert</span>
+<span id="currentSortLabel">Terpopuler</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">expand_more</span>
+</button>
+<!-- Popover Menu -->
+<div class="hidden absolute left-0 mt-1.5 w-40 bg-surface-container-lowest rounded-xl shadow-lg z-30 p-1 flex flex-col gap-0.5" id="sortMenuDropdown">
+<button class="sort-option w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-label text-primary font-semibold bg-surface-container-low" data-value="Terpopuler">Terpopuler</button>
+<button class="sort-option w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-label text-on-surface-variant hover:bg-surface-container-low" data-value="Terbaru">Terbaru Diunggah</button>
+<button class="sort-option w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-label text-on-surface-variant hover:bg-surface-container-low" data-value="Rating">Rating Tertinggi</button>
+<button class="sort-option w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-label text-on-surface-variant hover:bg-surface-container-low" data-value="Harga Rendah">Harga Terendah</button>
+</div>
+</div>
+<!-- Blender 4.x Interactive Filter Pill Toggle -->
+<button class="flex items-center gap-1.5 text-xs font-label px-2.5 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant transition-colors" data-checked="false" id="blenderToggle">
+<span class="w-3.5 h-3.5 rounded flex items-center justify-center bg-surface-container-highest transition-colors" id="toggleCheckbox">
+<span class="material-symbols-outlined text-[11px] text-on-primary hidden" id="checkIcon">check</span>
+</span>
+<span class="truncate max-w-[130px] font-medium">Blender 4.x</span>
+</button>
+</div>
+<!-- Active Curator Badge & Asset Counter Bar -->
+<div class="px-4 pt-4 pb-2 flex items-center justify-between text-xs font-label text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">cached</span>
+<span class="font-medium">Katalog Model Teruji</span>
+</div>
+<span class="text-[11px] text-secondary font-medium tracking-wide">Format .blend + FBX</span>
+</div>
+<!-- 2-Column Asset Grid -->
+<div class="px-4 grid grid-cols-2 gap-3.5">
+<!-- Item 1: Cyberpunk Arm -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm active:scale-[0.99] transition-all">
+<div class="relative w-full aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="High quality 3D render of a futuristic cyberpunk cybernetic bionic arm with exposed carbon fiber joints, gold internal plating, and glowing neon blue conduits against a dark studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6pVRnYi4Ow_r8g9Ad3gV9PeS8AQMRc5IhogmC4f0t0MKjwRVaAqKlxwBEM7LJku301Jkgg-2sGZ6ec6EsQYby9PB2aTlwUfs1yuJmuIGCQ_t4UVXAYIFfTN7-zOSGr5ZoP4tuDok3SIgJQUf_rqHN8G3qZqDrpoz-qQdfj2U6AQYxPH3UhrphlTedYwbw_dkDduyjYkkGBl0A68rLTEoLuu1g7YFzYOFqSA-F1c8"/>
+<!-- Badges Overlay -->
+<div class="absolute top-2 left-2 flex items-center gap-1">
+<span class="bg-primary text-on-primary font-label text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase shadow-sm">Premium</span>
+</div>
+<!-- Wishlist Button -->
+<button aria-label="Favoritkan" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error active:scale-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<!-- Rating Pill -->
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded-md flex items-center gap-1 text-[11px] font-label font-bold text-on-surface shadow-xs">
+<span class="material-symbols-outlined text-[13px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div class="min-w-0">
+<p class="font-label text-[10px] text-secondary tracking-wide uppercase">Blender Rig v4.1</p>
+<h3 class="font-headline text-xs font-semibold text-on-surface line-clamp-2 leading-snug">Cyberpunk Cybernetic Arm Rigged</h3>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-body text-xs font-bold text-primary">Rp 89.000</span>
+<span class="font-label text-[10px] text-on-surface-variant">IK/FK Rig</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Prosthetic Cyber Leg -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm active:scale-[0.99] transition-all">
+<div class="relative w-full aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Intricately modeled mechanical prosthetic robotic cyber leg with industrial titanium springs, hydraulic pistons, and matte black coating illuminated with subtle warm studio rim lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUvPZ7dsSeiLBr21WpjfkWrQbPxqvkKwxfSH2O4SvZT7zJH6bmLeRbGzaPaEob6l2tKou9SFkScsQPl9IMyf-nc8z3ZVIykInslhFof5XSa3aB_jJVsAz18Te-pJrCsiBhZdxjlZ8cbqOVYI-VvxqkEAfymrpdg6OuXy_0X8jGKyWEJUQbkWsvyQKycYnR3enmUeiZOQKQOGNbkmaNVu_-0da5P_Ho0f_u6WcQGJw"/>
+<div class="absolute top-2 left-2 flex items-center gap-1">
+<span class="bg-primary text-on-primary font-label text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase shadow-sm">Premium</span>
+</div>
+<button aria-label="Favoritkan" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error active:scale-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded-md flex items-center gap-1 text-[11px] font-label font-bold text-on-surface shadow-xs">
+<span class="material-symbols-outlined text-[13px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>5.0</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div class="min-w-0">
+<p class="font-label text-[10px] text-secondary tracking-wide uppercase">Sub-D Ready</p>
+<h3 class="font-headline text-xs font-semibold text-on-surface line-clamp-2 leading-snug">Prosthetic Cyber Leg Complete</h3>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-body text-xs font-bold text-primary">Rp 99.000</span>
+<span class="font-label text-[10px] text-on-surface-variant">4K PBR</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Tactical Exo Helmet -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm active:scale-[0.99] transition-all">
+<div class="relative w-full aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Tactical sci-fi exoskeleton combat helmet featuring a holographic tinted gold visor, communication sensors, tactical olive matte finish, and distressed scratch details rendered in cycles." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBFzr1lmhtgBdefcKQ__4wB6grlOYgA824njBReo7aVAJRNI_YZVgarpqsmeD_HiKC7Y0GVTz4T9NeXCT89HWeY-K8paSHpJH3RCnw6wfmutL3bf9F7pxckFPiqcvKEkwW7XrEnCmqCuMvzt4nPGmUCq0TlhAoFS9wv-xn0ss72CzDnW113ZrBkWv1DredKoUALx3VQzMyHH6xpKfwac6S9fukSTPaJKd3S-RPcs8"/>
+<div class="absolute top-2 left-2 flex items-center gap-1">
+<span class="bg-primary text-on-primary font-label text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase shadow-sm">Premium</span>
+</div>
+<button aria-label="Favoritkan" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error active:scale-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded-md flex items-center gap-1 text-[11px] font-label font-bold text-on-surface shadow-xs">
+<span class="material-symbols-outlined text-[13px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div class="min-w-0">
+<p class="font-label text-[10px] text-secondary tracking-wide uppercase">Blender 4.0+</p>
+<h3 class="font-headline text-xs font-semibold text-on-surface line-clamp-2 leading-snug">Tactical Exo Helmet Armor</h3>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-body text-xs font-bold text-primary">Rp 75.000</span>
+<span class="font-label text-[10px] text-on-surface-variant">UDIM UV</span>
+</div>
+</div>
+</div>
+<!-- Item 4: Heavy Mech Robot -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm active:scale-[0.99] transition-all">
+<div class="relative w-full aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Monolithic sci-fi heavy mech bipedal war robot with missile bays, dual heavy miniguns, articulated torso pistons, and weathered urban camouflage armor panels." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQeAd9mvAevjXjfRU_6O8y-1aqsrnESicvJ0Jo7WurZF_UZgFYVSLBSLSr3lcR-fLrsabxowU23TGc7IoDxMRXCR68CWFdpD99DDsy9BZCpDAyxFmzF5trPof9kFffqdKmFNeYwYJBU3XZI3t6lwQrOJay03J49aO3bORJMHq8pkk_x6klTM0kQ9HQeOPZlUQD-l252LgC8KeB_OO9btMedzqA24Wk6BMUAZ0-Mxk"/>
+<div class="absolute top-2 left-2 flex items-center gap-1">
+<span class="bg-primary text-on-primary font-label text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase shadow-sm">Premium</span>
+</div>
+<button aria-label="Favoritkan" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error active:scale-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded-md flex items-center gap-1 text-[11px] font-label font-bold text-on-surface shadow-xs">
+<span class="material-symbols-outlined text-[13px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div class="min-w-0">
+<p class="font-label text-[10px] text-secondary tracking-wide uppercase">Rigged &amp; Skinned</p>
+<h3 class="font-headline text-xs font-semibold text-on-surface line-clamp-2 leading-snug">Sci-Fi Heavy Mech Robot</h3>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-body text-xs font-bold text-primary">Rp 149.000</span>
+<span class="font-label text-[10px] text-on-surface-variant">Anim Ready</span>
+</div>
+</div>
+</div>
+<!-- Item 5: Cyber Samurai Katana (GRATIS) -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm active:scale-[0.99] transition-all">
+<div class="relative w-full aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Electrified cyber samurai katana with an engraved laser-etched edge emitting cyan plasma energy, ergonomic carbon grip, and scabbard with data ports." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBepaXy18wsqhH3DmPz-CgnRjf7VbZdeAtQnjxVi5faHIO4CTjcqw5szWYKn6li5RqjF4t-DbM0OU4ZAhkel4FoLl4mbXnbkMJQiNWP1YAvt_VoOaDmgjPK90GePeB-yw5X4jh4FTsaxRJeyofSP3IKgvIw-Pv1ThdW9_QSV-iIZlQf6lwoeZNR9nomrK0zn7MOwbGy8qMcj834GaQ-tr15pgSrL0iXBGO_KWHFhV0"/>
+<!-- Greenish Free Badge using theme tertiary archival accent -->
+<div class="absolute top-2 left-2 flex items-center gap-1">
+<span class="bg-tertiary-container text-on-tertiary-container font-label text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase shadow-sm">Gratis</span>
+</div>
+<button aria-label="Favoritkan" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error active:scale-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded-md flex items-center gap-1 text-[11px] font-label font-bold text-on-surface shadow-xs">
+<span class="material-symbols-outlined text-[13px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.7</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div class="min-w-0">
+<p class="font-label text-[10px] text-secondary tracking-wide uppercase">Game Asset</p>
+<h3 class="font-headline text-xs font-semibold text-on-surface line-clamp-2 leading-snug">Cyber Samurai Katana Edge</h3>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-body text-xs font-bold text-tertiary">GRATIS</span>
+<span class="font-label text-[10px] text-on-surface-variant">Low Poly</span>
+</div>
+</div>
+</div>
+<!-- Item 6: Android Head Unit Rigged -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm active:scale-[0.99] transition-all">
+<div class="relative w-full aspect-square bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Detailed android female head bust with translucent synthetic silicone skin, visible copper cerebral microcircuits, and expressive mechanical ocular lenses." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVvSe06tBjt4zOzEzoov-JIFqIvucMExISSDYGgZuXd6Skk5hIXA6K6krocs--OO9cXLuN6CouErKj3ZHegWhx27GLv2TWfGPFslrE70ZbLHAlhlP52NELAuQZqZGv6ROy40TVD1FcZmsx_ijGwIydCgUfqnt_upB59YsC9EaR_uU70jvnWKMEtmn3hvJEICOduheVayx-LzwBPAkjXtf5uwBWiFNORUQIvUWXhdI"/>
+<div class="absolute top-2 left-2 flex items-center gap-1">
+<span class="bg-primary text-on-primary font-label text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider uppercase shadow-sm">Premium</span>
+</div>
+<button aria-label="Favoritkan" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-error active:scale-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded-md flex items-center gap-1 text-[11px] font-label font-bold text-on-surface shadow-xs">
+<span class="material-symbols-outlined text-[13px] text-tertiary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col flex-1 justify-between gap-1.5">
+<div class="min-w-0">
+<p class="font-label text-[10px] text-secondary tracking-wide uppercase">Facial Mocap Rig</p>
+<h3 class="font-headline text-xs font-semibold text-on-surface line-clamp-2 leading-snug">Android Head Unit Rigged</h3>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-body text-xs font-bold text-primary">Rp 110.000</span>
+<span class="font-label text-[10px] text-on-surface-variant">52 Shapekeys</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Editorial Footnote & Infinite Scroll Progress -->
+<div class="mt-8 px-6 flex flex-col items-center gap-3 text-center">
+<div class="w-full max-w-xs bg-surface-container h-1 rounded-full overflow-hidden">
+<!-- 6 out of 84 = ~7% progress bar -->
+<div class="bg-primary h-full rounded-full" style="width: 7.1%;"></div>
+</div>
+<span class="font-label text-xs text-on-surface-variant font-medium">Menampilkan 6 dari 84 model</span>
+<!-- Load More Button with Subtle Editorial Gradient CTA -->
+<button class="mt-2 w-full max-w-xs py-2.5 px-4 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-xs font-semibold shadow-md active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">expand_circle_down</span>
+<span>Muat Model Berikutnya</span>
+</button>
+</div>
+</div>
+<script>
+  // Filter Chips interactive toggle
+  const chips = document.querySelectorAll('.chip-item');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => {
+        c.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        c.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        c.setAttribute('data-active', 'false');
+      });
+      chip.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+      chip.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+      chip.setAttribute('data-active', 'true');
+    });
+  });
+
+  // Sort Dropdown interactions
+  const sortBtn = document.getElementById('sortMenuBtn');
+  const sortMenu = document.getElementById('sortMenuDropdown');
+  const currentSortLabel = document.getElementById('currentSortLabel');
+  const sortOptions = document.querySelectorAll('.sort-option');
+
+  sortBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sortMenu.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!sortMenu.contains(e.target) && e.target !== sortBtn) {
+      sortMenu.classList.add('hidden');
+    }
+  });
+
+  sortOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      const val = opt.getAttribute('data-value');
+      currentSortLabel.textContent = val;
+      sortOptions.forEach(o => {
+        o.classList.remove('text-primary', 'bg-surface-container-low');
+        o.classList.add('text-on-surface-variant');
+      });
+      opt.classList.add('text-primary', 'bg-surface-container-low');
+      opt.classList.remove('text-on-surface-variant');
+      sortMenu.classList.add('hidden');
+    });
+  });
+
+  // Blender 4.x Compatible Filter Toggle
+  const blenderToggle = document.getElementById('blenderToggle');
+  const toggleCheckbox = document.getElementById('toggleCheckbox');
+  const checkIcon = document.getElementById('checkIcon');
+
+  blenderToggle.addEventListener('click', () => {
+    const isChecked = blenderToggle.getAttribute('data-checked') === 'true';
+    if (!isChecked) {
+      blenderToggle.setAttribute('data-checked', 'true');
+      blenderToggle.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+      blenderToggle.classList.add('bg-primary/10', 'text-primary');
+      toggleCheckbox.classList.remove('bg-surface-container-highest');
+      toggleCheckbox.classList.add('bg-primary');
+      checkIcon.classList.remove('hidden');
+    } else {
+      blenderToggle.setAttribute('data-checked', 'false');
+      blenderToggle.classList.remove('bg-primary/10', 'text-primary');
+      blenderToggle.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+      toggleCheckbox.classList.remove('bg-primary');
+      toggleCheckbox.classList.add('bg-surface-container-highest');
+      checkIcon.classList.add('hidden');
+    }
+  });
+</script></main></body></html>

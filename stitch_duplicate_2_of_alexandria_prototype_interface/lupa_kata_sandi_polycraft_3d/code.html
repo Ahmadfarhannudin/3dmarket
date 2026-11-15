@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "surface-bright": "#faf9fa", "primary": "#094cb2", "surface-variant": "#e3e2e3", "on-secondary-fixed-variant": "#42474b", "surface-dim": "#dbdadb", "surface-container": "#efedee", "on-surface": "#1b1c1d", "inverse-surface": "#303031", "tertiary-container": "#bfab49", "on-tertiary-fixed-variant": "#524600", "on-secondary-fixed": "#171c20", "surface-tint": "#2259bf", "on-error-container": "#93000a", "on-primary-container": "#e7ebff", "tertiary-fixed": "#f9e37a", "surface-container-lowest": "#ffffff", "error": "#ba1a1a", "background": "#faf9fa", "on-tertiary-container": "#4a3f00", "on-primary-fixed-variant": "#00419d", "surface-container-highest": "#e3e2e3", "on-secondary-container": "#606569", "surface-container-high": "#e9e8e9", "inverse-on-surface": "#f2f0f1", "on-primary": "#ffffff", "outline": "#737784", "surface": "#faf9fa", "secondary": "#5a5f63", "primary-container": "#3366cc", "primary-fixed-dim": "#b1c5ff", "secondary-container": "#dfe3e8", "on-primary-fixed": "#001946", "on-error": "#ffffff", "inverse-primary": "#b1c5ff", "on-background": "#1b1c1d", "on-secondary": "#ffffff", "surface-container-low": "#f5f3f4", "on-surface-variant": "#434653", "primary-fixed": "#d9e2ff", "secondary-fixed-dim": "#c2c7cc", "tertiary-fixed-dim": "#dcc661", "tertiary": "#6d5e00", "error-container": "#ffdad6", "outline-variant": "#c3c6d5", "on-tertiary-fixed": "#211b00", "secondary-fixed": "#dfe3e8" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": {}, "fontFamily": { "headline": ["Noto Serif"], "display": ["Noto Serif"], "body": ["Inter"], "label": ["Public Sans"] }, "fontSize": {} } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-4 flex items-center justify-between"><div class="flex items-center gap-2"><button aria-label="Kembali" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:bg-surface-container-high transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><h1 class="text-base font-headline font-semibold tracking-tight text-on-surface line-clamp-1">Lupa Kata Sandi</h1></div><div class="flex items-center gap-1"><button aria-label="Tindakan Lainnya" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">more_vert</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface pb-safe"><div class="flex flex-col w-full relative overflow-hidden">
+<!-- Subtle 3D Coordinate Grid & Atmospheric Lighting -->
+<div class="absolute inset-0 pointer-events-none opacity-40 -z-10 overflow-hidden">
+<svg class="w-full h-full" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="36" id="polygrid" patternunits="userSpaceOnUse" width="36">
+<path d="M 36 0 L 0 0 0 36" fill="none" stroke="#737784" stroke-opacity="0.18" stroke-width="0.5"></path>
+<circle cx="0" cy="0" fill="#094cb2" fill-opacity="0.25" r="1"></circle>
+</pattern>
+<radialgradient cx="70%" cy="10%" id="meshGlow" r="65%">
+<stop offset="0%" stop-color="#3366cc" stop-opacity="0.12"></stop>
+<stop offset="100%" stop-color="#faf9fa" stop-opacity="0"></stop>
+</radialgradient>
+</defs>
+<rect fill="url(#polygrid)" height="100%" width="100%"></rect>
+<rect fill="url(#meshGlow)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="px-5 py-6 space-y-6">
+<!-- Editorial Curatorial Tag -->
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label text-[11px] font-semibold tracking-wider uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        POLYCRAFT 3D VAULT • PEMULIHAN AKUN
+      </span>
+</div>
+<!-- Editorial Header (Authority & Warmth) -->
+<div class="space-y-2">
+<h2 class="text-3xl font-headline font-bold text-on-surface tracking-tight leading-tight">
+        Lupa Kata Sandi?
+      </h2>
+<p class="text-sm font-body text-on-surface-variant leading-relaxed">
+        Masukkan alamat email profesional atau ID studio yang terdaftar. Kami akan mengirimkan tautan pemulihan terenkripsi dan kode OTP 6 digit.
+      </p>
+</div>
+<!-- Form Section -->
+<form class="space-y-5" id="recoveryForm" onsubmit="event.preventDefault(); handleSendLink();">
+<div class="space-y-2">
+<label class="block font-label text-xs font-semibold text-on-surface tracking-wide uppercase" for="recoveryEmail">
+          Alamat Email Terdaftar
+        </label>
+<div class="relative flex items-center">
+<div class="absolute left-3.5 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">alternate_email</span>
+</div>
+<input class="w-full pl-11 pr-4 py-3.5 bg-surface-container-lowest text-on-surface placeholder:text-outline font-body text-sm rounded-xl focus:outline-none focus:bg-surface-bright transition-all shadow-[0_2px_12px_rgba(0,0,0,0.03)]" id="recoveryEmail" placeholder="desainer@alexandria3d.com" required="" type="email"/>
+<button class="hidden absolute right-3 p-1 rounded-full text-secondary hover:text-on-surface transition-colors" id="clearInputBtn" onclick="document.getElementById('recoveryEmail').value=''; this.classList.add('hidden');" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex items-start gap-1.5 px-1 pt-0.5">
+<span class="material-symbols-outlined text-primary text-[15px] mt-0.5 shrink-0">info</span>
+<p class="text-[12px] font-body text-on-surface-variant leading-tight">
+            Pastikan email aktif untuk menerima token reset instan.
+          </p>
+</div>
+</div>
+<!-- Security Assurance Box (Editorial Tonal Elevation) -->
+<div class="p-4 rounded-xl bg-surface-container-low flex items-start gap-3.5 shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="space-y-0.5">
+<span class="font-label text-[11px] font-bold text-tertiary uppercase tracking-wider block">Protokol Keamanan 3D Vault</span>
+<p class="text-xs font-body text-on-surface-variant leading-normal">
+            Tautan reset hanya berlaku selama <strong class="text-on-surface font-semibold">15 menit</strong> demi keamanan aset 3D dan lisensi perpetual Anda.
+          </p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-3 pt-2">
+<!-- Primary Action -->
+<button class="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-[0.99] transition-all" id="btnSubmit" type="submit">
+<span>Kirim Tautan Pemulihan</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<!-- Secondary Channel -->
+<button class="w-full py-3 px-4 rounded-xl bg-surface-container text-on-surface font-label text-xs font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors" onclick="toggleAlternativeChannel()" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">forum</span>
+<span>Kirim Kode Verifikasi via WhatsApp / SMS</span>
+</button>
+</div>
+</form>
+<!-- Alternative Channel Notification (Hidden by default) -->
+<div class="hidden p-3.5 rounded-xl bg-surface-container-high text-on-surface text-xs font-body animate-fadeIn space-y-1" id="altNotice">
+<div class="flex items-center gap-1.5 text-primary font-semibold font-label text-[11px] uppercase">
+<span class="material-symbols-outlined text-[16px]">cell_tower</span>
+<span>Saluran Alternatif Aktif</span>
+</div>
+<p class="text-on-surface-variant">Kode autentikasi 6-digit akan dipancarkan ke nomor kontak pemulihan yang tersinkronisasi.</p>
+</div>
+<!-- Quick Guide Card: 3 Langkah Pemulihan (Editorial Stepper) -->
+<div class="p-4 rounded-xl bg-surface-container-lowest space-y-3.5 shadow-sm">
+<div class="flex items-center justify-between pb-1">
+<h3 class="font-headline font-semibold text-sm text-on-surface tracking-tight">
+          Panduan Kurator: 3 Langkah Pemulihan
+        </h3>
+<span class="font-label text-[10px] text-tertiary font-bold tracking-widest bg-tertiary-fixed/30 px-2 py-0.5 rounded-full">
+          VERIFIKASI
+        </span>
+</div>
+<div class="space-y-3">
+<!-- Step 1 -->
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 font-label text-xs font-bold text-primary">
+            1
+          </div>
+<div class="min-w-0 flex-1 pt-0.5">
+<p class="text-xs font-body text-on-surface leading-snug">
+              Cek folder <strong class="font-medium text-on-surface">Inbox</strong> atau <strong class="font-medium text-on-surface">Spam</strong> email profesional Anda.
+            </p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 font-label text-xs font-bold text-primary">
+            2
+          </div>
+<div class="min-w-0 flex-1 pt-0.5">
+<p class="text-xs font-body text-on-surface leading-snug">
+              Buka tautan verifikasi terenkripsi atau masukkan kode OTP 6-digit.
+            </p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 font-label text-xs font-bold text-primary">
+            3
+          </div>
+<div class="min-w-0 flex-1 pt-0.5">
+<p class="text-xs font-body text-on-surface leading-snug">
+              Buat kata sandi baru minimal <strong class="font-medium text-on-surface">8 karakter</strong> kombinasi simbol dan angka.
+            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Editorial Interactive Vault Preview (Delight Element) -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[22px]">view_in_ar</span>
+</div>
+<div>
+<h4 class="font-headline text-xs font-semibold text-on-surface">Vault Enkripsi Alexandria</h4>
+<p class="font-body text-[11px] text-on-surface-variant">4.280+ Mesh &amp; Shader terlindungi</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-label font-bold text-primary">
+        AKTIF
+        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</span>
+</div>
+<!-- Footers & Escalation Links -->
+<div class="pt-2 pb-6 text-center space-y-3">
+<p class="text-xs font-body text-on-surface-variant">
+        Ingat kata sandi Anda?{' '}
+        <button class="font-semibold text-primary hover:underline ml-1" onclick="history.back()" type="button">
+          Kembali ke Masuk Akun
+        </button>
+</p>
+<div class="inline-flex items-center justify-center gap-1.5 text-xs font-body text-secondary">
+<span>Kendala akun studio?</span>
+<button class="text-on-surface font-medium hover:text-primary transition-colors inline-flex items-center gap-0.5" type="button">
+<span>Hubungi Bantuan Kurator</span>
+<span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Dynamic interaction handles
+  const emailInput = document.getElementById('recoveryEmail');
+  const clearBtn = document.getElementById('clearInputBtn');
+
+  emailInput?.addEventListener('input', (e) => {
+    if (e.target.value.length > 0) {
+      clearBtn?.classList.remove('hidden');
+    } else {
+      clearBtn?.classList.add('hidden');
+    }
+  });
+
+  function handleSendLink() {
+    const val = emailInput?.value || '';
+    if (!val) return;
+    
+    const submitBtn = document.getElementById('btnSubmit');
+    if (submitBtn) {
+      const originalHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="inline-block animate-spin material-symbols-outlined text-[18px]">progress_activity</span>
+        <span>Mengirim Instruksi...</span>
+      `;
+      setTimeout(() => {
+        submitBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px]">done_all</span>
+          <span>Tautan Terkirim! Periksa Inbox</span>
+        `;
+        submitBtn.classList.remove('from-primary', 'to-primary-container');
+        submitBtn.classList.add('bg-tertiary', 'text-on-tertiary');
+      }, 900);
+    }
+  }
+
+  function toggleAlternativeChannel() {
+    const notice = document.getElementById('altNotice');
+    if (notice) {
+      notice.classList.toggle('hidden');
+    }
+  }
+</script></main></body></html>

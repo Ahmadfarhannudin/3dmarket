@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary": "#ffffff", "surface-bright": "#faf9fa", "primary": "#094cb2", "surface-variant": "#e3e2e3", "on-secondary-fixed-variant": "#42474b", "surface-dim": "#dbdadb", "surface-container": "#efedee", "on-surface": "#1b1c1d", "inverse-surface": "#303031", "tertiary-container": "#bfab49", "on-tertiary-fixed-variant": "#524600", "on-secondary-fixed": "#171c20", "surface-tint": "#2259bf", "on-error-container": "#93000a", "on-primary-container": "#e7ebff", "tertiary-fixed": "#f9e37a", "surface-container-lowest": "#ffffff", "error": "#ba1a1a", "background": "#faf9fa", "on-tertiary-container": "#4a3f00", "on-primary-fixed-variant": "#00419d", "surface-container-highest": "#e3e2e3", "on-secondary-container": "#606569", "surface-container-high": "#e9e8e9", "inverse-on-surface": "#f2f0f1", "on-primary": "#ffffff", "outline": "#737784", "surface": "#faf9fa", "secondary": "#5a5f63", "primary-container": "#3366cc", "primary-fixed-dim": "#b1c5ff", "secondary-container": "#dfe3e8", "on-primary-fixed": "#001946", "on-error": "#ffffff", "inverse-primary": "#b1c5ff", "on-background": "#1b1c1d", "on-secondary": "#ffffff", "surface-container-low": "#f5f3f4", "on-surface-variant": "#434653", "primary-fixed": "#d9e2ff", "secondary-fixed-dim": "#c2c7cc", "tertiary-fixed-dim": "#dcc661", "tertiary": "#6d5e00", "error-container": "#ffdad6", "outline-variant": "#c3c6d5", "on-tertiary-fixed": "#211b00", "secondary-fixed": "#dfe3e8" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": {}, "fontFamily": { "headline": ["Noto Serif"], "display": ["Noto Serif"], "body": ["Inter"], "label": ["Public Sans"] }, "fontSize": {} } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-4 flex items-center justify-between"><div class="flex items-center gap-2"><button aria-label="Kembali" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:bg-surface-container-high transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><h1 class="text-base font-headline font-semibold tracking-tight text-on-surface line-clamp-1">Kelola Banner</h1></div><div class="flex items-center gap-1"><button aria-label="Tindakan Lainnya" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">more_vert</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface pb-safe"><div class="flex flex-col w-full">
+<div class="px-4 py-5 flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed text-xs font-label uppercase tracking-wider mb-2">
+<span class="material-symbols-outlined text-[14px]">view_carousel</span>
+          Katalog Visual Beranda
+        </div>
+<h2 class="text-2xl font-headline font-bold text-on-surface tracking-tight">Kelola Banner &amp; Promosi</h2>
+<p class="text-sm text-on-surface-variant font-body mt-1">Atur urutan carousel visual promosi di Beranda pembeli secara dinamis.</p>
+</div>
+<button class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-label font-semibold text-sm shadow-md active:scale-95 transition-transform self-start sm:self-auto" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+        Buat Banner Baru
+      </button>
+</div>
+<!-- Stats Tonal Strip -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 p-3 bg-surface-container rounded-xl">
+<div class="flex items-center gap-3 px-3 py-2 bg-surface-container-lowest rounded-lg">
+<div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant">Slot Ditampilkan</p>
+<p class="text-sm font-semibold font-headline text-on-surface">3 Banner Aktif</p>
+</div>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 bg-surface-container-lowest rounded-lg">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant">Pipeline Siap Tayang</p>
+<p class="text-sm font-semibold font-headline text-on-surface">1 Terjadwal</p>
+</div>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 bg-surface-container-lowest rounded-lg">
+<div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">ads_click</span>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant">Performa Promosi</p>
+<p class="text-sm font-semibold font-headline text-on-surface">14.2k Klik Bulan Ini</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Reorderable Banner List -->
+<div class="px-4 pb-4 flex flex-col gap-3">
+<div class="flex items-center justify-between text-xs font-label text-on-surface-variant px-1">
+<span class="uppercase tracking-wider">Urutan Tayang Carousel (Tarik handle untuk prioritas)</span>
+<span class="text-primary font-medium flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+        Sinkronkan
+      </span>
+</div>
+<!-- Item 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-3 sm:p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-start gap-3">
+<div class="cursor-grab active:cursor-grabbing text-secondary mt-1 p-1 hover:bg-surface-container rounded transition-colors" title="Ubah urutan">
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+</div>
+<div class="relative w-28 sm:w-36 aspect-video rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="High-detail 3D cinematic sci-fi render of a robotic bionic arm glowing with sleek cobalt blue neon circuitry on a polished obsidian background, studio lighting, hyperrealistic octane render in rich deep tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdKzz4hvHqXbUeli_VZXfGaipda17fKnZaVBiVMHHFRkT-qH5aWeCCZgn6Kcijy8aBDjzpL-YDiZgGEHp0Ys9Xh68uV93HZvbFUlFr9bOe0UIKjB43DAd81zZPN23I4xT1g8uwjanGudBBat9JAex34z0s1M1gO_uT4jZIuMpeSrU9GLR_31KpPM5oLbuHlXzou_jHJpp8lg8xFGy2F_9GEhmHSQ1X59nWnvdYWlc"/>
+<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-on-surface/85 backdrop-blur-sm text-[10px] font-label font-bold text-surface-bright">#1</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-label font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              Aktif
+            </span>
+<div class="flex items-center gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-sm sm:text-base text-on-surface mt-1 line-clamp-1">Rilis Koleksi Karakter &amp; Rigging Blender 4.2</h3>
+<p class="text-xs text-primary font-mono truncate mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">link</span>
+            /kategori/karakter-rig
+          </p>
+</div>
+</div>
+<!-- Metrics and Schedule metadata bar -->
+<div class="flex flex-wrap items-center justify-between gap-2 pt-2 bg-surface-container-low px-3 py-2 rounded-lg text-xs font-label">
+<div class="flex flex-wrap items-center gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-tertiary">calendar_today</span>
+            01 Nov – 30 Nov 2026
+          </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">monitoring</span>
+            6.840 Impr · <strong class="text-on-surface">820 Klik (CTR 12.0%)</strong>
+</span>
+</div>
+<div class="flex items-center gap-1 ml-auto">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Edit Metadata" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Ganti File Gambar" type="button">
+<span class="material-symbols-outlined text-[18px]">image</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition-colors" title="Hapus" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-3 sm:p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-start gap-3">
+<div class="cursor-grab active:cursor-grabbing text-secondary mt-1 p-1 hover:bg-surface-container rounded transition-colors" title="Ubah urutan">
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+</div>
+<div class="relative w-28 sm:w-36 aspect-video rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Classical Greek marble statue head rendered in immaculate photorealistic museum detail, soft warm ambient lighting, neoclassical aesthetic, museum artifact gallery environment with golden atmospheric glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC261f-PtBKJC6Q-na4kdQhAEUS8JekaakeWujg6OZDaQQKmi2ys9qK2pyrRXa0mdR4VmAK8igvNNEWdkvCYHapgJK6viiPKK71_L-dY5Oit_T3ZyaZ4n-CMaUqwRNTYCrxOpWzPa-OvQOueXdy54PP17UlaWf9wx7Wu6lnBCF8x4Ee6WohVTSNNhm-VAYNIN7RkSWJSNkt-wS71cW3pmp84IZJpKmKCfjoQMUhKo"/>
+<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-on-surface/85 backdrop-blur-sm text-[10px] font-label font-bold text-surface-bright">#2</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-label font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Aktif
+            </span>
+<div class="flex items-center gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-sm sm:text-base text-on-surface mt-1 line-clamp-1">Promo Sambutan Kreator Baru - Free Pack</h3>
+<p class="text-xs text-primary font-mono truncate mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">link</span>
+            /asset/hellenic-relic-pack
+          </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2 pt-2 bg-surface-container-low px-3 py-2 rounded-lg text-xs font-label">
+<div class="flex flex-wrap items-center gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-tertiary">calendar_today</span>
+            10 Nov – 10 Des 2026
+          </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">download</span>
+            4.120 Impr · <strong class="text-on-surface">610 Unduhan (CTR 14.8%)</strong>
+</span>
+</div>
+<div class="flex items-center gap-1 ml-auto">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Edit Metadata" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Ganti File Gambar" type="button">
+<span class="material-symbols-outlined text-[18px]">image</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition-colors" title="Hapus" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-3 sm:p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-start gap-3">
+<div class="cursor-grab active:cursor-grabbing text-secondary mt-1 p-1 hover:bg-surface-container rounded transition-colors" title="Ubah urutan">
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+</div>
+<div class="relative w-28 sm:w-36 aspect-video rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Intricate skeleton luxury mechanical watch movement in 3D, brass and sapphire crystal gears interlocking, cinematic studio macro photography with dramatic dark backdrop and precise metallic reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU6ZwzB6WeYdBuYdaZyNvUE2oEbQv12sRKceStcCBBdTU2G193-XKykGm8DzDBHoFs_e9sML5MExBLkpjDwbb3ewrDNg5AhRjnf1vPO9QwY4meKZ6n0Lovzjtw7Ti4MFAP1sQYye0meq2WZjeZGUPElnJDtjb2uN6kIKDwhKrNYtUcjhcSdYOktt2MsWbekFq3ygTIPIOsfwbrVNGRQykyVPYYL8qH8wrCBgPqtoI"/>
+<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-on-surface/85 backdrop-blur-sm text-[10px] font-label font-bold text-surface-bright">#3</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-label font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Aktif
+            </span>
+<div class="flex items-center gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-sm sm:text-base text-on-surface mt-1 line-clamp-1">Flash Sale Studio Hard-Surface</h3>
+<p class="text-xs text-primary font-mono truncate mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">link</span>
+            /explore?filter=discount
+          </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2 pt-2 bg-surface-container-low px-3 py-2 rounded-lg text-xs font-label">
+<div class="flex flex-wrap items-center gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-tertiary">calendar_today</span>
+            Sedang Berjalan
+          </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">ads_click</span>
+            3.240 Impr · <strong class="text-on-surface">390 Klik</strong>
+</span>
+</div>
+<div class="flex items-center gap-1 ml-auto">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Edit Metadata" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Ganti File Gambar" type="button">
+<span class="material-symbols-outlined text-[18px]">image</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition-colors" title="Hapus" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 4 (Scheduled) -->
+<article class="bg-surface-container-lowest rounded-xl p-3 sm:p-4 shadow-sm flex flex-col gap-3 opacity-95">
+<div class="flex items-start gap-3">
+<div class="cursor-grab active:cursor-grabbing text-secondary mt-1 p-1 hover:bg-surface-container rounded transition-colors" title="Ubah urutan">
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+</div>
+<div class="relative w-28 sm:w-36 aspect-video rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Architectural visualization 3D render of a Nordic brutalist castle perched on a snowy winter mountain cliff, dense pine trees with fresh powdery snow, cinematic pale blue winter sunlight and warm window lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9nIgGC-e35q0VMIDrQWeBFEajEyLGL8qP4t0Vv1dRvrwT17AToivjik2yc-xy4sxuZjdKDgSYVS48u5ZFTeQU4Y6xgDgaNtN6qaMlUywR3ahH7QgWDW8X1ioGEvwHj9njMGfgANC1jzw7DyzDBlR53plUtKqTB4OkoqOfSGqaPQ9EHkul9wYGNF7kYeacWPeBzOOaPTECRbr5YaJ2LyKnzwbqEj_L6WPbCi_pq-k"/>
+<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-tertiary-container text-on-tertiary-container text-[10px] font-label font-bold">MENDATANG</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-label font-semibold">
+<span class="material-symbols-outlined text-[13px]">alarm</span>
+              Terjadwal
+            </span>
+<div class="flex items-center gap-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<h3 class="font-headline font-semibold text-sm sm:text-base text-on-surface mt-1 line-clamp-1">Kampanye Akhir Tahun 3D Assets</h3>
+<p class="text-xs text-primary font-mono truncate mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">link</span>
+            /kategori/archviz
+          </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2 pt-2 bg-surface-container-low px-3 py-2 rounded-lg text-xs font-label">
+<div class="flex flex-wrap items-center gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-tertiary">schedule</span>
+            Mulai 15 Des 2026 (Otomatis tayang)
+          </span>
+</div>
+<div class="flex items-center gap-1 ml-auto">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Edit Metadata" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-primary transition-colors" title="Ganti File Gambar" type="button">
+<span class="material-symbols-outlined text-[18px]">image</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant hover:text-error transition-colors" title="Hapus" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Guidelines Note Card -->
+<div class="p-4 mx-4 mb-6 rounded-xl bg-surface-container flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">info</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-headline font-semibold text-xs sm:text-sm text-on-surface">Panduan Rekomendasi Format Banner</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+        Gunakan rasio gambar tepat <strong>16:9 (1280 × 720 px)</strong> dengan ukuran file maksimal <strong>2MB (format WebP atau PNG)</strong>. Pastikan area teks memiliki kontras rasio minimal 4.5:1 terhadap latar visual agar mudah dibaca di layar retina ponsel.
+      </p>
+</div>
+</div>
+</div></main></body></html>

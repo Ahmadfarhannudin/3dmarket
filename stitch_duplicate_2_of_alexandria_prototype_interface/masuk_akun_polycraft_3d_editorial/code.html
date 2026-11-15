@@ -1,0 +1,348 @@
+<!DOCTYPE html><html class="h-full" lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<meta content="mobile_stack" name="shell-type">
+<title>Masuk - PolyCraft 3D Studio</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-fixed": "#211b00",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#001946",
+            "on-secondary-fixed-variant": "#42474b",
+            "surface-tint": "#2259bf",
+            "secondary": "#5a5f63",
+            "surface-container": "#efedee",
+            "primary-fixed-dim": "#b1c5ff",
+            "inverse-primary": "#b1c5ff",
+            "on-secondary-fixed": "#171c20",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#e3e2e3",
+            "tertiary-fixed": "#f9e37a",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#c2c7cc",
+            "on-background": "#1b1c1d",
+            "on-primary-fixed-variant": "#00419d",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#434653",
+            "surface-container-high": "#e9e8e9",
+            "primary-container": "#3366cc",
+            "primary-fixed": "#d9e2ff",
+            "outline": "#737784",
+            "surface": "#faf9fa",
+            "on-primary-container": "#e7ebff",
+            "secondary-container": "#dfe3e8",
+            "inverse-on-surface": "#f2f0f1",
+            "tertiary-fixed-dim": "#dcc661",
+            "outline-variant": "#c3c6d5",
+            "inverse-surface": "#303031",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#e3e2e3",
+            "surface-container-low": "#f5f3f4",
+            "primary": "#094cb2",
+            "on-tertiary-container": "#4a3f00",
+            "secondary-fixed": "#dfe3e8",
+            "on-tertiary-fixed-variant": "#524600",
+            "tertiary": "#6d5e00",
+            "background": "#faf9fa",
+            "on-secondary-container": "#606569",
+            "error": "#ba1a1a",
+            "tertiary-container": "#bfab49",
+            "on-surface": "#1b1c1d",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "surface-dim": "#dbdadb",
+            "surface-bright": "#faf9fa"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif", "serif"],
+            "display": ["Noto Serif", "serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Public Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      body {
+        margin: 0;
+        padding: 0;
+        overscroll-behavior: none;
+        background-color: #faf9fa;
+      }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    }
+    ::-webkit-scrollbar { display: none; }
+    
+    /* Subtle 3D mesh grid background */
+    .bg-wireframe-pattern {
+      background-image: 
+        radial-gradient(circle at 100% 0%, rgba(51, 102, 204, 0.04) 0%, transparent 40%),
+        linear-gradient(to right, rgba(115, 119, 132, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(115, 119, 132, 0.05) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px, 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen relative flex flex-col antialiased selection:bg-primary/10 selection:text-primary">
+<!-- Top Sticky Navigation Chrome -->
+<header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 pt-safe shadow-[0_1px_12px_rgba(0,0,0,0.03)]">
+<div class="h-16 px-4 sm:px-6 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button aria-label="Kembali" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" onclick="history.back()">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label text-[10px] uppercase tracking-widest text-tertiary font-bold leading-none"><span style="color: rgb(9, 76, 178); font-family: &quot;Public Sans&quot;;">3DMARKET </span>Studio</span>
+<span class="font-headline text-sm font-semibold text-on-surface leading-tight mt-0.5">Autentikasi Vault</span>
+</div>
+</div>
+<!-- Catalog shortcut pill -->
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label text-xs font-medium border border-outline-variant/30 transition-all" href="#">
+<span class="material-symbols-outlined text-[16px] text-primary">view_in_ar</span>
+<span class="hidden xs:inline">Katalog 3D</span>
+<span class="material-symbols-outlined text-[14px] text-secondary">chevron_right</span>
+</a>
+</div>
+</header>
+<!-- Main Scrollable Canvas with 3D Wireframe Texture -->
+<main class="flex-1 flex flex-col relative w-full pt-16 bg-surface bg-wireframe-pattern">
+<div class="flex flex-col w-full max-w-md mx-auto px-4 sm:px-6 pt-5 pb-10">
+<!-- 1. Editorial Header Section -->
+<div class="mb-4">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high/80 border border-outline-variant/40 text-tertiary font-label text-[11px] tracking-wider uppercase font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary inline-block animate-pulse"></span>
+          PolyCraft 3D Vault • Akun Kreator
+        </div>
+<h1 class="font-headline text-2xl sm:text-3xl font-bold text-on-surface tracking-tight mt-2.5 leading-snug">
+          Masuk ke Studio PolyCraft
+        </h1>
+<p class="font-body text-xs sm:text-sm text-on-surface-variant mt-1.5 leading-relaxed">
+          Pusat kurasi aset 3D Blender resolusi tinggi, shader nodular, dan lisensi komersial eksklusif.
+        </p>
+</div>
+<!-- 2. Spotlight 3D Asset Preview Card (Cybernetic / Architectural) -->
+<div class="mb-5 rounded-xl bg-surface-container-lowest border border-outline-variant/40 p-3 shadow-sm relative overflow-hidden group">
+<div class="absolute -right-6 -bottom-6 w-28 h-28 rounded-full bg-primary/5 blur-2xl pointer-events-none"></div>
+<div class="flex items-center gap-3.5 relative z-10">
+<div class="w-14 h-14 rounded-lg bg-surface-container overflow-hidden shrink-0 relative border border-outline-variant/30">
+<img alt="Preview Aset 3D Cybernetic Sculpted Mesh Blender 4.x" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmbquykuwPPFtfWAgvnJF0m44UyYuk3cRsUcM4wdg1Dklm41d18UhTstqmJbrF5JSo6xoIRKy90IM_-dy_KzmvsBEHXnBWRkqbGeDd5LvuiV-pUe7cE2RLV6s-lE182wsbtKrGiABEeMOlvZE5SiiWDHDCSvxXx7MYYAOg8wo7ttjkb06AL-OL7nSD-2SogPu0H4r7nfkkCZ1Sk0GDCk6iKTUAG1ibtSuFkCEB3jE">
+<div class="absolute bottom-0 inset-x-0 bg-inverse-surface/60 backdrop-blur-xs py-0.5 px-1 text-[8px] font-label text-inverse-on-surface text-center font-bold tracking-tight">
+              3D RAW
+            </div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="px-1.5 py-0.5 rounded text-[9px] font-label font-bold bg-primary/10 text-primary uppercase tracking-wide">
+                Spotlight Mingguan
+              </span>
+<span class="font-label text-[10px] text-tertiary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px] text-tertiary">verified</span>
+                Terkurasi
+              </span>
+</div>
+<h2 class="font-label text-xs font-semibold text-on-surface truncate">
+              Cybernetic Mechanoid Hand v4.2
+            </h2>
+<div class="flex items-center gap-2 mt-1 text-[11px] text-secondary font-label">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">deployed_code</span>
+                Blender 4.x
+              </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">texture</span>
+                4K PBR Textures
+              </span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Form Card Section -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm border border-outline-variant/40">
+<form class="space-y-4" id="loginForm" onsubmit="event.preventDefault(); handleLoginSubmit();">
+<!-- Email / Username Input -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="block font-label text-xs font-semibold text-on-surface tracking-wide" for="emailInput">
+                Alamat Email atau ID Kreator
+              </label>
+<span class="text-[10px] font-label text-secondary font-medium">Domain studio/pribadi</span>
+</div>
+<div class="relative flex items-center group">
+<div class="absolute left-3.5 flex items-center pointer-events-none text-secondary group-focus-within:text-[#3366cc] transition-colors">
+<span class="material-symbols-outlined text-[20px]">alternate_email</span>
+</div>
+<input autocomplete="email" class="w-full pl-10 pr-4 py-3 bg-surface-container-low text-on-surface rounded-xl text-sm font-body placeholder:text-on-surface-variant/40 border border-outline-variant/40 focus:border-[#3366cc] focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#3366cc]/20 transition-all shadow-inner" id="emailInput" placeholder="desainer@alexandria3d.com" required="" type="text">
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="block font-label text-xs font-semibold text-on-surface tracking-wide" for="passwordInput">
+                Kata Sandi
+              </label>
+<a class="font-label text-[11px] font-semibold text-[#3366cc] hover:underline transition-all" href="#">
+                Lupa sandi?
+              </a>
+</div>
+<div class="relative flex items-center group">
+<div class="absolute left-3.5 flex items-center pointer-events-none text-secondary group-focus-within:text-[#3366cc] transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock_open</span>
+</div>
+<input autocomplete="current-password" class="w-full pl-10 pr-11 py-3 bg-surface-container-low text-on-surface rounded-xl text-sm font-body placeholder:text-on-surface-variant/40 border border-outline-variant/40 focus:border-[#3366cc] focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#3366cc]/20 transition-all shadow-inner" id="passwordInput" placeholder="Minimal 8 karakter terenkripsi" required="" type="password">
+<button aria-label="Tampilkan sandi" class="absolute right-2.5 p-1.5 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container transition-colors" id="togglePasswordBtn" onclick="togglePasswordVisibility()" type="button">
+<span class="material-symbols-outlined text-[19px] block" id="passwordEyeIcon">
+                  visibility
+                </span>
+</button>
+</div>
+</div>
+<!-- Remember Me Toggle & Security Notice -->
+<div class="flex items-center justify-between pt-0.5">
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<div class="relative flex items-center justify-center">
+<input checked="" class="peer sr-only" id="rememberCheckbox" type="checkbox">
+<div class="w-4 h-4 rounded bg-surface-container-high border border-outline-variant peer-checked:bg-[#3366cc] peer-checked:border-[#3366cc] transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[13px] opacity-0 peer-checked:opacity-100 transition-opacity">
+                    check
+                  </span>
+</div>
+</div>
+<span class="font-body text-xs text-on-surface font-medium">Ingat saya di perangkat ini</span>
+</label>
+<span class="font-label text-[10px] text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">shield_locked</span>
+              2FA Aktif
+            </span>
+</div>
+<!-- Primary CTA Button with Alexandria Blue (#3366cc) -->
+<div class="pt-2">
+<button class="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-[#094cb2] via-[#2259bf] to-[#3366cc] hover:opacity-95 text-on-primary font-label text-sm font-semibold tracking-wide shadow-md shadow-[#3366cc]/25 hover:shadow-lg hover:shadow-[#3366cc]/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2" id="submitBtn" type="submit">
+<span>Masuk ke Akun Studio</span>
+<span class="material-symbols-outlined text-[18px]">login</span>
+</button>
+</div>
+</form>
+<!-- Elegant Editorial Divider -->
+<div class="relative my-5 flex items-center justify-center">
+<div class="w-full h-px bg-surface-container-high"></div>
+<span class="absolute bg-surface-container-lowest px-3 font-label text-[11px] text-secondary tracking-wider uppercase font-medium">
+            atau akses cepat
+          </span>
+</div>
+<!-- Google Fast Auth Button -->
+<div>
+<button class="w-full py-3 px-4 rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/40 text-on-surface font-label text-xs font-semibold transition-all flex items-center justify-center gap-3 active:scale-[0.99] shadow-xs" onclick="handleGoogleSignIn()" type="button">
+<!-- Google G Logo SVG -->
+<svg aria-hidden="true" class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+<path d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.15z" fill="#4285F4"></path>
+<path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.36 7.36 24 12 24z" fill="#34A853"></path>
+<path d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.97 0 12s.46 3.84 1.26 5.42l4.02-3.15z" fill="#FBBC05"></path>
+<path d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z" fill="#EA4335"></path>
+</svg>
+<span>Lanjutkan dengan Google Workspace</span>
+</button>
+</div>
+<!-- Register Switch Prompt -->
+<div class="mt-5 pt-4 border-t border-surface-container-high text-center">
+<p class="font-body text-xs text-on-surface-variant">
+            Belum memiliki lisensi kreator? 
+            <a class="font-label font-semibold text-[#3366cc] hover:underline ml-1 inline-flex items-center gap-0.5" href="#">
+<span>Daftar Akun Baru</span>
+<span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</p>
+</div>
+</div>
+<!-- 5. Benefit Bar & Trust Badges Section -->
+<div class="mt-5 grid grid-cols-3 gap-2">
+<div class="bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl p-2.5 text-center flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] text-tertiary mb-1">verified</span>
+<span class="font-label text-[10px] font-bold text-on-surface block leading-tight">Lisensi Komersial</span>
+<span class="font-body text-[9px] text-secondary leading-tight mt-0.5">Terverifikasi</span>
+</div>
+<div class="bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl p-2.5 text-center flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] text-primary mb-1">grid_4x4</span>
+<span class="font-label text-[10px] font-bold text-on-surface block leading-tight">100% Quads</span>
+<span class="font-body text-[9px] text-secondary leading-tight mt-0.5">Clean Topology</span>
+</div>
+<div class="bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl p-2.5 text-center flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px] text-[#3366cc] mb-1">lock</span>
+<span class="font-label text-[10px] font-bold text-on-surface block leading-tight">Enkripsi Aman</span>
+<span class="font-body text-[9px] text-secondary leading-tight mt-0.5">Firebase Auth</span>
+</div>
+</div>
+<!-- Curatorial Archival Footer Note -->
+<div class="mt-6 text-center">
+<p class="font-label text-[10px] text-secondary tracking-widest uppercase">
+          Alexandria Editorial Studio • PolyCraft Engine v2.4
+        </p>
+</div>
+</div>
+</main>
+<script>
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('passwordInput');
+      const eyeIcon = document.getElementById('passwordEyeIcon');
+      if (!passwordInput || !eyeIcon) return;
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.textContent = 'visibility_off';
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.textContent = 'visibility';
+      }
+    }
+
+    function handleLoginSubmit() {
+      const submitBtn = document.getElementById('submitBtn');
+      if (!submitBtn) return;
+      const originalContent = submitBtn.innerHTML;
+      
+      submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span><span>Memverifikasi Lisensi...</span>';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        submitBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">verified</span><span>Akses Diberikan</span>';
+        submitBtn.classList.remove('from-[#094cb2]', 'via-[#2259bf]', 'to-[#3366cc]');
+        submitBtn.classList.add('bg-tertiary', 'text-on-tertiary');
+        
+        setTimeout(() => {
+          submitBtn.innerHTML = originalContent;
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('bg-tertiary', 'text-on-tertiary');
+          submitBtn.classList.add('from-[#094cb2]', 'via-[#2259bf]', 'to-[#3366cc]');
+        }, 1800);
+      }, 1200);
+    }
+
+    function handleGoogleSignIn() {
+      const emailField = document.getElementById('emailInput');
+      if (emailField) {
+        emailField.value = 'kreator.3d@alexandria-poly.id';
+        emailField.focus();
+      }
+    }
+  </script>
+
+
+</body></html>

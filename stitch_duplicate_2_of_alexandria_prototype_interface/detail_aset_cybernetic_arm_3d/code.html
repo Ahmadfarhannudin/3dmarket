@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#001946", "secondary-fixed": "#dfe3e8", "surface-container": "#efedee", "surface-container-high": "#e9e8e9", "surface-container-low": "#f5f3f4", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "error": "#ba1a1a", "surface-container-highest": "#e3e2e3", "surface-dim": "#dbdadb", "on-primary-container": "#e7ebff", "surface-tint": "#2259bf", "secondary": "#5a5f63", "on-error": "#ffffff", "on-surface": "#1b1c1d", "on-primary-fixed-variant": "#00419d", "on-secondary": "#ffffff", "primary-fixed": "#d9e2ff", "primary": "#094cb2", "on-surface-variant": "#434653", "primary-fixed-dim": "#b1c5ff", "on-secondary-container": "#606569", "tertiary-container": "#bfab49", "tertiary": "#6d5e00", "surface-container-lowest": "#ffffff", "surface": "#faf9fa", "on-tertiary-container": "#4a3f00", "inverse-surface": "#303031", "on-secondary-fixed": "#171c20", "inverse-on-surface": "#f2f0f1", "on-tertiary-fixed": "#211b00", "on-secondary-fixed-variant": "#42474b", "surface-variant": "#e3e2e3", "on-tertiary-fixed-variant": "#524600", "on-error-container": "#93000a", "background": "#faf9fa", "tertiary-fixed": "#f9e37a", "error-container": "#ffdad6", "secondary-fixed-dim": "#c2c7cc", "on-background": "#1b1c1d", "inverse-primary": "#b1c5ff", "on-primary": "#ffffff", "surface-bright": "#faf9fa", "tertiary-fixed-dim": "#dcc661", "secondary-container": "#dfe3e8", "primary-container": "#3366cc", "outline": "#737784" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": {}, "fontFamily": { "headline": ["Noto Serif"], "display": ["Noto Serif"], "body": ["Inter"], "label": ["Public Sans"] }, "fontSize": {} } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-3 flex items-center justify-between gap-2"><div class="flex items-center gap-1"><button class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button><img alt="PolyCraft 3D Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDxtyhHkAjs5Cw_1bj7GVc1Lot-4iKn9dCCYEF3vuFgxqV87amGhutTlsjlyoEuVIob_WRc0kiNeE-anVKsz-EPwlNvBudVW5pGbULFYQ0db42OoC3fAM399hhe_qkY3xoMHtQY6O60NBCOSEGlGtQozK_7g-OfyRoJ4k-BB9R6hn2a7osA5pqsg754AYw4ZZi4f05PShnEnY__Ohb1NqzpdJT8g3-giKgxaAzf9Ksb"/><h1 class="font-headline font-semibold text-base text-on-surface tracking-tight truncate max-w-[160px] pl-1">Detail Aset 3D</h1></div><div class="flex items-center gap-2"><button class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[22px]">share</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy0oFGuznKCUhf-qa5wXD6d6pmOCOBZW_L2D4NTWDu4Uwq80-S1RVzKxqRqbUhXZMnUdF1fBBgZRSk0Som9Ppq_SwIBXLXob8nmaUhXmI-R26akQcPWkO-9FCdHMSQagPXp6Wo_v1kp737N95HfHHJYVIZQuC9DV9n2kvXB2M3NguO3UOAOVzaDmPGse93uW39kGR145FfnNXHd19iW6qLrySYMWXFbO0qCzznqoY"/></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface"><div class="flex flex-col w-full pb-24">
+<!-- Interactive 3D Model Viewer Stage -->
+<section class="relative w-full aspect-[4/3] bg-surface-container-highest overflow-hidden">
+<div class="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing select-none" id="viewer-canvas">
+<img class="w-full h-full object-cover transition-transform duration-300 ease-out" data-alt="High quality 3D render of a futuristic cybernetic robotic arm with matte black carbon fiber casing, brushed brass joints, subtle glowing cyan LED wiring, against a minimalist studio background with soft directional lighting." id="primary-model-render" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb7s7C6IL2oVd0AINCKPk-9nWlxjFfwBTsCP_M-wYj5WPeE_JzaVsiYP79Hd1J5vmAsiLNRT-tNBfM9gJ8j4PADasmWK5Bg2msvpmo2OcMq8dJcjPl2lF5qMVGI6dNRKoGnXIaOv3Du2fj9kjJDFazVVyCRFudnasjpsGtaDvKedUKLp1pvap_3RwjlKA-PaQkKMgj0aZkmXmzSCpG6gCmzMBB1im4s_SS8_o5k28"/>
+<!-- Spatial Grid Overlay -->
+<div class="absolute inset-0 pointer-events-none opacity-25 mix-blend-overlay bg-[radial-gradient(circle_at_center,rgba(9,76,178,0.15)_0%,transparent_70%)]"></div>
+<!-- Watermark: Blender Ready -->
+<div class="absolute top-4 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-[11px] font-label font-semibold text-on-surface shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+        Blender 4.0+ Ready
+      </div>
+<!-- Interactive 3D Model Tag -->
+<div class="absolute top-4 right-4 flex items-center gap-1 px-2.5 py-1 rounded-full bg-on-surface/75 text-inverse-on-surface backdrop-blur-md text-[10px] font-label font-medium tracking-wide">
+<span class="material-symbols-outlined text-[14px]">view_in_ar</span>
+        3D Interactive (.glb)
+      </div>
+<!-- Rotation Hint Overlay -->
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none transition-opacity duration-700 bg-black/10" id="drag-hint">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest/85 backdrop-blur-md flex items-center justify-center text-primary shadow-sm animate-pulse">
+<span class="material-symbols-outlined text-2xl">360</span>
+</div>
+<span class="mt-2 text-[11px] font-label font-semibold text-on-surface bg-surface-container-lowest/90 px-2.5 py-0.5 rounded-full shadow-sm">Geser untuk memutar</span>
+</div>
+<!-- Viewport Micro Tools HUD -->
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+<div class="flex items-center gap-1.5 p-1 rounded-full bg-surface-container-lowest/85 backdrop-blur-md shadow-sm pointer-events-auto">
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95" id="btn-wireframe" onclick="toggleWireframeMode()" title="Toggle Wireframe">
+<span class="material-symbols-outlined text-lg">grid_3x3</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95" id="btn-reset-view" onclick="resetModelRotation()" title="Reset View">
+<span class="material-symbols-outlined text-lg">restart_alt</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-95" id="btn-zoom" onclick="toggleZoomModel()" title="Zoom View">
+<span class="material-symbols-outlined text-lg" id="zoom-icon">zoom_in</span>
+</button>
+</div>
+<button class="pointer-events-auto flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest/90 text-on-surface backdrop-blur-md text-[11px] font-label font-semibold shadow-sm hover:text-primary transition-colors active:scale-95" onclick="enterFullscreenDemo()">
+<span class="material-symbols-outlined text-sm">fullscreen</span>
+          3D Canvas
+        </button>
+</div>
+</div>
+</section>
+<!-- Multi-Angle Studio Thumbnails -->
+<section class="w-full bg-surface-container-low px-4 py-3">
+<div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar scroll-smooth">
+<button class="angle-btn active flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-lowest text-primary shadow-sm text-xs font-label font-semibold shrink-0 transition-all" onclick="switchView(0, 'Cycles Studio Render')">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+        Cycles Render
+      </button>
+<button class="angle-btn flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant text-xs font-label font-semibold shrink-0 transition-all" onclick="switchView(1, 'Eevee Realtime Glow')">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+        Eevee Shaded
+      </button>
+<button class="angle-btn flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant text-xs font-label font-semibold shrink-0 transition-all" onclick="switchView(2, 'Topology Wireframe Mode')">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+        Topology Quad
+      </button>
+<button class="angle-btn flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant text-xs font-label font-semibold shrink-0 transition-all" onclick="switchView(3, '4K PBR UV Maps')">
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+        Texture Map (UV)
+      </button>
+</div>
+</section>
+<!-- Asset Editorial Header -->
+<section class="px-5 pt-5 pb-3">
+<div class="flex flex-wrap items-center gap-2 mb-2.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-label font-bold tracking-tight">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+        Verified .blend
+      </span>
+<span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-fixed text-[11px] font-label font-medium">
+        Blender 4.0+
+      </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px] font-label font-medium">
+        Rigify IK/FK
+      </span>
+</div>
+<h2 class="font-headline text-2xl font-bold text-on-surface leading-tight tracking-tight">
+      Cyberpunk Cybernetic Arm Rigged
+    </h2>
+<div class="flex items-center justify-between mt-3 text-xs font-label text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="flex items-center text-tertiary font-bold">
+<span class="material-symbols-outlined text-sm mr-0.5" style="font-variation-settings: 'FILL' 1;">star</span>
+          4.9
+        </span>
+<span class="text-outline-variant">•</span>
+<span class="underline decoration-outline-variant underline-offset-2">86 review</span>
+<span class="text-outline-variant">•</span>
+<span>412 unduhan</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface font-semibold">
+<span class="material-symbols-outlined text-[15px] text-primary">license</span>
+        Royalty-Free
+      </div>
+</div>
+</section>
+<!-- Curated Price Tag -->
+<section class="mx-5 my-2 p-4 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-between">
+<div>
+<p class="text-[11px] font-label uppercase tracking-widest text-on-surface-variant">Lisensi Komersial Standar</p>
+<div class="flex items-baseline gap-2 mt-0.5">
+<span class="font-headline font-bold text-2xl text-on-surface">Rp 89.000</span>
+<span class="text-xs text-outline line-through font-label">Rp 175.000</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-label font-bold">
+      Hemat 49%
+    </span>
+</section>
+<!-- Curatorial Description -->
+<section class="px-5 py-4">
+<h3 class="font-headline text-base font-bold text-on-surface mb-2">Kurasi Desain &amp; Karakteristik</h3>
+<div class="text-sm font-body text-on-surface-variant leading-relaxed space-y-3">
+<p>
+        Dirancang dengan presisi mekanis tingkat tinggi, aset cybernetic prostetik ini menggabungkan struktur anatomi lengan manusia dengan sambungan hidrolik industri sci-fi. Topologi model sepenuhnya terdiri atas quad bersih tanpa n-gon, optimal untuk deformasi ekstrem saat animasi gerak tinggi.
+      </p>
+<p>
+        Sistem kontrol rig telah disesuaikan dengan arsitektur <em>Blender Rigify</em> terintegrasi; lengkap dengan switch IK/FK instan pada siku dan jemari, master driver untuk pergerakan lempeng karpal, serta atribut shader procedural yang memungkinkan penyesuaian intensitas aus cat (paint weathering) dan saturasi emisi neon.
+      </p>
+</div>
+</section>
+<!-- Visual Quality Gallery Cards -->
+<section class="px-5 py-2">
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1.5 p-2 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Macro close up wireframe 3D viewport view of the mechanical wrist joint showing flawless quad topology, edge loops and sub-division preview lines in cyan on dark charcoal backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiRetMwqQoUiuYiYcQd7s8Dku4G1S2SMgQdgUXyJ3qxenAUFEpzO4XvWFSSzFJaESWU_iGVDXQgkadUrZQuKu2LRZy_3LiQHlJ29XPuxeb48m1VScZbsgeodWW_yus_Te3jbTtmsWqsFnQLclq-v1fNKRqbv-_Zp1GGj8zgBE2BReuhyzsvLf9qtQs84I_XjEZugCEIlJtO1iZjKltiAA4yKlDetcgd3HFXqTai64"/>
+</div>
+<span class="font-headline font-semibold text-xs text-on-surface px-1">Topologi Bersih</span>
+<span class="text-[11px] font-label text-on-surface-variant px-1">100% Quad Polygon, Siap Subsurf</span>
+</div>
+<div class="flex flex-col gap-1.5 p-2 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="w-full aspect-[4/3] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="4K PBR texture channels breakdown showing diffuse, roughness, normal map and metallic layers for the cyber arm brushed metallic surfaces and synthetic carbon rubber." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEfd3OIlVI9CeQzLXVu0ZHhfdclLZxBtKRuCP1mbeu1Xs_cMBtrjkd-XC2xcjjrAjMEd4jq1LOIAqzlPMGp6exsUsWLsBV4k4eBRMdOxiCqhM-IyrRodqYRufgLXXjSJKGVrbZwDD7x8G7gxGcxXuQCuiC90EbCS-xYqkgp96vV9rAfbbfVV4pXogV9W26KrZfmI_YF0x5tZ86d6Q9aIEhJo3jk0Mj7nx_mK7-er4"/>
+</div>
+<span class="font-headline font-semibold text-xs text-on-surface px-1">Tekstur PBR 4K</span>
+<span class="text-[11px] font-label text-on-surface-variant px-1">Albedo, Roughness, Metal, Normal</span>
+</div>
+</div>
+</section>
+<!-- Technical Specifications (Tabel Card) -->
+<section class="px-5 py-4">
+<div class="flex items-center justify-between mb-3">
+<h3 class="font-headline text-base font-bold text-on-surface">Spesifikasi Teknis</h3>
+<span class="text-xs font-label text-primary font-medium flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm">tune</span>
+        Inspeksi File
+      </span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-1 shadow-sm overflow-hidden text-xs">
+<div class="grid grid-cols-3 p-3 bg-surface-container-low/50 rounded-lg">
+<span class="font-label text-on-surface-variant font-medium">Format File</span>
+<span class="col-span-2 font-body font-semibold text-on-surface">.blend (native), .glb, .fbx, .obj</span>
+</div>
+<div class="grid grid-cols-3 p-3">
+<span class="font-label text-on-surface-variant font-medium">Geometri</span>
+<span class="col-span-2 font-body font-semibold text-on-surface">24,500 Quads / 0 N-Gons</span>
+</div>
+<div class="grid grid-cols-3 p-3 bg-surface-container-low/50 rounded-lg">
+<span class="font-label text-on-surface-variant font-medium">Resolusi Tekstur</span>
+<span class="col-span-2 font-body font-semibold text-on-surface">4096 × 4096 px (UDIM 2 Tiles)</span>
+</div>
+<div class="grid grid-cols-3 p-3">
+<span class="font-label text-on-surface-variant font-medium">Armature Rig</span>
+<span class="col-span-2 font-body font-semibold text-on-surface">Rigify Compatible (IK/FK &amp; Constraints)</span>
+</div>
+<div class="grid grid-cols-3 p-3 bg-surface-container-low/50 rounded-lg">
+<span class="font-label text-on-surface-variant font-medium">Versi Blender</span>
+<span class="col-span-2 font-body font-semibold text-on-surface">3.6 LTS, 4.0, 4.1</span>
+</div>
+<div class="grid grid-cols-3 p-3">
+<span class="font-label text-on-surface-variant font-medium">Ukuran Arsip</span>
+<span class="col-span-2 font-body font-semibold text-on-surface">48.6 MB (.zip dengan maps)</span>
+</div>
+<div class="grid grid-cols-3 p-3 bg-surface-container-low/50 rounded-lg">
+<span class="font-label text-on-surface-variant font-medium">Lisensi</span>
+<span class="col-span-2 font-body font-semibold text-on-surface">Komersial &amp; Pribadi Bebas Royalti</span>
+</div>
+</div>
+</section>
+<!-- Creator Archival Bio -->
+<section class="px-5 py-2">
+<div class="p-4 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center font-headline font-bold text-primary text-base">
+          OX
+        </div>
+<div>
+<div class="flex items-center gap-1.5">
+<h4 class="font-headline font-bold text-sm text-on-surface">Obsidian X Lab</h4>
+<span class="material-symbols-outlined text-xs text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-[11px] font-label text-on-surface-variant">Senior Hard-surface Artist • 120+ Aset</p>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-lowest text-primary text-xs font-label font-bold shadow-sm hover:bg-surface-container-high transition-colors">
+        Portofolio
+      </button>
+</div>
+</section>
+<!-- Similar Curated Assets (Horizontal Scroll) -->
+<section class="pt-5 pb-6">
+<div class="px-5 flex items-center justify-between mb-3">
+<div>
+<h3 class="font-headline text-base font-bold text-on-surface">Aset Serupa</h3>
+<p class="text-[11px] font-label text-on-surface-variant">Koleksi Sci-Fi Mecha &amp; Sibernetika</p>
+</div>
+<button class="text-xs font-label text-primary font-semibold hover:underline">
+        Lihat Semua
+      </button>
+</div>
+<div class="flex gap-3 px-5 overflow-x-auto no-scrollbar scroll-smooth">
+<!-- Similar Card 1 -->
+<div class="w-48 shrink-0 flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<div class="w-full aspect-[4/3] bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="3D render of a futuristic bionic combat helmet with gold tinted visor and matte white hard armor plates studio lit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjcykH_qBq7BOj5_AVca48KlO_cCN2mQgE93ej-KUz0oZHIMosuF8q9an9m7W-hOChxoF9DOihnF92lF_AAj63mIPBDjG6lHEjUa84cixporL4-chIpiG73Nhd0YG3QP-N7oI-GRuRI0aE4AIMEUbbx9Tj8rt7kcp3SSOWU8eAKvbgdnEQBYu3DLhs7nnZU_q1_3lQRWU4hMUChzRicgbdX2M7RSi8REXNtW_2360"/>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-surface-container-lowest/90 text-[10px] font-label font-bold">.blend</span>
+</div>
+<div class="p-3 flex flex-col justify-between flex-1">
+<div>
+<h5 class="font-headline font-semibold text-xs text-on-surface line-clamp-1">Tactical Exo Helmet</h5>
+<p class="text-[11px] font-label text-on-surface-variant mt-0.5">18.2k Quads • PBR</p>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container-low/40 rounded px-1.5">
+<span class="text-xs font-headline font-bold text-on-surface">Rp 75.000</span>
+<div class="flex items-center text-[10px] text-tertiary font-bold">
+<span class="material-symbols-outlined text-[12px] mr-0.5" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.8
+            </div>
+</div>
+</div>
+</div>
+<!-- Similar Card 2 -->
+<div class="w-48 shrink-0 flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<div class="w-full aspect-[4/3] bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="High detail 3D model render of a cybernetic hydraulic leg with exposed shock absorbers and braided carbon cables." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN3y3Y87PB33R9908pVj33_lwExjLk3eLZaBCKKaSOnJJIbjzBr20-pTcELROPg9S52E7mMmY7zInRusouvCc95du835edpf8S_Q_MRuk3xpGaqwyn0IIVYedUN3KXZL9XrqEiDS7Bl7QRErGO5PXD7jIWJAVqUK4EuerfFLAecXsGdR41gKtv3vg93gq2fdKc1U0tJUwKeWonnd0RDjNt-D8u1fzgWFoBvnB_tuc"/>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-surface-container-lowest/90 text-[10px] font-label font-bold">.blend</span>
+</div>
+<div class="p-3 flex flex-col justify-between flex-1">
+<div>
+<h5 class="font-headline font-semibold text-xs text-on-surface line-clamp-1">Prosthetic Cyber Leg</h5>
+<p class="text-[11px] font-label text-on-surface-variant mt-0.5">32.0k Quads • Rigged</p>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container-low/40 rounded px-1.5">
+<span class="text-xs font-headline font-bold text-on-surface">Rp 99.000</span>
+<div class="flex items-center text-[10px] text-tertiary font-bold">
+<span class="material-symbols-outlined text-[12px] mr-0.5" style="font-variation-settings: 'FILL' 1;">star</span>
+              5.0
+            </div>
+</div>
+</div>
+</div>
+<!-- Similar Card 3 -->
+<div class="w-48 shrink-0 flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<div class="w-full aspect-[4/3] bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Sci-fi energy plasma power core module with glowing translucent conduits and modular metallic mounting brackets." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBik_N4MGEhLHdg8RdVqUXtUtDoZPXKneXIqLn1yEIzjvW1JDDXPncYrAglZ2ntrR56BfpyalpxmFaPJleEB9DN7QBoSvEWxAcMAtBZcWSKoxKJRCCDaDZwvv7Bur32BpLtKOnegNn6B-gGnmXtb-CvN1-YIhTvQCRVipIl26jkatlrgakCrf-Shc5xFW9eGg06xZfk9c7QVhxUY-AIzqv4K6xBbWnVzVvTgURksI"/>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-surface-container-lowest/90 text-[10px] font-label font-bold">.blend</span>
+</div>
+<div class="p-3 flex flex-col justify-between flex-1">
+<div>
+<h5 class="font-headline font-semibold text-xs text-on-surface line-clamp-1">Modular Power Core</h5>
+<p class="text-[11px] font-label text-on-surface-variant mt-0.5">12.4k Quads • Animated</p>
+</div>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container-low/40 rounded px-1.5">
+<span class="text-xs font-headline font-bold text-on-surface">Rp 65.000</span>
+<div class="flex items-center text-[10px] text-tertiary font-bold">
+<span class="material-symbols-outlined text-[12px] mr-0.5" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.7
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky Bottom Bar Action -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-surface/90 backdrop-blur-xl px-4 py-3 pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.06)] flex items-center justify-between gap-3">
+<div class="flex flex-col min-w-0">
+<span class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Total Investasi</span>
+<span class="font-headline font-bold text-lg text-on-surface truncate">Rp 89.000</span>
+</div>
+<div class="flex items-center gap-2">
+<!-- Fullscreen 3D Demo Button -->
+<button class="w-11 h-11 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface hover:text-primary active:scale-95 transition-all" onclick="enterFullscreenDemo()" title="Demo Viewer Fullscreen">
+<span class="material-symbols-outlined text-xl">view_in_ar</span>
+</button>
+<!-- Primary Gradient Checkout CTA -->
+<button class="flex-1 px-5 h-11 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-label font-bold text-sm shadow-md hover:brightness-105 active:scale-[0.98] transition-all flex items-center justify-center gap-2 whitespace-nowrap" onclick="handlePurchase()">
+<span class="material-symbols-outlined text-lg">shopping_bag</span>
+<span>Beli Sekarang (Rp 89.000)</span>
+</button>
+</div>
+</div>
+<!-- Notification Toast Component -->
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 opacity-0 translate-y-4 px-4 py-2 rounded-full bg-inverse-surface text-inverse-on-surface text-xs font-label font-medium shadow-xl flex items-center gap-2" id="action-toast">
+<span class="material-symbols-outlined text-sm text-primary-fixed">check_circle</span>
+<span id="toast-message">Memuat 3D Viewer Fullscreen...</span>
+</div>
+</div>
+<script>
+  let currentRotation = 0;
+  let isZoomed = false;
+  let isWireframe = false;
+  let isDragging = false;
+  let startX = 0;
+
+  const modelImg = document.getElementById('primary-model-render');
+  const dragHint = document.getElementById('drag-hint');
+  const viewerCanvas = document.getElementById('viewer-canvas');
+
+  // Interactive simulated rotation drag
+  if (viewerCanvas) {
+    viewerCanvas.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+      if (dragHint) dragHint.style.opacity = '0';
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const delta = e.clientX - startX;
+      currentRotation += delta * 0.4;
+      applyTransform();
+      startX = e.clientX;
+    });
+
+    // Touch support
+    viewerCanvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 0) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        if (dragHint) dragHint.style.opacity = '0';
+      }
+    });
+
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging || e.touches.length === 0) return;
+      const delta = e.touches[0].clientX - startX;
+      currentRotation += delta * 0.4;
+      applyTransform();
+      startX = e.touches[0].clientX;
+    });
+  }
+
+  function applyTransform() {
+    if (!modelImg) return;
+    const scale = isZoomed ? 1.35 : 1.0;
+    modelImg.style.transform = `scale(${scale}) rotate(${currentRotation * 0.15}deg)`;
+  }
+
+  function resetModelRotation() {
+    currentRotation = 0;
+    isZoomed = false;
+    applyTransform();
+    showToast('Rotasi kamera diatur ulang');
+  }
+
+  function toggleZoomModel() {
+    isZoomed = !isZoomed;
+    const zoomIcon = document.getElementById('zoom-icon');
+    if (zoomIcon) {
+      zoomIcon.textContent = isZoomed ? 'zoom_out' : 'zoom_in';
+    }
+    applyTransform();
+    showToast(isZoomed ? 'Zoom 1.35x aktif' : 'Zoom normal');
+  }
+
+  function toggleWireframeMode() {
+    isWireframe = !isWireframe;
+    const btn = document.getElementById('btn-wireframe');
+    if (btn) {
+      if (isWireframe) {
+        btn.classList.add('bg-primary', 'text-on-primary');
+        btn.classList.remove('text-on-surface-variant');
+        if (modelImg) modelImg.style.filter = 'contrast(160%) grayscale(100%) invert(10%)';
+        showToast('Mode Wireframe Diaktifkan');
+      } else {
+        btn.classList.remove('bg-primary', 'text-on-primary');
+        btn.classList.add('text-on-surface-variant');
+        if (modelImg) modelImg.style.filter = 'none';
+        showToast('Mode Shaded Eevee/Cycles Diaktifkan');
+      }
+    }
+  }
+
+  function switchView(index, label) {
+    const buttons = document.querySelectorAll('.angle-btn');
+    buttons.forEach((btn, i) => {
+      const dot = btn.querySelector('span');
+      if (i === index) {
+        btn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        if (dot) dot.classList.replace('bg-transparent', 'bg-primary');
+      } else {
+        btn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+        btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+        if (dot) dot.classList.replace('bg-primary', 'bg-transparent');
+      }
+    });
+
+    if (dragHint) dragHint.style.opacity = '0';
+    showToast(`Beralih ke: ${label}`);
+  }
+
+  function enterFullscreenDemo() {
+    showToast('Membuka kanvas 3D WebGL interaktif...');
+  }
+
+  function handlePurchase() {
+    showToast('Menyiapkan lisensi komersial & checkout...');
+  }
+
+  function showToast(text) {
+    const toast = document.getElementById('action-toast');
+    const toastMsg = document.getElementById('toast-message');
+    if (!toast || !toastMsg) return;
+
+    toastMsg.textContent = text;
+    toast.classList.remove('opacity-0', 'translate-y-4');
+    toast.classList.add('opacity-100', 'translate-y-0');
+
+    clearTimeout(window.__toastTimeout);
+    window.__toastTimeout = setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'translate-y-4');
+    }, 2200);
+  }
+</script></main></body></html>
