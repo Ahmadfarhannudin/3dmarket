@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 
+import 'package:_3dmarket/core/constants/buyer_profile.dart';
 import 'package:_3dmarket/core/data/purchase_store.dart';
+import 'package:_3dmarket/core/widgets/pdf_preview_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -8,143 +10,353 @@ import 'package:printing/printing.dart';
 
 /// Generator sertifikat lisensi komersial dalam format PDF.
 ///
-/// Menyediakan dua cara akses:
-/// - [showPreview]: tampilkan preview PDF di dialog Flutter.
-/// - [download]: unduh file PDF ke perangkat.
+/// Isi dokumen hanya menyangkut lisensi: para pihak, aset yang dilisensikan,
+/// ruang lingkup hak, pembatasan, jangka waktu, dan kode lisensi. Rincian
+/// transaksi keuangan berada pada faktur.
 class LicensePdfGenerator {
   LicensePdfGenerator._();
 
   static const _brand = '_3D MARKET';
   static const _tagline = 'Premium 3D Asset Marketplace';
+  static const _licensorEmail = 'license@3dmarket.id';
 
   // ─── Public API ───────────────────────────────────────────────────────
 
   /// Tampilkan preview PDF di dialog. Pengguna bisa menekan tombol unduh
   /// untuk menyimpan file ke perangkat.
-  static Future<void> showPreview(BuildContext context, PurchaseRecord record) async {
+  static Future<void> showPreview(
+    BuildContext context,
+    PurchaseRecord record,
+  ) async {
     final pdfBytes = await generate(record);
     if (!context.mounted) return;
 
-    await showDialog(
-      context: context,
-      builder: (ctx) => _LicensePreviewDialog(pdfBytes: pdfBytes, record: record),
+    await showPdfPreview(
+      context,
+      pdfBytes: pdfBytes,
+      fileName: 'lisensi_${record.licenseKey}.pdf',
+      title: 'Sertifikat Lisensi Komersial',
+      onDownload: () {
+        Navigator.of(context, rootNavigator: true).pop();
+        download(record);
+      },
     );
   }
 
   /// Unduh PDF secara langsung (trigger browser download).
   static Future<void> download(PurchaseRecord record) async {
     final pdfBytes = await generate(record);
-    await Printing.layoutPdf(onLayout: (_) async => pdfBytes);
+    await Printing.layoutPdf(
+      name: 'lisensi_${record.licenseKey}',
+      onLayout: (_) async => pdfBytes,
+    );
   }
 
   // ─── PDF Generation ───────────────────────────────────────────────────
 
-  /// Menghasilkan byte PDF dari [record].
   static Future<Uint8List> generate(PurchaseRecord record) async {
     final pdf = pw.Document();
+    final primary = PdfColor.fromInt(0xFF094CB2);
+    final dark = PdfColor.fromInt(0xFF1B1C1D);
+    final muted = PdfColors.grey600;
 
     pdf.addPage(
       pw.Page(
         pageFormat: PdfPageFormat.a4,
+        margin: pw.EdgeInsets.symmetric(
+          vertical: 16 * PdfPageFormat.mm,
+          horizontal: 16 * PdfPageFormat.mm,
+        ),
         build: (pw.Context ctx) {
           return pw.Column(
             crossAxisAlignment: pw.CrossAxisAlignment.start,
             children: [
-              // Header
-              _header(),
-              pw.SizedBox(height: 16),
-
-              // Seal placeholder (circle badge)
-              pw.Row(
-                mainAxisAlignment: pw.MainAxisAlignment.end,
+              // ── Kop ──────────────────────────────────────────────────
+              pw.Column(
+                crossAxisAlignment: pw.CrossAxisAlignment.stretch,
                 children: [
-                  pw.Container(
-                    width: 56,
-                    height: 56,
-                    decoration: pw.BoxDecoration(
-                      shape: pw.BoxShape.circle,
-                      border: pw.Border.all(color: PdfColor.fromInt(0xFF1A6FBF), width: 2),
+                  pw.Text(
+                    _brand,
+                    textAlign: pw.TextAlign.center,
+                    style: pw.TextStyle(
+                      fontSize: 20,
+                      fontWeight: pw.FontWeight.bold,
+                      letterSpacing: 4,
+                      color: primary,
                     ),
-                    child: pw.Center(
-                      child: pw.Text(
-                        'VERIFIED\nLICENSE',
-                        textAlign: pw.TextAlign.center,
-                        style: pw.TextStyle(
-                          fontSize: 7,
-                          color: PdfColor.fromInt(0xFF1A6FBF),
-                          fontWeight: pw.FontWeight.bold,
+                  ),
+                  pw.Text(
+                    _tagline,
+                    textAlign: pw.TextAlign.center,
+                    style: pw.TextStyle(
+                      fontSize: 8.5,
+                      letterSpacing: 2,
+                      color: muted,
+                    ),
+                  ),
+                  pw.SizedBox(height: 8),
+                  pw.Divider(color: primary, thickness: 2),
+                ],
+              ),
+              pw.SizedBox(height: 14),
+
+              // ── Judul ────────────────────────────────────────────────
+              pw.Row(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Expanded(
+                    child: pw.Column(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: [
+                        pw.Text(
+                          'SERTIFIKAT LISENSI KOMERSIAL',
+                          style: pw.TextStyle(
+                            fontSize: 15,
+                            fontWeight: pw.FontWeight.bold,
+                            letterSpacing: 1.6,
+                            color: dark,
+                          ),
                         ),
+                        pw.SizedBox(height: 2),
+                        pw.Text(
+                          'Commercial License Certificate · Perpetual, Non-Exclusive',
+                          style: pw.TextStyle(fontSize: 8.5, color: muted),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.SizedBox(width: 12),
+                  _seal(primary),
+                ],
+              ),
+              pw.SizedBox(height: 12),
+
+              // ── Kode lisensi ─────────────────────────────────────────
+              pw.Container(
+                width: double.infinity,
+                padding: const pw.EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 16,
+                ),
+                decoration: pw.BoxDecoration(
+                  border: pw.Border.all(color: primary, width: 1.5),
+                  borderRadius: pw.BorderRadius.circular(6),
+                  color: PdfColor.fromInt(0xFFF3F6FD),
+                ),
+                child: pw.Column(
+                  children: [
+                    pw.Text(
+                      record.licenseKey,
+                      style: pw.TextStyle(
+                        fontSize: 18,
+                        fontWeight: pw.FontWeight.bold,
+                        letterSpacing: 2.5,
+                        color: primary,
                       ),
+                    ),
+                    pw.SizedBox(height: 2),
+                    pw.Text(
+                      'KODE LISENSI RESMI · PERPETUAL COMMERCIAL USE',
+                      style: pw.TextStyle(
+                        fontSize: 7.5,
+                        letterSpacing: 1,
+                        color: muted,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              pw.SizedBox(height: 14),
+
+              // ── Para pihak ───────────────────────────────────────────
+              pw.Row(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Expanded(
+                    child: _partyBlock(
+                      'LISENSOR (PEMBERI LISENSI)',
+                      [
+                        ('Kreator: ${record.creator}', true),
+                        ('Diterbitkan oleh $_brand', false),
+                        (_licensorEmail, false),
+                        ('Pemegang hak cipta aset 3D', false),
+                      ],
+                      primary,
+                      muted,
+                    ),
+                  ),
+                  pw.SizedBox(width: 14),
+                  pw.Expanded(
+                    child: _partyBlock(
+                      'PENERIMA LISENSI (LICENSEE)',
+                      [
+                        (BuyerProfile.name, true),
+                        (BuyerProfile.email, false),
+                        (BuyerProfile.address, false),
+                        (BuyerProfile.taxId, false),
+                      ],
+                      primary,
+                      muted,
+                    ),
+                  ),
+                ],
+              ),
+              pw.SizedBox(height: 14),
+
+              // ── Aset yang dilisensikan ───────────────────────────────
+              _sectionLabel('ASET YANG DILISENSIKAN', primary),
+              pw.SizedBox(height: 5),
+              pw.Container(
+                width: double.infinity,
+                padding: const pw.EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 8,
+                ),
+                decoration: pw.BoxDecoration(
+                  border: pw.Border.all(color: PdfColors.grey300),
+                  borderRadius: pw.BorderRadius.circular(4),
+                ),
+                child: pw.Column(
+                  children: [
+                    _kvRow('Judul Aset', record.title, muted),
+                    _kvRow('Kategori', record.category, muted),
+                    _kvRow('Format Berkas', record.format.toUpperCase(), muted),
+                  ],
+                ),
+              ),
+              pw.SizedBox(height: 12),
+
+              // ── Ketentuan lisensi ────────────────────────────────────
+              _sectionLabel('KETENTUAN LISENSI', primary),
+              pw.SizedBox(height: 5),
+              pw.Container(
+                width: double.infinity,
+                padding: const pw.EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 8,
+                ),
+                decoration: pw.BoxDecoration(
+                  border: pw.Border.all(color: PdfColors.grey300),
+                  borderRadius: pw.BorderRadius.circular(4),
+                ),
+                child: pw.Column(
+                  children: [
+                    _kvRow('Jenis Lisensi', 'Komersial (Commercial)', muted),
+                    _kvRow(
+                      'Sifat Lisensi',
+                      'Non-eksklusif, tidak dapat dipindahtangankan',
+                      muted,
+                    ),
+                    _kvRow('Wilayah', 'Seluruh dunia (worldwide)', muted),
+                    _kvRow('Jangka Waktu', 'Perpetual (seumur hidup)', muted),
+                    _kvRow('Royalti', 'Tanpa royalti tambahan', muted),
+                    _kvRow(
+                      'Referensi Penerbitan',
+                      record.orderId,
+                      muted,
+                    ),
+                    _kvRow(
+                      'Tanggal Terbit',
+                      _dateOnly(record.purchasedAt),
+                      muted,
+                    ),
+                  ],
+                ),
+              ),
+              pw.SizedBox(height: 12),
+
+              // ── Hak & pembatasan ─────────────────────────────────────
+              pw.Row(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Expanded(
+                    child: pw.Column(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: [
+                        _sectionLabel('HAK YANG DIBERIKAN', primary),
+                        pw.SizedBox(height: 5),
+                        for (final item in _permittedUses)
+                          _bullet(item, primary, muted),
+                      ],
+                    ),
+                  ),
+                  pw.SizedBox(width: 14),
+                  pw.Expanded(
+                    child: pw.Column(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: [
+                        _sectionLabel('PEMBATASAN', primary),
+                        pw.SizedBox(height: 5),
+                        for (final item in _restrictions)
+                          _bullet(item, PdfColor.fromInt(0xFFB3261E), muted),
+                      ],
                     ),
                   ),
                 ],
               ),
 
-              // Title
-              pw.Text(
-                'SERTIFIKAT LISENSI KOMERSIAL',
-                style: pw.TextStyle(
-                  fontSize: 14,
-                  fontWeight: pw.FontWeight.bold,
-                  letterSpacing: 2,
-                  color: PdfColor.fromInt(0xFF1A1A2E),
-                ),
-              ),
-              pw.SizedBox(height: 12),
-
-              // Section: Detail Aset
-              _sectionLabel('DETAIL ASET'),
-              _row('Judul Aset', record.title),
-              _row('Kategori', record.category),
-              _row('Format File', record.format.toUpperCase()),
-              _row('Ukuran Berkas', record.sizeLabel),
-              pw.SizedBox(height: 8),
-
-              // Section: Informasi Transaksi
-              _sectionLabel('INFORMASI TRANSAKSI'),
-              _row('ID Pesanan', record.orderId),
-              _row('Waktu Transaksi', record.purchasedAtLabel),
-              _row('Metode Pembayaran', record.paymentMethod),
-              _row('Total Dibayar', record.totalLabel),
-              pw.SizedBox(height: 8),
-
-              // License code box
-              _licenseBox(record.licenseKey),
-              pw.SizedBox(height: 8),
-
-              // Description
-              if (record.description.isNotEmpty) ...[
-                _sectionLabel('DESKRIPSI ASET'),
-                pw.Container(
-                  padding: const pw.EdgeInsets.all(10),
-                  decoration: pw.BoxDecoration(
-                    color: PdfColors.grey100,
-                    border: pw.Border.all(color: PdfColors.grey300),
-                    borderRadius: pw.BorderRadius.circular(4),
-                  ),
-                  child: pw.Text(
-                    record.description,
-                    style: pw.TextStyle(fontSize: 10, color: PdfColors.grey700),
-                  ),
-                ),
-                pw.SizedBox(height: 8),
-              ],
-
               pw.Spacer(),
 
-              // Footer
+              // ── Pengesahan ───────────────────────────────────────────
               pw.Divider(color: PdfColors.grey300),
-              pw.SizedBox(height: 6),
-              pw.Text(
-                'Sertifikat ini diterbitkan secara otomatis oleh sistem $_brand. '
-                'Lisensi berlaku seumur hidup untuk satu proyek komersial utama. '
-                'Simpan dokumen ini sebagai bukti kepemilikan.',
-                style: pw.TextStyle(fontSize: 8, color: PdfColors.grey500),
+              pw.SizedBox(height: 8),
+              pw.Row(
+                crossAxisAlignment: pw.CrossAxisAlignment.end,
+                children: [
+                  pw.Expanded(
+                    child: pw.Text(
+                      'Sertifikat ini merupakan bukti sah pemberian lisensi dan '
+                      'diterbitkan secara elektronik. Hak cipta atas aset tetap '
+                      'berada pada lisensor; transaksi ini tidak mengalihkan '
+                      'kepemilikan hak cipta.',
+                      style: pw.TextStyle(fontSize: 8, color: PdfColors.grey500),
+                    ),
+                  ),
+                  pw.SizedBox(width: 20),
+                  pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.center,
+                    children: [
+                      pw.Text(
+                        'Diterbitkan ${_dateOnly(record.purchasedAt)}',
+                        style: pw.TextStyle(fontSize: 8.5, color: muted),
+                      ),
+                      pw.SizedBox(height: 26),
+                      pw.Container(
+                        width: 130,
+                        decoration: pw.BoxDecoration(
+                          border: pw.Border(
+                            top: pw.BorderSide(color: PdfColors.grey500),
+                          ),
+                        ),
+                        padding: const pw.EdgeInsets.only(top: 3),
+                        child: pw.Column(
+                          children: [
+                            pw.Text(
+                              record.creator,
+                              textAlign: pw.TextAlign.center,
+                              style: pw.TextStyle(
+                                fontSize: 8.5,
+                                fontWeight: pw.FontWeight.bold,
+                              ),
+                            ),
+                            pw.Text(
+                              'Lisensor · $_brand',
+                              textAlign: pw.TextAlign.center,
+                              style: pw.TextStyle(fontSize: 7.5, color: muted),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
+              pw.SizedBox(height: 8),
+              pw.Divider(color: PdfColors.grey300),
               pw.SizedBox(height: 4),
               pw.Text(
-                'Kode Lisensi: ${record.licenseKey} | Pesanan: ${record.orderId}',
-                style: pw.TextStyle(fontSize: 8, color: PdfColors.grey500),
+                'Verifikasi keaslian: ${record.licenseKey} · $_licensorEmail',
+                style: pw.TextStyle(fontSize: 7.5, color: PdfColors.grey500),
               ),
             ],
           );
@@ -155,43 +367,92 @@ class LicensePdfGenerator {
     return pdf.save();
   }
 
+  // ─── Konten lisensi ───────────────────────────────────────────────────
+
+  static const _permittedUses = [
+    'Menggunakan aset untuk proyek komersial milik penerima lisensi.',
+    'Memodifikasi, menganimasikan, dan mengintegrasikan aset ke karya turunan.',
+    'Menampilkan hasil karya pada media promosi, game, film, dan produk digital.',
+    'Menyimpan salinan arsip untuk kebutuhan cadangan proyek.',
+  ];
+
+  static const _restrictions = [
+    'Menjual, membagikan ulang, atau mendistribusikan berkas aset mentah.',
+    'Memberikan lisensi ulang (sublicense) kepada pihak ketiga.',
+    'Mengklaim hak cipta atau mendaftarkan aset sebagai merek dagang.',
+    'Mengunggah aset ke platform berbagi berkas atau bundel gratis.',
+  ];
+
   // ─── Helpers ──────────────────────────────────────────────────────────
 
-  static pw.Widget _header() {
+  static pw.Widget _seal(PdfColor primary) {
+    return pw.Container(
+      width: 58,
+      height: 58,
+      decoration: pw.BoxDecoration(
+        shape: pw.BoxShape.circle,
+        border: pw.Border.all(color: primary, width: 2),
+      ),
+      child: pw.Center(
+        child: pw.Text(
+          'VERIFIED\nLICENSE',
+          textAlign: pw.TextAlign.center,
+          style: pw.TextStyle(
+            fontSize: 7,
+            color: primary,
+            fontWeight: pw.FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+
+  static pw.Widget _partyBlock(
+    String label,
+    List<(String, bool)> lines,
+    PdfColor primary,
+    PdfColor muted,
+  ) {
     return pw.Column(
-      crossAxisAlignment: pw.CrossAxisAlignment.stretch,
+      crossAxisAlignment: pw.CrossAxisAlignment.start,
       children: [
         pw.Text(
-          _brand,
+          label,
           style: pw.TextStyle(
-            fontSize: 20,
+            fontSize: 7.5,
             fontWeight: pw.FontWeight.bold,
-            letterSpacing: 4,
-            color: PdfColor.fromInt(0xFF1A6FBF),
+            letterSpacing: 1,
+            color: primary,
           ),
-          textAlign: pw.TextAlign.center,
         ),
-        pw.Text(
-          _tagline,
-          style: pw.TextStyle(fontSize: 9, color: PdfColors.grey500, letterSpacing: 2),
-          textAlign: pw.TextAlign.center,
-        ),
-        pw.Divider(color: PdfColor.fromInt(0xFF1A6FBF), thickness: 2),
+        pw.SizedBox(height: 4),
+        for (final (text, bold) in lines)
+          pw.Padding(
+            padding: const pw.EdgeInsets.only(bottom: 1.5),
+            child: pw.Text(
+              text,
+              style: pw.TextStyle(
+                fontSize: bold ? 9.5 : 8.5,
+                fontWeight: bold ? pw.FontWeight.bold : pw.FontWeight.normal,
+                color: bold ? PdfColors.black : muted,
+              ),
+            ),
+          ),
       ],
     );
   }
 
-  static pw.Widget _sectionLabel(String label) {
+  static pw.Widget _sectionLabel(String label, PdfColor primary) {
     return pw.Row(
       children: [
-        pw.Container(width: 3, height: 12, color: PdfColor.fromInt(0xFF1A6FBF)),
+        pw.Container(width: 3, height: 11, color: primary),
         pw.SizedBox(width: 6),
         pw.Text(
           label,
           style: pw.TextStyle(
-            fontSize: 9,
+            fontSize: 8.5,
             fontWeight: pw.FontWeight.bold,
-            color: PdfColor.fromInt(0xFF1A6FBF),
+            color: primary,
             letterSpacing: 1,
           ),
         ),
@@ -199,114 +460,71 @@ class LicensePdfGenerator {
     );
   }
 
-  static pw.Widget _row(String label, String value) {
-    return pw.Row(
-      mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-      children: [
-        pw.Text(label, style: pw.TextStyle(fontSize: 11, color: PdfColors.grey600)),
-        pw.Text(
-          value,
-          style: pw.TextStyle(fontSize: 11, fontWeight: pw.FontWeight.bold),
-        ),
-      ],
-    );
-  }
-
-  static pw.Widget _licenseBox(String key) {
-    return pw.Container(
-      margin: const pw.EdgeInsets.symmetric(vertical: 8),
-      padding: const pw.EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-      decoration: pw.BoxDecoration(
-        border: pw.Border.all(color: PdfColor.fromInt(0xFF1A6FBF), width: 2),
-        borderRadius: pw.BorderRadius.circular(6),
-        color: PdfColor.fromInt(0xFFF0F5FF),
-      ),
-      child: pw.Column(
+  static pw.Widget _kvRow(String label, String value, PdfColor muted) {
+    return pw.Padding(
+      padding: const pw.EdgeInsets.symmetric(vertical: 2),
+      child: pw.Row(
+        crossAxisAlignment: pw.CrossAxisAlignment.start,
         children: [
-          pw.Text(
-            key,
-            style: pw.TextStyle(
-              fontSize: 17,
-              fontWeight: pw.FontWeight.bold,
-              color: PdfColor.fromInt(0xFF1A6FBF),
-              letterSpacing: 1.5,
+          pw.SizedBox(
+            width: 130,
+            child: pw.Text(
+              label,
+              style: pw.TextStyle(fontSize: 9, color: muted),
             ),
           ),
-          pw.Text(
-            'PERPETUAL COMMERCIAL LICENSE KEY',
-            style: pw.TextStyle(fontSize: 9, color: PdfColors.grey600, letterSpacing: 1),
+          pw.Expanded(
+            child: pw.Text(
+              value,
+              style: pw.TextStyle(
+                fontSize: 9,
+                fontWeight: pw.FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
     );
   }
-}
 
-// ─── Preview Dialog ────────────────────────────────────────────────────
-
-class _LicensePreviewDialog extends StatelessWidget {
-  const _LicensePreviewDialog({required this.pdfBytes, required this.record});
-
-  final Uint8List pdfBytes;
-  final PurchaseRecord record;
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text(
-        'Sertifikat Lisensi Komersial',
-        style: TextStyle(fontFamily: 'Noto Serif', fontWeight: FontWeight.w700),
-      ),
-      content: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.85,
-        height: MediaQuery.of(context).size.height * 0.65,
-        child: Column(
-          children: [
-            Expanded(
-              child: PdfPreview(
-                build: (_) async => pdfBytes,
-              ),
+  static pw.Widget _bullet(String text, PdfColor color, PdfColor muted) {
+    return pw.Padding(
+      padding: const pw.EdgeInsets.only(bottom: 3),
+      child: pw.Row(
+        crossAxisAlignment: pw.CrossAxisAlignment.start,
+        children: [
+          pw.Text(
+            '•',
+            style: pw.TextStyle(fontSize: 9, color: color),
+          ),
+          pw.SizedBox(width: 5),
+          pw.Expanded(
+            child: pw.Text(
+              text,
+              style: pw.TextStyle(fontSize: 8.5, color: muted, height: 1.35),
             ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(Icons.close, size: 16),
-                    label: const Text('Tutup'),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.grey[700],
-                      side: BorderSide(color: Colors.grey[300]!),
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () async {
-                      await LicensePdfGenerator.download(record);
-                      if (context.mounted) Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.picture_as_pdf, size: 16),
-                    label: const Text('Unduh PDF'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF1A6FBF),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
-      actions: const [],
     );
+  }
+
+  static String _dateOnly(DateTime time) {
+    const months = [
+      'Januari',
+      'Februari',
+      'Maret',
+      'April',
+      'Mei',
+      'Juni',
+      'Juli',
+      'Agustus',
+      'September',
+      'Oktober',
+      'November',
+      'Desember',
+    ];
+    return '${time.day} ${months[time.month - 1]} ${time.year}';
   }
 }
 

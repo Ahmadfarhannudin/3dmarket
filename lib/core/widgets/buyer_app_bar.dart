@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
+import 'package:_3dmarket/core/navigation/main_tab.dart';
 import 'package:_3dmarket/app/router.dart';
 
 /// Header konsisten untuk seluruh halaman pembeli (Beranda, Jelajah,
@@ -113,7 +114,7 @@ class BuyerAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.only(right: 16),
           child: GestureDetector(
-            onTap: () => Navigator.pushNamed(context, AppRouter.profile),
+            onTap: () => MainTab.open(context, MainTab.profile),
             child: CircleAvatar(
               radius: 16,
               backgroundColor: AppColors.primaryFixed,

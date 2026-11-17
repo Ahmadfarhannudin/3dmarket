@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:_3dmarket/core/constants/app_colors.dart';
+import 'package:_3dmarket/core/navigation/main_tab.dart';
 import 'package:_3dmarket/core/widgets/bottom_nav.dart';
 import 'package:_3dmarket/features/home/presentation/home_screen.dart';
 import 'package:_3dmarket/features/explore/presentation/explore_screen.dart';
@@ -26,13 +28,35 @@ class _MainScreenState extends State<MainScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.initialIndex;
+    MainTab.index.value = widget.initialIndex;
+    MainTab.index.addListener(_onTabChanged);
+  }
+
+  void _onTabChanged() {
+    if (!mounted) return;
+    final index = MainTab.index.value;
+    if (index != _currentIndex) {
+      setState(() => _currentIndex = index);
+    }
+  }
+
+  @override
+  void dispose() {
+    MainTab.index.removeListener(_onTabChanged);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.surface,
       body: IndexedStack(index: _currentIndex, children: _screens),
       bottomNavigationBar: BottomNavBar(
         currentIndex: _currentIndex,
-        onTap: (i) => setState(() => _currentIndex = i),
+        onTap: (i) => MainTab.index.value = i,
       ),
     );
   }

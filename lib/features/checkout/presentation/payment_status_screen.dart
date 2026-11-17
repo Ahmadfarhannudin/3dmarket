@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:_3dmarket/core/data/invoice_pdf_generator.dart';
 import 'package:_3dmarket/core/data/license_pdf_generator.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/data/purchase_store.dart';
@@ -21,6 +22,28 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
   PurchaseRecord? get _record => PurchaseStore.instance.latest;
 
   String get _license => _record?.licenseKey ?? 'PLY-COMM-8921-X9';
+
+  /// Data yang dipakai untuk membuat faktur & sertifikat. Saat layar dibuka
+  /// tanpa transaksi (mis. lewat URL langsung) dipakai data contoh agar
+  /// dokumen tetap bisa dipreview.
+  PurchaseRecord get _documentRecord =>
+      _record ??
+      PurchaseRecord(
+        orderId: 'ORD-20261110-8921',
+        licenseKey: 'PLY-COMM-8921-X9',
+        title: 'Cyberpunk Cybernetic Arm Rigged',
+        category: 'Characters',
+        format: '.glb',
+        sizeLabel: '32 MB',
+        creator: 'Studio 3DMarket',
+        description: 'Rig lengkap dengan tekstur PBR 8K siap produksi.',
+        modelUrl: '',
+        itemPrice: 89000,
+        serviceFee: 2000,
+        total: 91000,
+        paymentMethod: 'QRIS Instant',
+        purchasedAt: DateTime.now(),
+      );
 
   Future<void> _copy() async {
     await Clipboard.setData(ClipboardData(text: _license));
@@ -409,21 +432,65 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
             ),
           ),
-          const SizedBox(height: 6),
-          TextButton.icon(
-            onPressed: () {
-              final record = PurchaseStore.instance.latest;
-              if (record != null) LicensePdfGenerator.showPreview(context, record);
-            },
-            style: TextButton.styleFrom(foregroundColor: AppColors.secondary),
-            icon: const Icon(Icons.picture_as_pdf, size: 16),
-            label: const Text(
-              'Preview & Unduh Sertifikat Lisensi',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                decoration: TextDecoration.underline,
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () => InvoicePdfGenerator.showPreview(
+                    context,
+                    _documentRecord,
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: AppColors.primary,
+                    side: BorderSide(
+                      color: AppColors.primary.withValues(alpha: 0.45),
+                    ),
+                    minimumSize: const Size.fromHeight(44),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  icon: const Icon(Icons.receipt_long_outlined, size: 18),
+                  label: const Text(
+                    'Faktur',
+                    style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600),
+                  ),
+                ),
               ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () => LicensePdfGenerator.showPreview(
+                    context,
+                    _documentRecord,
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: AppColors.primary,
+                    side: BorderSide(
+                      color: AppColors.primary.withValues(alpha: 0.45),
+                    ),
+                    minimumSize: const Size.fromHeight(44),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  icon: const Icon(Icons.workspace_premium_outlined, size: 18),
+                  label: const Text(
+                    'Sertifikat Lisensi',
+                    style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          const Text(
+            'Kedua dokumen dapat dipreview lalu diunduh sebagai PDF.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 11,
+              color: AppColors.onSurfaceVariant,
             ),
           ),
         ],

@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
+import 'package:_3dmarket/core/navigation/main_tab.dart';
 import 'package:_3dmarket/app/router.dart';
 
 class NotificationsScreen extends StatefulWidget {
@@ -280,7 +281,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       ),
                       SizedBox(height: 2),
                       Text(
-                        'Blend 4.2 • FBX   •   184 MB',
+                        'Blend 4.2 â€¢ FBX   â€¢   184 MB',
                         style: TextStyle(
                           fontSize: 10.5,
                           color: AppColors.secondary,
@@ -372,7 +373,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     ),
                     SizedBox(height: 2),
                     Text(
-                      'Pembayaran Berhasil — #ORD-202611-8921',
+                      'Pembayaran Berhasil â€” #ORD-202611-8921',
                       style: TextStyle(
                         fontFamily: 'Noto Serif',
                         fontVariations: [FontVariation('wght', 600)],
@@ -564,7 +565,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
               const Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, AppRouter.explore),
+                onTap: () => MainTab.open(context, MainTab.explore),
                 child: const Row(
                   children: [
                     Text(

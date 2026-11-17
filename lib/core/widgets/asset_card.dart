@@ -2,7 +2,9 @@
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 import 'package:_3dmarket/core/constants/app_colors.dart';
+import 'package:_3dmarket/core/data/asset_catalog.dart';
 import 'package:_3dmarket/core/utils/model_source.dart';
+import 'package:_3dmarket/core/widgets/favorite_button.dart';
 
 class AssetCard extends StatelessWidget {
   final String title;
@@ -23,6 +25,9 @@ class AssetCard extends StatelessWidget {
   /// Label kategori yang ditampilkan di bawah judul (opsional).
   final String? category;
 
+  /// Bila diisi, kartu menampilkan tombol simpan ke wishlist.
+  final CatalogAsset? asset;
+
   const AssetCard({
     super.key,
     required this.title,
@@ -37,6 +42,7 @@ class AssetCard extends StatelessWidget {
     this.isGlbModel = false,
     this.modelPath,
     this.category,
+    this.asset,
   });
 
   @override
@@ -82,6 +88,12 @@ class AssetCard extends StatelessWidget {
                   ],
                 ),
               ),
+              if (asset != null)
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: FavoriteButton(asset: asset!),
+                ),
             ],
           ),
           Padding(

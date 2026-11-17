@@ -2,11 +2,13 @@
 import 'package:flutter/gestures.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
+import 'package:_3dmarket/core/navigation/main_tab.dart';
 import 'package:_3dmarket/core/data/asset_catalog.dart';
 import 'package:_3dmarket/core/data/uploaded_assets.dart';
 import 'package:_3dmarket/core/utils/model_source.dart';
 import 'package:_3dmarket/core/widgets/asset_card.dart';
 import 'package:_3dmarket/core/widgets/buyer_app_bar.dart';
+import 'package:_3dmarket/core/widgets/favorite_button.dart';
 import 'package:_3dmarket/app/router.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -342,6 +344,7 @@ class _HomeScreenState extends State<HomeScreen> {
             isFree: asset.isFree,
             modelPath: asset.assetKey,
             category: asset.subtitle,
+            asset: asset,
             onTap: () => Navigator.pushNamed(
               context,
               AppRouter.detail,
@@ -484,8 +487,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               TextButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRouter.explore),
+                onPressed: () => MainTab.open(context, MainTab.explore),
                 child: const Row(
                   children: [
                     Text(
@@ -551,40 +553,50 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(12),
-                ),
-                child: asset.hasModelPreview
-                    ? IgnorePointer(
-                        child: ModelViewer(
-                          src: resolveModelSource(asset.assetKey),
-                          backgroundColor: AppColors.surfaceContainerLow,
-                          autoRotate: true,
-                          cameraControls: false,
-                          disableZoom: true,
-                          disablePan: true,
-                          loading: Loading.eager,
-                          debugLogging: false,
-                          relatedCss:
-                              'model-viewer{--poster-color:transparent;}',
-                        ),
-                      )
-                    : Image.asset(
-                        'assets/images/onboarding_hero.png',
-                        height: double.infinity,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, _, _) => Container(
-                          color: AppColors.surfaceContainerLow,
-                          alignment: Alignment.center,
-                          child: const Icon(
-                            Icons.view_in_ar,
-                            size: 34,
-                            color: AppColors.outline,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(12),
+                    ),
+                    child: asset.hasModelPreview
+                        ? IgnorePointer(
+                            child: ModelViewer(
+                              src: resolveModelSource(asset.assetKey),
+                              backgroundColor: AppColors.surfaceContainerLow,
+                              autoRotate: true,
+                              cameraControls: false,
+                              disableZoom: true,
+                              disablePan: true,
+                              loading: Loading.eager,
+                              debugLogging: false,
+                              relatedCss:
+                                  'model-viewer{--poster-color:transparent;}',
+                            ),
+                          )
+                        : Image.asset(
+                            'assets/images/onboarding_hero.png',
+                            height: double.infinity,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, _, _) => Container(
+                              color: AppColors.surfaceContainerLow,
+                              alignment: Alignment.center,
+                              child: const Icon(
+                                Icons.view_in_ar,
+                                size: 34,
+                                color: AppColors.outline,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                  ),
+                  Positioned(
+                    top: 6,
+                    right: 6,
+                    child: FavoriteButton(asset: asset, size: 30),
+                  ),
+                ],
               ),
             ),
             Padding(

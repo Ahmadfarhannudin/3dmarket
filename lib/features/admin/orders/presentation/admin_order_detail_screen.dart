@@ -1,6 +1,7 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:_3dmarket/core/data/invoice_pdf_generator.dart';
 import 'package:_3dmarket/core/data/license_pdf_generator.dart';
 import 'package:_3dmarket/core/data/purchase_store.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
@@ -108,6 +109,34 @@ void showAdminOrderSheet(
                     icon: const Icon(Icons.picture_as_pdf, size: 16),
                     label: const Text(
                       'Preview & Unduh Sertifikat Lisensi',
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: double.infinity,
+                  height: 40,
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      final record = PurchaseStore.instance.items.firstWhere(
+                        (p) => p.orderId == order.id,
+                        orElse: () => _mockRecord(order),
+                      );
+                      InvoicePdfGenerator.showPreview(context, record);
+                    },
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.onSurfaceVariant,
+                      side: BorderSide(
+                        color: AppColors.outline.withValues(alpha: 0.4),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    icon: const Icon(Icons.receipt_long_outlined, size: 16),
+                    label: const Text(
+                      'Preview & Unduh Faktur PDF',
                       style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                     ),
                   ),

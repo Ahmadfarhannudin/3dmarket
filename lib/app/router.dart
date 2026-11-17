@@ -1,5 +1,6 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:_3dmarket/core/data/asset_catalog.dart';
+import 'package:_3dmarket/core/data/purchase_store.dart';
 import 'package:_3dmarket/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:_3dmarket/features/auth/presentation/login_screen.dart';
 import 'package:_3dmarket/features/auth/presentation/register_screen.dart';
@@ -72,11 +73,24 @@ class AppRouter {
       paymentStatus: (_) => const PaymentStatusScreen(),
       notifications: (_) => const NotificationsScreen(),
       transactionHistory: (_) => const TransactionHistoryScreen(),
-      transactionDetail: (_) => const TransactionDetailScreen(
-        invoice: 'INV-2026-0142',
-        title: 'Cybernetic Arm Rigged',
-        total: 'Rp 149.000',
-        status: 'Lunas',
+      transactionDetail: (_) => TransactionDetailScreen(
+        record: PurchaseStore.instance.latest ??
+            PurchaseRecord(
+              orderId: 'ORD-20261110-8921',
+              licenseKey: 'PLY-COMM-8921-X9',
+              title: 'Cybernetic Arm Rigged',
+              category: 'Characters',
+              format: '.glb',
+              sizeLabel: '48 MB',
+              creator: 'Studio 3DMarket',
+              description: '',
+              modelUrl: '',
+              itemPrice: 89000,
+              serviceFee: 2000,
+              total: 91000,
+              paymentMethod: 'QRIS Instant',
+              purchasedAt: DateTime.now(),
+            ),
       ),
       admin: (_) => const AdminDashboardScreen(),
     };

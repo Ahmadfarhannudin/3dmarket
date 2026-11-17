@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
+import 'package:_3dmarket/core/navigation/main_tab.dart';
 import 'package:_3dmarket/core/data/asset_catalog.dart';
 import 'package:_3dmarket/core/utils/model_source.dart';
 
@@ -975,7 +976,7 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, AppRouter.explore),
+                  onTap: () => MainTab.open(context, MainTab.explore),
                   child: const Text(
                     'Lihat Semua',
                     style: TextStyle(
