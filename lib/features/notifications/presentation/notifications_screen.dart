@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/navigation/main_tab.dart';
 import 'package:_3dmarket/app/router.dart';
@@ -136,7 +137,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               onTap: () => setState(() => _filter = f),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 140),
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 7,
+                ),
                 decoration: BoxDecoration(
                   color: _filter == f
                       ? AppColors.primary
@@ -148,7 +152,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   style: TextStyle(
                     fontFamily: 'Public Sans',
                     fontSize: 11.5,
-                    fontWeight: _filter == f ? FontWeight.w700 : FontWeight.w500,
+                    fontWeight: _filter == f
+                        ? FontWeight.w700
+                        : FontWeight.w500,
                     color: _filter == f
                         ? AppColors.onPrimary
                         : AppColors.onSurface,
@@ -311,7 +317,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     icon: const Icon(Icons.download_outlined, size: 16),
                     label: const Text(
                       'Unduh Update',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                 ),
@@ -320,8 +329,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               SizedBox(
                 height: 38,
                 child: TextButton(
-                  onPressed: () =>
-                      Navigator.pushNamed(context, AppRouter.detail),
+                  onPressed: () => context.push(AppRouter.detail),
                   style: TextButton.styleFrom(
                     backgroundColor: AppColors.surfaceContainerLow,
                     foregroundColor: AppColors.onSurface,
@@ -405,7 +413,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   ),
                 ),
                 const TextSpan(
-                  text: ' telah aktif di vault akun Anda. Sertifikat lisensi '
+                  text:
+                      ' telah aktif di vault akun Anda. Sertifikat lisensi '
                       'kriptografis tersedia untuk diunduh.',
                 ),
               ],
@@ -431,8 +440,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
               const Spacer(),
               GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, AppRouter.transactionHistory),
+                onTap: () => context.go(AppRouter.transactionHistory),
                 child: const Row(
                   children: [
                     Text(
@@ -445,7 +453,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                         color: AppColors.primary,
                       ),
                     ),
-                    Icon(Icons.arrow_forward, size: 14, color: AppColors.primary),
+                    Icon(
+                      Icons.arrow_forward,
+                      size: 14,
+                      color: AppColors.primary,
+                    ),
                   ],
                 ),
               ),
@@ -468,7 +480,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _iconBox(Icons.auto_awesome_outlined, bg: AppColors.tertiaryFixed),
+              _iconBox(
+                Icons.auto_awesome_outlined,
+                bg: AppColors.tertiaryFixed,
+              ),
               const SizedBox(width: 12),
               const Expanded(
                 child: Column(
@@ -727,8 +742,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () =>
-                      Navigator.pushNamed(context, AppRouter.checkout),
+                  onPressed: () => context.push(AppRouter.checkout),
                   style: TextButton.styleFrom(
                     backgroundColor: AppColors.primary,
                     foregroundColor: AppColors.onPrimary,
@@ -740,7 +754,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   ),
                   child: const Text(
                     'Beli',
-                    style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                      fontSize: 11.5,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],
@@ -859,14 +876,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   }
 
   BoxDecoration _cardBox() => BoxDecoration(
-        color: AppColors.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(14),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.onSurface.withValues(alpha: 0.04),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      );
+    color: AppColors.surfaceContainerLowest,
+    borderRadius: BorderRadius.circular(14),
+    boxShadow: [
+      BoxShadow(
+        color: AppColors.onSurface.withValues(alpha: 0.04),
+        blurRadius: 8,
+        offset: const Offset(0, 2),
+      ),
+    ],
+  );
 }

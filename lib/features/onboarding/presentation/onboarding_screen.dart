@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/app/router.dart';
@@ -127,11 +128,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _goToLogin() {
-    Navigator.pushReplacementNamed(context, AppRouter.login);
+    context.go(AppRouter.login);
   }
 
   void _goToHome() {
-    Navigator.pushReplacementNamed(context, AppRouter.main);
+    context.go(AppRouter.main);
   }
 
   void _next() {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/services.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/data/invoice_pdf_generator.dart';
 import 'package:_3dmarket/core/data/license_pdf_generator.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
@@ -123,19 +125,15 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
                           child: hasModel
                               ? IgnorePointer(
                                   child: ModelViewer(
-                                    src: resolveModelSource(
-                                      record!.modelUrl,
-                                    ),
-                                    backgroundColor:
-                                        AppColors.surfaceContainer,
+                                    src: resolveModelSource(record!.modelUrl),
+                                    backgroundColor: AppColors.surfaceContainer,
                                     autoRotate: true,
                                     cameraControls: false,
                                     disableZoom: true,
                                     disablePan: true,
                                     loading: Loading.eager,
                                     debugLogging: false,
-                                    relatedCss:
-                                        'model-viewer{--poster-color:transparent;}',
+                                    relatedCss: 'model-viewer{--poster-color:transparent;}',
                                   ),
                                 )
                               : Container(
@@ -189,10 +187,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
                   ),
                 ),
                 const SizedBox(height: 14),
-                _Meta(
-                  'Nomor Pesanan',
-                  record?.orderId ?? '#ORD-202611-8921',
-                ),
+                _Meta('Nomor Pesanan', record?.orderId ?? '#ORD-202611-8921'),
                 const SizedBox(height: 8),
                 _Meta(
                   'Waktu Transaksi',
@@ -370,8 +365,8 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
                         (record?.description.trim().isNotEmpty ?? false)
                             ? record!.description.trim()
                             : 'File arsip menyertakan berkas $format ($size) '
-                                'beserta metadata teknis lengkap yang siap dipakai '
-                                'untuk proyek komersial klien maupun personal.',
+                                  'beserta metadata teknis lengkap yang siap dipakai '
+                                  'untuk proyek komersial klien maupun personal.',
                         style: const TextStyle(
                           fontSize: 12,
                           height: 1.45,
@@ -415,8 +410,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
           ),
           const SizedBox(height: 10),
           OutlinedButton.icon(
-            onPressed: () => Navigator.of(context)
-                .pushNamedAndRemoveUntil('/main', (route) => false, arguments: 2),
+            onPressed: () => context.go(AppRouter.myAssets),
             style: OutlinedButton.styleFrom(
               foregroundColor: AppColors.primary,
               backgroundColor: AppColors.surfaceContainerHigh,
@@ -437,10 +431,8 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
             children: [
               Expanded(
                 child: OutlinedButton.icon(
-                  onPressed: () => InvoicePdfGenerator.showPreview(
-                    context,
-                    _documentRecord,
-                  ),
+                  onPressed: () =>
+                      InvoicePdfGenerator.showPreview(context, _documentRecord),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.primary,
                     side: BorderSide(
@@ -454,17 +446,18 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
                   icon: const Icon(Icons.receipt_long_outlined, size: 18),
                   label: const Text(
                     'Faktur',
-                    style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
               const SizedBox(width: 10),
               Expanded(
                 child: OutlinedButton.icon(
-                  onPressed: () => LicensePdfGenerator.showPreview(
-                    context,
-                    _documentRecord,
-                  ),
+                  onPressed: () =>
+                      LicensePdfGenerator.showPreview(context, _documentRecord),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.primary,
                     side: BorderSide(
@@ -478,7 +471,10 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
                   icon: const Icon(Icons.workspace_premium_outlined, size: 18),
                   label: const Text(
                     'Sertifikat Lisensi',
-                    style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
@@ -488,10 +484,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
           const Text(
             'Kedua dokumen dapat dipreview lalu diunduh sebagai PDF.',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 11,
-              color: AppColors.onSurfaceVariant,
-            ),
+            style: TextStyle(fontSize: 11, color: AppColors.onSurfaceVariant),
           ),
         ],
       ),

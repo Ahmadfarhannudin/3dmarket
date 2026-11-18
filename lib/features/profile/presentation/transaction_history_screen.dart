@@ -1,10 +1,10 @@
-﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/data/invoice_pdf_generator.dart';
 import 'package:_3dmarket/core/data/license_pdf_generator.dart';
 import 'package:_3dmarket/core/data/purchase_store.dart';
-import 'package:_3dmarket/features/profile/presentation/transaction_detail_screen.dart';
 
 class TransactionHistoryScreen extends StatefulWidget {
   const TransactionHistoryScreen({super.key});
@@ -36,10 +36,10 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
   /// Pembelian baru muncul paling atas, diikuti transaksi contoh.
   List<_Transaction> get _all => [
-        for (final record in PurchaseStore.instance.items)
-          _Transaction.fromRecord(record),
-        ..._demoItems,
-      ];
+    for (final record in PurchaseStore.instance.items)
+      _Transaction.fromRecord(record),
+    ..._demoItems,
+  ];
 
   static const _demoItems = <_Transaction>[
     _Transaction(
@@ -49,8 +49,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
       subtitle: '1 Aset 3D (.blend, .glb)',
       payment: 'QRIS Instant',
       amount: 'Rp 91.000',
-      image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuBb7s7C6IL2oVd0AINCKPk-9nWlxjFfwBTsCP_M-wYj5WPeE_JzaVsiYP79Hd1J5vmAsiLNRT-tNBfM9gJ8j4PADasmWK5Bg2msvpmo2OcMq8dJcjPl2lF5qMVGI6dNRKoGnXIaOv3Du2fj9kjJDFazVVyCRFudnasjpsGtaDvKedUKLp1pvap_3RwjlKA-PaQkKMgj0aZkmXmzSCpG6gCmzMBB1im4s_SS8_o5k28',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBb7s7C6IL2oVd0AINCKPk-9nWlxjFfwBTsCP_M-wYj5WPeE_JzaVsiYP79Hd1J5vmAsiLNRT-tNBfM9gJ8j4PADasmWK5Bg2msvpmo2OcMq8dJcjPl2lF5qMVGI6dNRKoGnXIaOv3Du2fj9kjJDFazVVyCRFudnasjpsGtaDvKedUKLp1pvap_3RwjlKA-PaQkKMgj0aZkmXmzSCpG6gCmzMBB1im4s_SS8_o5k28',
       status: 'Berhasil',
       format: '.blend, .glb',
       category: 'Characters',
@@ -64,8 +63,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
       subtitle: 'Kompatibel Unreal & Unity',
       payment: 'BCA Virtual Account',
       amount: 'Rp 115.000',
-      image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuDyuOJgHGhC_Qnec62DPOCd437Es9tIno52Ur_c_3L8nJ1DHT57NjiPz8G_F5zJoySGD58ZpLnpAFAIxJpkLRxCFtxFreCo20BDik0qZPOcweaydYsclrdYf_S3vqxMW3iTJw3NtHv0GoYwGCloSqvjj71MjIQCCNs2BTZmSAbz_FHItPjpBmRl_NzCBHzE2Gf7bZ91Ip8FfKN9okhjd34hQIMFC-QHlNKYzPHH4Bo',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDyuOJgHGhC_Qnec62DPOCd437Es9tIno52Ur_c_3L8nJ1DHT57NjiPz8G_F5zJoySGD58ZpLnpAFAIxJpkLRxCFtxFreCo20BDik0qZPOcweaydYsclrdYf_S3vqxMW3iTJw3NtHv0GoYwGCloSqvjj71MjIQCCNs2BTZmSAbz_FHItPjpBmRl_NzCBHzE2Gf7bZ91Ip8FfKN9okhjd34hQIMFC-QHlNKYzPHH4Bo',
       status: 'Berhasil',
       format: '.fbx, .glb',
       category: 'Props',
@@ -79,8 +77,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
       subtitle: 'PBR 4K Textures Included',
       payment: 'GoPay Direct',
       amount: 'Rp 85.000',
-      image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuDAm2g3QOPA2tJKWcqMPqpLNPQFj1hVi-ZfAEiYmt7P4QiiH4Ik8urUO9N9ja4jgAjRvQ1bSCKsTgqfy8wZVgIs-cqZ5HhNjFCR8KiRt2QazJhrYBT6hrjNT--F_8tH8wVmgHjEzn5tTWF2Wozdke1Xf0QaY_YvVFkQ4UynoNZFAV1cGvWaSNdCRRZQypBsa0lb8AiYy0JWBfAp6Vcm1pDWWsC3O3hI7DK23DXtdro',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAm2g3QOPA2tJKWcqMPqpLNPQFj1hVi-ZfAEiYmt7P4QiiH4Ik8urUO9N9ja4jgAjRvQ1bSCKsTgqfy8wZVgIs-cqZ5HhNjFCR8KiRt2QazJhrYBT6hrjNT--F_8tH8wVmgHjEzn5tTWF2Wozdke1Xf0QaY_YvVFkQ4UynoNZFAV1cGvWaSNdCRRZQypBsa0lb8AiYy0JWBfAp6Vcm1pDWWsC3O3hI7DK23DXtdro',
       status: 'Berhasil',
       format: '.glb, .obj',
       category: 'Environment',
@@ -94,8 +91,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
       subtitle: 'Batas waktu: 45 menit lagi',
       payment: 'Briva / Mandiri VA',
       amount: 'Rp 65.000',
-      image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuAfzQ2SHA60z2IwK1GmuiI1JjoH1lRqTnuJj52e1uUfUFTta2Vn8DMKWN9-sU4_kZvbE32skWtoLjMng7q44LJWA0ZMK092BO-FuwZMLYH9PZw9RMBkNJmLd97KpIg2hXdYB_d5x4jW9Dr5o4nBIJGiZSkTFZDzlis4Hnf4E5NiKGZM6EofLi5KbKUgf-ntaGEYPmrLtEtrdYYKvP5iSQjlzt_5IzsuIyP41LoK18A',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfzQ2SHA60z2IwK1GmuiI1JjoH1lRqTnuJj52e1uUfUFTta2Vn8DMKWN9-sU4_kZvbE32skWtoLjMng7q44LJWA0ZMK092BO-FuwZMLYH9PZw9RMBkNJmLd97KpIg2hXdYB_d5x4jW9Dr5o4nBIJGiZSkTFZDzlis4Hnf4E5NiKGZM6EofLi5KbKUgf-ntaGEYPmrLtEtrdYYKvP5iSQjlzt_5IzsuIyP41LoK18A',
       status: 'Menunggu Pembayaran',
       format: '.glb',
       category: 'Vehicles',
@@ -105,14 +101,16 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   ];
 
   List<_Transaction> get _filtered => _all.where((item) {
-        final q = _query.toLowerCase();
-        final matchesQuery = item.title.toLowerCase().contains(q) ||
-            item.id.toLowerCase().contains(q);
-        final matchesFilter = _filter == 'Semua Status' ||
-            (_filter == 'Berhasil' && item.status == 'Berhasil') ||
-            (_filter == 'Menunggu' && item.status != 'Berhasil');
-        return matchesQuery && matchesFilter;
-      }).toList();
+    final q = _query.toLowerCase();
+    final matchesQuery =
+        item.title.toLowerCase().contains(q) ||
+        item.id.toLowerCase().contains(q);
+    final matchesFilter =
+        _filter == 'Semua Status' ||
+        (_filter == 'Berhasil' && item.status == 'Berhasil') ||
+        (_filter == 'Menunggu' && item.status != 'Berhasil');
+    return matchesQuery && matchesFilter;
+  }).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +120,13 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
         backgroundColor: AppColors.surface.withValues(alpha: 0.94),
         elevation: 0,
         leading: IconButton(
-          onPressed: () => Navigator.maybePop(context),
+          onPressed: () {
+            if (context.canPop()) {
+              context.pop();
+            } else {
+              context.go(AppRouter.profile);
+            }
+          },
           icon: const Icon(Icons.arrow_back_ios_new, size: 22),
         ),
         title: const Text(
@@ -260,7 +264,9 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                     text: '  $count',
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      color: selected ? AppColors.tertiaryFixed : AppColors.tertiary,
+                      color: selected
+                          ? AppColors.tertiaryFixed
+                          : AppColors.tertiary,
                     ),
                   ),
               ],
@@ -348,7 +354,9 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                         Icon(
                           pending ? Icons.timer_outlined : Icons.qr_code_2,
                           size: 15,
-                          color: pending ? AppColors.error : AppColors.secondary,
+                          color: pending
+                              ? AppColors.error
+                              : AppColors.secondary,
                         ),
                         const SizedBox(width: 5),
                         Flexible(
@@ -422,10 +430,8 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
               ),
               if (!pending)
                 OutlinedButton.icon(
-                  onPressed: () => InvoicePdfGenerator.showPreview(
-                    context,
-                    item.toRecord(),
-                  ),
+                  onPressed: () =>
+                      InvoicePdfGenerator.showPreview(context, item.toRecord()),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.primary,
                     side: BorderSide(
@@ -440,13 +446,15 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                   icon: const Icon(Icons.receipt_long_outlined, size: 16),
                   label: const Text(
                     'Unduh Faktur',
-                    style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 )
               else
                 TextButton.icon(
-                  onPressed: () =>
-                      Navigator.pushNamed(context, AppRouter.checkout),
+                  onPressed: () => context.push(AppRouter.checkout),
                   style: TextButton.styleFrom(
                     backgroundColor: AppColors.primary,
                     foregroundColor: AppColors.onPrimary,
@@ -532,7 +540,9 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
             width: 7,
             height: 7,
             decoration: BoxDecoration(
-              color: pending ? const Color(0xFFD17A00) : const Color(0xFF009B68),
+              color: pending
+                  ? const Color(0xFFD17A00)
+                  : const Color(0xFF009B68),
               shape: BoxShape.circle,
             ),
           ),
@@ -543,7 +553,9 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
               fontFamily: 'Public Sans',
               fontSize: 11.5,
               fontWeight: FontWeight.w500,
-              color: pending ? const Color(0xFF8A5300) : const Color(0xFF006C4A),
+              color: pending
+                  ? const Color(0xFF8A5300)
+                  : const Color(0xFF006C4A),
             ),
           ),
         ],
@@ -599,24 +611,19 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   }
 
   BoxDecoration _cardDecoration() => BoxDecoration(
-        color: AppColors.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.onSurface.withValues(alpha: 0.045),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      );
+    color: AppColors.surfaceContainerLowest,
+    borderRadius: BorderRadius.circular(12),
+    boxShadow: [
+      BoxShadow(
+        color: AppColors.onSurface.withValues(alpha: 0.045),
+        blurRadius: 8,
+        offset: const Offset(0, 2),
+      ),
+    ],
+  );
 
   void _openDetail(_Transaction item) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => TransactionDetailScreen(record: item.toRecord()),
-      ),
-    );
+    context.push(AppRouter.transactionDetail, extra: item.toRecord());
   }
 
   void _snack(String message) {
@@ -719,9 +726,8 @@ class _Transaction {
       'Nov': 11,
       'Des': 12,
     };
-    final match = RegExp(
-      r'(\d{1,2}) (\w{3}) (\d{4}), (\d{2}):(\d{2})',
-    ).firstMatch(label);
+    final match = RegExp(r'(\d{1,2}) (\w{3}) (\d{4}), (\d{2}):(\d{2})')
+        .firstMatch(label);
     if (match == null) return DateTime.now();
     return DateTime(
       int.parse(match.group(3)!),

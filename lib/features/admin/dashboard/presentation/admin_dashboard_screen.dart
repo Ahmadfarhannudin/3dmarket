@@ -1,4 +1,5 @@
 ﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
@@ -10,19 +11,44 @@ import 'package:_3dmarket/features/admin/shared/admin_store.dart';
 
 /// Cangkang panel admin: header, empat tab menu, dan navigasi bawah.
 class AdminDashboardScreen extends StatefulWidget {
-  const AdminDashboardScreen({super.key});
+  const AdminDashboardScreen({super.key, this.initialTab = 0});
+
+  /// Tab yang dibuka sesuai URL: 0 dashboard, 1 katalog, 2 pesanan,
+  /// 3 pengaturan.
+  final int initialTab;
 
   @override
   State<AdminDashboardScreen> createState() => _AdminDashboardScreenState();
 }
 
 class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
-  final AdminStore _store = AdminStore();
+  final AdminStore _store = AdminStore.instance;
+
+  static const _tabRoutes = [
+    AppRouter.admin,
+    AppRouter.adminCatalog,
+    AppRouter.adminOrders,
+    AppRouter.adminSettings,
+  ];
 
   @override
-  void dispose() {
-    _store.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    _store.tab = widget.initialTab;
+  }
+
+  @override
+  void didUpdateWidget(covariant AdminDashboardScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialTab != oldWidget.initialTab) {
+      _store.tab = widget.initialTab;
+    }
+  }
+
+  void _openTab(int index) {
+    _store.tab = index;
+    final route = _tabRoutes[index.clamp(0, _tabRoutes.length - 1)];
+    context.go(route);
   }
 
   @override
@@ -52,7 +78,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
         ),
         bottomNavigationBar: _AdminNav(
           currentIndex: _store.tab,
-          onTap: (i) => _store.tab = i,
+          onTap: _openTab,
         ),
       ),
     );
@@ -140,10 +166,7 @@ class _AdminHeader extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () => Navigator.pushNamed(
-              context,
-              AppRouter.notifications,
-            ),
+            onPressed: () => context.push(AppRouter.notifications),
             icon: Stack(
               clipBehavior: Clip.none,
               children: [

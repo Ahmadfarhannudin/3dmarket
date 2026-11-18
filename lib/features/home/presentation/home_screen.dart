@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
@@ -10,6 +11,8 @@ import 'package:_3dmarket/core/widgets/asset_card.dart';
 import 'package:_3dmarket/core/widgets/buyer_app_bar.dart';
 import 'package:_3dmarket/core/widgets/favorite_button.dart';
 import 'package:_3dmarket/app/router.dart';
+import 'package:_3dmarket/features/admin/categories/data/admin_categories_repository.dart';
+import 'package:_3dmarket/features/admin/banners/data/admin_banners_repository.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,9 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _loadCatalog();
     UploadedAssets.instance.addListener(_onUploadsChanged);
+    AdminCategories.instance.addListener(_onStoreChanged);
+    AdminBanners.instance.addListener(_onStoreChanged);
   }
 
   void _onUploadsChanged() => _loadCatalog();
+  void _onStoreChanged() => setState(() {});
 
   Future<void> _loadCatalog() async {
     final items = await AssetCatalog.load();
@@ -45,6 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     UploadedAssets.instance.removeListener(_onUploadsChanged);
+    AdminCategories.instance.removeListener(_onStoreChanged);
+    AdminBanners.instance.removeListener(_onStoreChanged);
     _scrollController.dispose();
     super.dispose();
   }
@@ -124,150 +132,141 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildPromoBanner(BuildContext context) {
-    return _HoverCard(
-      child: Container(
-        margin: const EdgeInsets.all(20),
-        height: 220,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: const DecorationImage(
-            image: NetworkImage(
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuDbRv2ogkBfctlvHj8UAfP8XaMmcCXQso8NGLdSEVf2TzBDcCGBeU1FGMKzCCi4xexkwB8MaNuAWE1SWXVMdMmUqJYOULZhDONdOxpFG5wk91n34M_xbuEO_TK39eT3zLV7QeJmmP53Jv8n47YctIAZSN6gwKZBuCqu-gPNuE6z96hab39cGlxNGaaSrb48KhPM24Ikr0Wz-oacLObbsIUPBFmIUASmYc_v6k9GTyY',
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Stack(
-          children: [
-            Container(
+    final banners = AdminBanners.instance.active;
+    if (banners.isEmpty) return const SizedBox.shrink();
+
+    return SizedBox(
+      height: 220,
+      child: PageView.builder(
+        itemCount: banners.length,
+        itemBuilder: (context, index) {
+          final banner = banners[index];
+          return _HoverCard(
+            child: Container(
+              margin: const EdgeInsets.all(20),
+              height: 220,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    AppColors.onPrimaryFixed.withValues(alpha: 0.95),
-                  ],
-                ),
+                image: banner.imageUrl != null
+                    ? DecorationImage(
+                        image: NetworkImage(banner.imageUrl!),
+                        fit: BoxFit.cover,
+                      )
+                    : null,
+                color: banner.imageUrl == null ? AppColors.primary : null,
               ),
-            ),
-            Positioned(
-              top: 14,
-              left: 14,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                decoration: BoxDecoration(
-                  color: AppColors.tertiaryFixed,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Row(
-                  children: [
-                    Icon(
-                      Icons.auto_awesome,
-                      size: 14,
-                      color: AppColors.onTertiaryFixed,
-                    ),
-                    SizedBox(width: 4),
-                    Text(
-                      'DISKON RILIS 40%',
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.onTertiaryFixed,
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          AppColors.onPrimaryFixed.withValues(alpha: 0.95),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 14,
-              left: 14,
-              right: 14,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'SPOTLIGHT KURATOR',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.primaryFixed,
-                      letterSpacing: 1.2,
-                    ),
                   ),
-                  const Text(
-                    'Cyberpunk Alleyway Scene',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const Text(
-                    'Lighting set lengkap, PBR materials 4K, dan aset modular siap pakai.',
-                    style: TextStyle(fontSize: 12, color: Colors.white70),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Row(
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
-                        textBaseline: TextBaseline.alphabetic,
+                  Positioned(
+                    top: 14,
+                    left: 14,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: AppColors.tertiaryFixed,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
                         children: [
-                          Text(
-                            'Rp 129.000',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
+                          const Icon(
+                            Icons.auto_awesome,
+                            size: 14,
+                            color: AppColors.onTertiaryFixed,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 4),
                           Text(
-                            'Rp 215.000',
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: Colors.white54,
-                              decoration: TextDecoration.lineThrough,
+                            banner.dateRange.toUpperCase(),
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.onTertiaryFixed,
                             ),
                           ),
                         ],
                       ),
-                      ElevatedButton(
-                        onPressed: () =>
-                            Navigator.pushNamed(context, AppRouter.detail),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 14,
+                    left: 14,
+                    right: 14,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'SPOTLIGHT KURATOR',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.primaryFixed,
+                            letterSpacing: 1.2,
                           ),
                         ),
-                        child: const Text('Lihat Aset'),
-                      ),
-                    ],
+                        Text(
+                          banner.title,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        if (banner.note.isNotEmpty)
+                          Text(
+                            banner.note,
+                            style: const TextStyle(fontSize: 12, color: Colors.white70),
+                          ),
+                        const SizedBox(height: 12),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              banner.target,
+                              style: const TextStyle(
+                                fontSize: 11,
+                                color: Colors.white54,
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () =>
+                                  context.push(AppRouter.detail),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.primary,
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              child: const Text('Lihat Aset'),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
 
   Widget _buildCategories(BuildContext context) {
-    final categories = [
-      'Semua',
-      'Karakter',
-      'Arsitektur',
-      'Kendaraan',
-      'Sci-Fi',
-      'Props',
-    ];
+    final categories = AdminCategories.instance.active;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -300,24 +299,36 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            itemCount: categories.length,
+            itemCount: categories.length + 1,
             itemBuilder: (context, index) {
-              final isSelected = index == 0;
+              if (index == 0) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  child: ChoiceChip(
+                    label: const Text('Semua'),
+                    selected: true,
+                    onSelected: (val) {},
+                    selectedColor: AppColors.primary,
+                    labelStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    backgroundColor: AppColors.surfaceContainerHigh,
+                  ),
+                );
+              }
+              final cat = categories[index - 1];
               return Container(
                 margin: const EdgeInsets.symmetric(horizontal: 4),
                 child: ChoiceChip(
-                  label: Text(categories[index]),
-                  selected: isSelected,
+                  label: Text(cat.name),
+                  selected: false,
                   onSelected: (val) {},
                   selectedColor: AppColors.primary,
-                  labelStyle: TextStyle(
-                    color: isSelected
-                        ? Colors.white
-                        : AppColors.onSurfaceVariant,
+                  labelStyle: const TextStyle(
+                    color: AppColors.onSurfaceVariant,
                     fontSize: 12,
-                    fontWeight: isSelected
-                        ? FontWeight.bold
-                        : FontWeight.normal,
                   ),
                   backgroundColor: AppColors.surfaceContainerHigh,
                 ),
@@ -345,11 +356,7 @@ class _HomeScreenState extends State<HomeScreen> {
             modelPath: asset.assetKey,
             category: asset.subtitle,
             asset: asset,
-            onTap: () => Navigator.pushNamed(
-              context,
-              AppRouter.detail,
-              arguments: asset,
-            ),
+            onTap: () => context.push(AppRouter.detail, extra: asset),
           ),
         )
         .toList();
@@ -535,11 +542,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final isFree = asset.isFree;
     final format = asset.format;
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(
-        context,
-        AppRouter.detail,
-        arguments: asset,
-      ),
+      onTap: () => context.push(AppRouter.detail, extra: asset),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -696,7 +699,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           ElevatedButton(
-            onPressed: () => Navigator.pushNamed(context, AppRouter.admin),
+            onPressed: () => context.push(AppRouter.admin),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.onSurface,
               foregroundColor: Colors.white,

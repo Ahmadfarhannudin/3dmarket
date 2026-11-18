@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 import 'package:_3dmarket/app/router.dart';
@@ -66,7 +67,15 @@ class _WishlistScreenState extends State<WishlistScreen> {
         backgroundColor: AppColors.surface.withValues(alpha: 0.94),
         elevation: 0,
         scrolledUnderElevation: 0.5,
-        leading: BackButton(onPressed: () => Navigator.maybePop(context)),
+        leading: BackButton(
+          onPressed: () {
+            if (context.canPop()) {
+              context.pop();
+            } else {
+              context.go(AppRouter.profile);
+            }
+          },
+        ),
         title: const Text(
           'Koleksi & Wishlist',
           style: TextStyle(
@@ -93,7 +102,11 @@ class _WishlistScreenState extends State<WishlistScreen> {
               color: AppColors.primary,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.person, size: 17, color: AppColors.onPrimary),
+            child: const Icon(
+              Icons.person,
+              size: 17,
+              color: AppColors.onPrimary,
+            ),
           ),
         ],
       ),
@@ -240,13 +253,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
           const SizedBox(height: 16),
           Row(
             children: [
-              Expanded(
-                child: _stat('${all.length} Model', 'Tersimpan'),
-              ),
+              Expanded(child: _stat('${all.length} Model', 'Tersimpan')),
               _statDivider(),
-              Expanded(
-                child: _stat('$freeCount Aset', 'Gratis'),
-              ),
+              Expanded(child: _stat('$freeCount Aset', 'Gratis')),
               _statDivider(),
               Expanded(
                 child: _stat(_compactRupiah(totalValue), 'Nilai Portofolio'),
@@ -286,10 +295,10 @@ class _WishlistScreenState extends State<WishlistScreen> {
   }
 
   Widget _statDivider() => Container(
-        width: 1,
-        height: 30,
-        color: AppColors.outline.withValues(alpha: 0.18),
-      );
+    width: 1,
+    height: 30,
+    color: AppColors.outline.withValues(alpha: 0.18),
+  );
 
   Widget _categoryChips(List<CatalogAsset> all) {
     return SingleChildScrollView(
@@ -338,9 +347,18 @@ class _WishlistScreenState extends State<WishlistScreen> {
           initialValue: _sort,
           onSelected: (value) => setState(() => _sort = value),
           itemBuilder: (context) => const [
-            PopupMenuItem(value: 'Terbaru Disimpan', child: Text('Terbaru Disimpan')),
-            PopupMenuItem(value: 'Harga Terendah', child: Text('Harga Terendah')),
-            PopupMenuItem(value: 'Harga Tertinggi', child: Text('Harga Tertinggi')),
+            PopupMenuItem(
+              value: 'Terbaru Disimpan',
+              child: Text('Terbaru Disimpan'),
+            ),
+            PopupMenuItem(
+              value: 'Harga Terendah',
+              child: Text('Harga Terendah'),
+            ),
+            PopupMenuItem(
+              value: 'Harga Tertinggi',
+              child: Text('Harga Tertinggi'),
+            ),
           ],
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
@@ -488,11 +506,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               OutlinedButton(
-                onPressed: () => Navigator.pushNamed(
-                  context,
-                  AppRouter.detail,
-                  arguments: asset,
-                ),
+                onPressed: () => context.push(AppRouter.detail, extra: asset),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppColors.primary,
                   backgroundColor: AppColors.surfaceContainerLow,
@@ -512,11 +526,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
               ),
               const SizedBox(width: 8),
               ElevatedButton(
-                onPressed: () => Navigator.pushNamed(
-                  context,
-                  AppRouter.detail,
-                  arguments: asset,
-                ),
+                onPressed: () => context.push(AppRouter.detail, extra: asset),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,
                   foregroundColor: AppColors.onPrimary,
@@ -568,19 +578,13 @@ class _WishlistScreenState extends State<WishlistScreen> {
             else
               Container(
                 color: AppColors.surfaceContainerHigh,
-                child: const Icon(
-                  Icons.view_in_ar,
-                  color: AppColors.outline,
-                ),
+                child: const Icon(Icons.view_in_ar, color: AppColors.outline),
               ),
             Positioned(
               left: 5,
               top: 5,
               child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 5,
-                  vertical: 2,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                 decoration: BoxDecoration(
                   color: AppColors.primary.withValues(alpha: 0.9),
                   borderRadius: BorderRadius.circular(3),
@@ -741,7 +745,14 @@ class _WishlistScreenState extends State<WishlistScreen> {
 
   void _snack(String message) {
     ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(SnackBar(content: Text(message)));
+      ..removeCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(message),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          duration: const Duration(milliseconds: 1400),
+        ),
+      );
   }
 }

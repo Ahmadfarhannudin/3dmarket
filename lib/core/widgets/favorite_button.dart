@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
@@ -34,30 +35,51 @@ class FavoriteButton extends StatelessWidget {
           child: InkWell(
             customBorder: const CircleBorder(),
             onTap: () {
+              final messenger = ScaffoldMessenger.of(context);
               final added = WishlistStore.instance.toggle(asset);
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
+              messenger
+                ..removeCurrentSnackBar()
                 ..showSnackBar(
                   SnackBar(
-                    content: Text(
-                      added
-                          ? '${asset.title} ditambahkan ke wishlist.'
-                          : '${asset.title} dihapus dari wishlist.',
-                    ),
-                    duration: Duration(milliseconds: added ? 3000 : 1600),
-                    action: added
-                        ? SnackBarAction(
-                            label: 'Lihat Wishlist',
-                            onPressed: () {
+                    // Aksi "Lihat" ditempatkan di dalam konten, bukan memakai
+                    // SnackBarAction. SnackBar dengan action tidak auto-close
+                    // saat accessible navigation aktif, sehingga popup bisa
+                    // menempel sampai tombolnya ditekan.
+                    content: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: added
+                          ? () {
+                              messenger.removeCurrentSnackBar();
                               if (context.mounted) {
-                                Navigator.pushNamed(
-                                  context,
-                                  AppRouter.wishlist,
-                                );
+                                context.go(AppRouter.wishlist);
                               }
-                            },
-                          )
-                        : null,
+                            }
+                          : null,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              added
+                                  ? '${asset.title} ditambahkan ke wishlist.'
+                                  : '${asset.title} dihapus dari wishlist.',
+                            ),
+                          ),
+                          if (added) ...[
+                            const SizedBox(width: 8),
+                            const Text(
+                              'Lihat',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                    behavior: SnackBarBehavior.floating,
+                    margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                    duration: Duration(seconds: added ? 5 : 2),
                   ),
                 );
             },

@@ -1,5 +1,7 @@
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/data/asset_catalog.dart';
 import 'package:_3dmarket/core/data/purchase_store.dart';
@@ -27,6 +29,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     _ => 'Kartu Kredit / Debit Online',
   };
 
+  String get _totalLabel {
+    final itemPrice = priceValue(widget.asset?.price ?? '');
+    if (itemPrice == 0) return 'Gratis';
+    return formatRupiah(itemPrice + PurchaseStore.serviceFee);
+  }
+
   Future<void> _pay() async {
     setState(() => _processing = true);
     await Future<void>.delayed(const Duration(milliseconds: 1200));
@@ -37,7 +45,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       asset: widget.asset,
       paymentMethod: _methodLabel,
     );
-    Navigator.of(context).pushNamed('/payment-status');
+    context.push(AppRouter.paymentStatus);
   }
 
   @override
@@ -68,7 +76,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           SizedBox(width: 12),
         ],
       ),
-      bottomNavigationBar: _PayBar(processing: _processing, onPay: _pay),
+      bottomNavigationBar: _PayBar(
+        processing: _processing,
+        onPay: _pay,
+        totalLabel: _totalLabel,
+      ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
         children: [
@@ -369,8 +381,7 @@ class _OrderCard extends StatelessWidget {
                       runSpacing: 4,
                       children: [
                         _Chip(format),
-                        if (asset?.sizeLabel != null)
-                          _Chip(asset!.sizeLabel),
+                        if (asset?.sizeLabel != null) _Chip(asset!.sizeLabel),
                         _Chip('${asset?.creator ?? 'Studio 3DMarket'}'),
                       ],
                     ),
@@ -660,9 +671,14 @@ class _MethodCard extends StatelessWidget {
 }
 
 class _PayBar extends StatelessWidget {
-  const _PayBar({required this.processing, required this.onPay});
+  const _PayBar({
+    required this.processing,
+    required this.onPay,
+    required this.totalLabel,
+  });
   final bool processing;
   final VoidCallback onPay;
+  final String totalLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -691,16 +707,21 @@ class _PayBar extends StatelessWidget {
                       color: AppColors.onSurfaceVariant,
                     ),
                   ),
-                  Text(
-                    'Rp 91.000',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.onSurface,
-                      height: 1.1,
-                    ),
-                  ),
                 ],
+              ),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(
+                  totalLabel,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.onSurface,
+                    height: 1.1,
+                  ),
+                ),
               ),
               const SizedBox(width: 16),
               Expanded(

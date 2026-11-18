@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 
 import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
@@ -272,11 +273,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     modelPath: asset.assetKey,
                     category: asset.subtitle,
                     asset: asset,
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      AppRouter.detail,
-                      arguments: asset,
-                    ),
+                    onTap: () => context.push(AppRouter.detail, extra: asset),
                   ),
                 );
               },

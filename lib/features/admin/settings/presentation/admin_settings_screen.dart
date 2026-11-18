@@ -1,11 +1,10 @@
-﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 
 import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
-import 'package:_3dmarket/features/admin/banners/presentation/admin_banners_screen.dart';
-import 'package:_3dmarket/features/admin/categories/presentation/admin_categories_screen.dart';
 import 'package:_3dmarket/features/admin/shared/admin_widgets.dart';
-import 'package:_3dmarket/features/admin/users/presentation/admin_users_screen.dart';
+import 'package:_3dmarket/features/auth/domain/auth_session.dart';
 
 /// Tab pengaturan operasional studio admin.
 class AdminSettingsScreen extends StatefulWidget {
@@ -26,95 +25,93 @@ class _AdminSettingsScreenState extends State<AdminSettingsScreen> {
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
       children: [
-        adminTabTitle('Pengaturan Studio', 'Konfigurasi operasional', 'SETTINGS'),
+        adminTabTitle(
+          'Pengaturan Studio',
+          'Konfigurasi operasional',
+          'SETTINGS',
+        ),
         const SizedBox(height: 16),
-        _settingsSection(
-          'Operasional',
-          [
-            AdminSettingsRowData(
-              icon: Icons.group_outlined,
-              title: 'Kelola Pengguna & Kreator',
-              subtitle: '1.420 akun â€¢ 12 permohonan baru',
-              onTap: () => AdminUsersScreen.showSheet(context),
+        _settingsSection('Operasional', [
+          AdminSettingsRowData(
+            icon: Icons.group_outlined,
+            title: 'Kelola Pengguna & Kreator',
+            subtitle: '1.420 akun â€¢ 12 permohonan baru',
+            onTap: () => context.push(AppRouter.adminUsers),
+          ),
+          AdminSettingsRowData(
+            icon: Icons.category_outlined,
+            title: 'Kelola Kategori & Taksonomi',
+            subtitle: '8 kategori aktif',
+            onTap: () => context.push(AppRouter.adminCategories),
+          ),
+          AdminSettingsRowData(
+            icon: Icons.view_carousel_outlined,
+            title: 'Kelola Banner & Promosi',
+            subtitle: '3 banner aktif',
+            onTap: () => context.push(AppRouter.adminBanners),
+          ),
+        ]),
+        _settingsSection('Penyimpanan & Validasi', [
+          AdminSettingsRowData(
+            icon: Icons.cloud_outlined,
+            title: 'Penyimpanan Berkas 3D',
+            subtitle: '248,5 GB dari 1 TB',
+            onTap: () => showAdminInfoSheet(context, 'Penyimpanan Berkas 3D', [
+              'Terpakai: 248,5 GB',
+              'Sisa: 775,5 GB',
+              'Model: 3.842 file',
+            ]),
+          ),
+          AdminSettingsRowData(
+            icon: Icons.verified_user_outlined,
+            title: 'Validasi Mesh Otomatis',
+            subtitle: 'Cek N-Gons dan non-manifold saat upload',
+            trailing: Switch(
+              value: _meshValidation,
+              activeThumbColor: AppColors.onPrimary,
+              activeTrackColor: AppColors.primary,
+              onChanged: (v) => setState(() => _meshValidation = v),
             ),
-            AdminSettingsRowData(
-              icon: Icons.category_outlined,
-              title: 'Kelola Kategori & Taksonomi',
-              subtitle: '8 kategori aktif',
-              onTap: () => AdminCategoriesScreen.showSheet(context),
+          ),
+          AdminSettingsRowData(
+            icon: Icons.sync,
+            title: 'Auto-Sync Lisensi',
+            subtitle: 'Sinkronkan status transaksi real-time',
+            trailing: Switch(
+              value: _autoSync,
+              activeThumbColor: AppColors.onPrimary,
+              activeTrackColor: AppColors.primary,
+              onChanged: (v) => setState(() => _autoSync = v),
             ),
-            AdminSettingsRowData(
-              icon: Icons.view_carousel_outlined,
-              title: 'Kelola Banner & Promosi',
-              subtitle: '3 banner aktif',
-              onTap: () => AdminBannersScreen.showSheet(context),
+          ),
+          AdminSettingsRowData(
+            icon: Icons.construction_outlined,
+            title: 'Mode Maintenance',
+            subtitle: 'Sembunyikan katalog dari pembeli',
+            trailing: Switch(
+              value: _maintenance,
+              activeThumbColor: AppColors.onPrimary,
+              activeTrackColor: AppColors.error,
+              onChanged: (v) {
+                setState(() => _maintenance = v);
+                adminSnack(
+                  context,
+                  v
+                      ? 'Mode maintenance aktif. Katalog disembunyikan.'
+                      : 'Mode maintenance dimatikan.',
+                );
+              },
             ),
-          ],
-        ),
-        _settingsSection(
-          'Penyimpanan & Validasi',
-          [
-            AdminSettingsRowData(
-              icon: Icons.cloud_outlined,
-              title: 'Penyimpanan Berkas 3D',
-              subtitle: '248,5 GB dari 1 TB',
-              onTap: () => showAdminInfoSheet(
-                context,
-                'Penyimpanan Berkas 3D',
-                ['Terpakai: 248,5 GB', 'Sisa: 775,5 GB', 'Model: 3.842 file'],
-              ),
-            ),
-            AdminSettingsRowData(
-              icon: Icons.verified_user_outlined,
-              title: 'Validasi Mesh Otomatis',
-              subtitle: 'Cek N-Gons dan non-manifold saat upload',
-              trailing: Switch(
-                value: _meshValidation,
-                activeThumbColor: AppColors.onPrimary,
-                activeTrackColor: AppColors.primary,
-                onChanged: (v) => setState(() => _meshValidation = v),
-              ),
-            ),
-            AdminSettingsRowData(
-              icon: Icons.sync,
-              title: 'Auto-Sync Lisensi',
-              subtitle: 'Sinkronkan status transaksi real-time',
-              trailing: Switch(
-                value: _autoSync,
-                activeThumbColor: AppColors.onPrimary,
-                activeTrackColor: AppColors.primary,
-                onChanged: (v) => setState(() => _autoSync = v),
-              ),
-            ),
-            AdminSettingsRowData(
-              icon: Icons.construction_outlined,
-              title: 'Mode Maintenance',
-              subtitle: 'Sembunyikan katalog dari pembeli',
-              trailing: Switch(
-                value: _maintenance,
-                activeThumbColor: AppColors.onPrimary,
-                activeTrackColor: AppColors.error,
-                onChanged: (v) {
-                  setState(() => _maintenance = v);
-                  adminSnack(context, 
-                    v
-                        ? 'Mode maintenance aktif. Katalog disembunyikan.'
-                        : 'Mode maintenance dimatikan.',
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+          ),
+        ]),
         const SizedBox(height: 16),
         SizedBox(
           height: 48,
           child: TextButton.icon(
-            onPressed: () => Navigator.pushNamedAndRemoveUntil(
-              context,
-              AppRouter.login,
-              (_) => false,
-            ),
+            onPressed: () {
+              AuthSession.instance.signOut();
+              context.go(AppRouter.login);
+            },
             style: TextButton.styleFrom(
               backgroundColor: AppColors.errorContainer.withValues(alpha: 0.40),
               foregroundColor: AppColors.error,
@@ -263,6 +260,3 @@ class AdminSettingsRow extends StatelessWidget {
     );
   }
 }
-
-
-

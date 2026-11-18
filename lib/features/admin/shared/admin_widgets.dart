@@ -632,6 +632,155 @@ class AdminToggleSwitch extends StatelessWidget {
   }
 }
 
+/// Cangkang halaman admin mandiri (bukan tab): header dengan tombol kembali,
+/// judul, menu, dan avatar — mengikuti layar Stitch "Kelola ...".
+class AdminPageScaffold extends StatelessWidget {
+  const AdminPageScaffold({
+    super.key,
+    required this.title,
+    required this.children,
+    this.bottomBar,
+  });
+
+  final String title;
+  final List<Widget> children;
+  final Widget? bottomBar;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: SafeArea(
+        bottom: false,
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(4, 6, 12, 6),
+              decoration: BoxDecoration(
+                color: AppColors.surface.withValues(alpha: 0.94),
+                border: Border(
+                  bottom: BorderSide(
+                    color: AppColors.outline.withValues(alpha: 0.10),
+                  ),
+                ),
+              ),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () => Navigator.maybePop(context),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      size: 21,
+                      color: AppColors.onSurface,
+                    ),
+                    tooltip: 'Kembali',
+                  ),
+                  Expanded(
+                    child: Text(
+                      title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontFamily: 'Noto Serif',
+                        fontVariations: [FontVariation('wght', 600)],
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: -0.2,
+                        color: AppColors.onSurface,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => showAdminInfoSheet(context, title, [
+                      'Panel Studio Admin _3D MARKET',
+                      'Perubahan tersimpan selama sesi berjalan.',
+                    ]),
+                    icon: const Icon(
+                      Icons.more_vert,
+                      size: 21,
+                      color: AppColors.onSurfaceVariant,
+                    ),
+                    tooltip: 'Menu halaman',
+                  ),
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: const BoxDecoration(
+                      color: AppColors.primary,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.person,
+                      size: 17,
+                      color: AppColors.onPrimary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.fromLTRB(16, 14, 16, 28),
+                children: children,
+              ),
+            ),
+            if (bottomBar != null) bottomBar!,
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Label status kecil dengan latar dan warna khusus.
+class AdminBadge extends StatelessWidget {
+  const AdminBadge({
+    super.key,
+    required this.label,
+    this.background = AppColors.surfaceContainerHigh,
+    this.foreground = AppColors.onSurfaceVariant,
+    this.icon,
+    this.uppercase = false,
+  });
+
+  final String label;
+  final Color background;
+  final Color foreground;
+  final IconData? icon;
+  final bool uppercase;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      decoration: BoxDecoration(
+        color: background,
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: 11, color: foreground),
+            const SizedBox(width: 4),
+          ],
+          Text(
+            uppercase ? label.toUpperCase() : label,
+            style: TextStyle(
+              fontFamily: 'Public Sans',
+              fontVariations: const [FontVariation('wght', 600)],
+              fontSize: 9.5,
+              fontWeight: FontWeight.w600,
+              letterSpacing: uppercase ? 0.8 : 0,
+              color: foreground,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 /// Bottom sheet informasi ringkas untuk sub-menu pengaturan studio.
 void showAdminInfoSheet(
   BuildContext context,

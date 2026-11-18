@@ -1,7 +1,9 @@
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/widgets/buyer_app_bar.dart';
 import 'package:_3dmarket/app/router.dart';
+import 'package:_3dmarket/features/auth/domain/auth_session.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -271,8 +273,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: 'Riwayat Transaksi',
           subtitle: 'Faktur & tanda terima digital',
           trailing: const _Chip('6 Pesanan'),
-          onTap: () =>
-              Navigator.pushNamed(context, AppRouter.transactionHistory),
+          onTap: () => context.go(AppRouter.profileTransactionHistory),
         ),
         _MenuRow(
           icon: Icons.update,
@@ -280,7 +281,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           subtitle: 'Pembaruan file mesh .blend',
           highlighted: true,
           trailing: const _Chip('3 Baru', emphasized: true),
-          onTap: () => Navigator.pushNamed(context, AppRouter.notifications),
+          onTap: () => context.push(AppRouter.notifications),
         ),
         _MenuRow(
           icon: Icons.bookmark,
@@ -296,7 +297,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               color: AppColors.secondary,
             ),
           ),
-          onTap: () => Navigator.pushNamed(context, AppRouter.wishlist),
+          onTap: () => context.go(AppRouter.profileWishlist),
         ),
       ],
     );
@@ -425,11 +426,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: SizedBox(
         height: 48,
         child: TextButton.icon(
-          onPressed: () => Navigator.pushNamedAndRemoveUntil(
-            context,
-            AppRouter.login,
-            (_) => false,
-          ),
+          onPressed: () {
+            AuthSession.instance.signOut();
+            context.go(AppRouter.login);
+          },
           style: TextButton.styleFrom(
             backgroundColor: AppColors.errorContainer.withValues(alpha: 0.40),
             foregroundColor: AppColors.error,
@@ -631,10 +631,7 @@ class _MenuRow extends StatelessWidget {
                   ],
                 ),
               ),
-              if (trailing != null) ...[
-                const SizedBox(width: 8),
-                trailing!,
-              ],
+              if (trailing != null) ...[const SizedBox(width: 8), trailing!],
               if (showChevron) ...[
                 const SizedBox(width: 6),
                 const Icon(

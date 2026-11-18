@@ -11,12 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: '3DMARKET',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
-      initialRoute: AppRouter.onboarding,
-      onGenerateRoute: AppRouter.onGenerate,
+      routerConfig: router,
     );
   }
 }

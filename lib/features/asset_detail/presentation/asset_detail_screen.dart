@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 import 'package:_3dmarket/app/router.dart';
@@ -6,6 +7,7 @@ import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/navigation/main_tab.dart';
 import 'package:_3dmarket/core/data/asset_catalog.dart';
 import 'package:_3dmarket/core/utils/model_source.dart';
+import 'package:_3dmarket/features/wishlist/domain/wishlist_state.dart';
 
 class AssetDetailScreen extends StatefulWidget {
   const AssetDetailScreen({super.key, this.asset});
@@ -45,25 +47,35 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
     super.dispose();
   }
 
-  bool _saved = false;
-
-  void _toast(String message) {
+  void _toast(
+    String message, {
+    Duration duration = const Duration(seconds: 2),
+  }) {
     ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
+      ..removeCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
           content: Text(message),
           behavior: SnackBarBehavior.floating,
-          duration: const Duration(milliseconds: 1600),
+          margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          duration: duration,
         ),
       );
   }
 
-  void _buy() => Navigator.pushNamed(
-    context,
-    AppRouter.checkout,
-    arguments: _asset,
-  );
+  void _toggleWishlist() {
+    final asset = _asset;
+    if (asset == null) return;
+    final added = WishlistStore.instance.toggle(asset);
+    _toast(
+      added
+          ? '${asset.title} ditambahkan ke wishlist.'
+          : '${asset.title} dihapus dari wishlist.',
+      duration: Duration(seconds: added ? 5 : 2),
+    );
+  }
+
+  void _buy() => context.push(AppRouter.checkout, extra: _asset);
 
   @override
   Widget build(BuildContext context) {
@@ -129,11 +141,7 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
               shape: BoxShape.circle,
               border: Border.all(color: AppColors.surfaceContainerHigh),
             ),
-            child: const Icon(
-              Icons.person,
-              size: 16,
-              color: AppColors.primary,
-            ),
+            child: const Icon(Icons.person, size: 16, color: AppColors.primary),
           ),
         ],
       ),
@@ -220,10 +228,7 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
               top: 14,
               right: 14,
               child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 9,
-                  vertical: 4,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
                 decoration: BoxDecoration(
                   color: AppColors.onSurface.withValues(alpha: 0.72),
                   borderRadius: BorderRadius.circular(999),
@@ -317,10 +322,7 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
         color: AppColors.surfaceContainerLowest.withValues(alpha: 0.86),
         borderRadius: BorderRadius.circular(999),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 6,
-          ),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 6),
         ],
       ),
       child: child,
@@ -415,10 +417,16 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
                   ],
                 ),
               ),
-              _badge('Blender 4.0+', AppColors.secondaryContainer,
-                  AppColors.onSecondaryContainer),
-              _badge('Rigify IK/FK', AppColors.surfaceContainerHigh,
-                  AppColors.onSurfaceVariant),
+              _badge(
+                'Blender 4.0+',
+                AppColors.secondaryContainer,
+                AppColors.onSecondaryContainer,
+              ),
+              _badge(
+                'Rigify IK/FK',
+                AppColors.surfaceContainerHigh,
+                AppColors.onSurfaceVariant,
+              ),
             ],
           ),
           const SizedBox(height: 8),
@@ -598,10 +606,10 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
             (_asset?.description.trim().isNotEmpty ?? false)
                 ? _asset!.description.trim()
                 : 'Dirancang dengan presisi mekanis tingkat tinggi, aset cybernetic '
-                    'prostetik ini menggabungkan struktur anatomi lengan manusia dengan '
-                    'sambungan hidrolik industri sci-fi. Topologi model sepenuhnya '
-                    'terdiri atas quad bersih tanpa n-gon, optimal untuk deformasi '
-                    'ekstrem saat animasi gerak tinggi.',
+                      'prostetik ini menggabungkan struktur anatomi lengan manusia dengan '
+                      'sambungan hidrolik industri sci-fi. Topologi model sepenuhnya '
+                      'terdiri atas quad bersih tanpa n-gon, optimal untuk deformasi '
+                      'ekstrem saat animasi gerak tinggi.',
             style: _bodyMuted,
           ),
           const SizedBox(height: 10),
@@ -609,7 +617,8 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
             TextSpan(
               children: [
                 const TextSpan(
-                  text: 'Sistem kontrol rig telah disesuaikan dengan arsitektur ',
+                  text:
+                      'Sistem kontrol rig telah disesuaikan dengan arsitektur ',
                 ),
                 TextSpan(
                   text: 'Blender Rigify',
@@ -619,7 +628,8 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
                   ),
                 ),
                 const TextSpan(
-                  text: ' terintegrasi; lengkap dengan switch IK/FK instan pada '
+                  text:
+                      ' terintegrasi; lengkap dengan switch IK/FK instan pada '
                       'siku dan jemari, master driver untuk pergerakan lempeng '
                       'karpal, serta atribut shader procedural yang memungkinkan '
                       'penyesuaian intensitas aus cat dan saturasi emisi neon.',
@@ -654,8 +664,7 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
                         disablePan: true,
                         loading: Loading.eager,
                         debugLogging: false,
-                        relatedCss:
-                            'model-viewer{--poster-color:transparent;}',
+                        relatedCss: 'model-viewer{--poster-color:transparent;}',
                       ),
                     ),
               title: asset?.fileName ?? 'File Model',
@@ -698,7 +707,8 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
             aspectRatio: 4 / 3,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: preview ??
+              child:
+                  preview ??
                   Container(
                     color: AppColors.surfaceContainer,
                     child: const Icon(
@@ -1007,8 +1017,10 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
                     event.buttons == kPrimaryButton) {
                   final max = _similarScrollController.position.maxScrollExtent;
                   _similarScrollController.jumpTo(
-                    (scrollStart - (event.position.dx - pointerStart))
-                        .clamp(0.0, max),
+                    (scrollStart - (event.position.dx - pointerStart)).clamp(
+                      0.0,
+                      max,
+                    ),
                   );
                 }
               },
@@ -1021,9 +1033,8 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   itemCount: items.length,
                   separatorBuilder: (_, _) => const SizedBox(width: 12),
-                  itemBuilder: (context, i) => _HoverCard(
-                    child: _similarCard(items[i], i),
-                  ),
+                  itemBuilder: (context, i) =>
+                      _HoverCard(child: _similarCard(items[i], i)),
                 ),
               ),
             ),
@@ -1233,30 +1244,29 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
                 ],
               ),
               const SizedBox(width: 10),
-              GestureDetector(
-                onTap: () {
-                  setState(() => _saved = !_saved);
-                  _toast(
-                    _saved
-                        ? 'Aset ditambahkan ke wishlist.'
-                        : 'Aset dihapus dari wishlist.',
+              AnimatedBuilder(
+                animation: WishlistStore.instance,
+                builder: (context, _) {
+                  final saved =
+                      _asset != null &&
+                      WishlistStore.instance.contains(_asset!);
+                  return GestureDetector(
+                    onTap: _toggleWishlist,
+                    child: Container(
+                      width: 42,
+                      height: 42,
+                      decoration: const BoxDecoration(
+                        color: AppColors.surfaceContainerHigh,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        saved ? Icons.favorite : Icons.favorite_border,
+                        size: 19,
+                        color: saved ? AppColors.error : AppColors.onSurface,
+                      ),
+                    ),
                   );
                 },
-                child: Container(
-                  width: 42,
-                  height: 42,
-                  decoration: const BoxDecoration(
-                    color: AppColors.surfaceContainerHigh,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    _saved ? Icons.favorite : Icons.favorite_border,
-                    size: 19,
-                    color: _saved
-                        ? AppColors.error
-                        : AppColors.onSurface,
-                  ),
-                ),
               ),
               const SizedBox(width: 8),
               Expanded(
@@ -1373,6 +1383,3 @@ class _HoverCardState extends State<_HoverCard> {
     );
   }
 }
-
-
-

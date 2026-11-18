@@ -1,5 +1,7 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/features/admin/catalog/data/admin_catalog_repository.dart';
 import 'package:_3dmarket/features/admin/catalog/presentation/asset_detail_sheet.dart';
@@ -46,10 +48,7 @@ class _DashboardTabState extends State<DashboardTab> {
       children: [
         Row(
           children: [
-            const AdminPill(
-              label: 'Panel Kurator & Pusat Analitik',
-              dot: true,
-            ),
+            const AdminPill(label: 'Panel Kurator & Pusat Analitik', dot: true),
             const SizedBox(width: 8),
             const Text(
               'v4.2 Sync',
@@ -98,7 +97,8 @@ class _DashboardTabState extends State<DashboardTab> {
               borderRadius: BorderRadius.circular(8),
               child: InkWell(
                 borderRadius: BorderRadius.circular(8),
-                onTap: () => adminSnack(context, 
+                onTap: () => adminSnack(
+                  context,
                   'Laporan $_period diekspor sebagai CSV ke folder Download.',
                 ),
                 child: const Padding(
@@ -159,7 +159,10 @@ class _DashboardTabState extends State<DashboardTab> {
                     const SizedBox(width: 4),
                     const Text(
                       'bln lalu',
-                      style: TextStyle(fontSize: 10, color: AppColors.secondary),
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: AppColors.secondary,
+                      ),
                     ),
                   ],
                 ),
@@ -276,7 +279,7 @@ class _DashboardTabState extends State<DashboardTab> {
           overline: 'Katalog Unggulan',
           title: 'Aset Terlaris',
           trailing: 'Lihat Semua',
-          onTrailing: () => widget.store.tab = 1,
+          onTrailing: () => context.go(AppRouter.adminCatalog),
         ),
         const SizedBox(height: 10),
         for (var i = 0; i < _topAssets.length; i++) ...[
@@ -597,13 +600,19 @@ class _DashboardTabState extends State<DashboardTab> {
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        onTap: () => showAdminAssetSheet(context, asset, onManage: () => widget.store.tab = 1),
+        onTap: () => showAdminAssetSheet(
+          context,
+          asset,
+          onManage: () => context.go(AppRouter.adminCatalog),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
               AdminAssetThumb(
-                imageUrl: index >= 0 ? adminAssetImages[index % adminAssetImages.length] : null,
+                imageUrl: index >= 0
+                    ? adminAssetImages[index % adminAssetImages.length]
+                    : null,
                 rank: rank,
                 rankHighlight: rank == 1,
               ),
@@ -860,7 +869,7 @@ class _DashboardTabState extends State<DashboardTab> {
                       width: 40,
                       height: 40,
                       child: TextButton(
-                        onPressed: () => widget.store.tab = 3,
+                        onPressed: () => context.go(AppRouter.adminSettings),
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.white.withValues(alpha: 0.10),
                           foregroundColor: AppColors.onPrimary,
@@ -883,8 +892,4 @@ class _DashboardTabState extends State<DashboardTab> {
   }
 
   /* -------------------------------- Katalog ------------------------------- */
-
 }
-
-
-

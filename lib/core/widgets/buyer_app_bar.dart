@@ -1,4 +1,5 @@
-﻿import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter/material.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/navigation/main_tab.dart';
 import 'package:_3dmarket/app/router.dart';
@@ -104,7 +105,7 @@ class BuyerAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           tooltip: 'Notifikasi',
-          onPressed: () => Navigator.pushNamed(context, AppRouter.notifications),
+          onPressed: () => context.push(AppRouter.notifications),
           icon: const Icon(
             Icons.notifications_none,
             size: 22,

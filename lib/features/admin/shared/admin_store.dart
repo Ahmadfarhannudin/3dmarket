@@ -6,14 +6,17 @@ import 'package:_3dmarket/features/admin/orders/data/admin_orders_repository.dar
 
 /// Sumber data bersama untuk seluruh layar admin.
 ///
-/// Menyimpan tab aktif, katalog aset, dan pesanan agar perubahan di satu tab
-/// (mis. publikasi aset atau pelunasan pesanan) langsung tercermin di tab lain.
+/// Singleton agar data tetap tersinkron meskipun admin dashboard
+/// ditutup/dibuka kembali. Semua perubahan (aset, pesanan) tercermin
+/// real-time di seluruh tab admin.
 class AdminStore extends ChangeNotifier {
-  AdminStore()
+  AdminStore._()
       : assets = [...demoAdminAssets],
         orders = [...demoAdminOrders] {
     PurchaseStore.instance.addListener(_syncPurchasesToOrders);
   }
+
+  static final AdminStore instance = AdminStore._();
 
   @override
   void dispose() {

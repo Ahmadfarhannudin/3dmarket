@@ -1,7 +1,9 @@
-﻿import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
+import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/data/uploaded_assets.dart';
 import 'package:_3dmarket/core/utils/blob_url.dart';
@@ -16,10 +18,8 @@ Future<void> openUploadAssetScreen(
   AdminStore store, {
   AdminAsset? asset,
 }) async {
-  final result = await Navigator.push<UploadResult>(
-    context,
-    MaterialPageRoute(builder: (_) => UploadAssetScreen(asset: asset)),
-  );
+  final target = asset == null ? AppRouter.adminUpload : AppRouter.adminEdit;
+  final result = await context.push<UploadResult>(target, extra: asset);
   if (result == null || !context.mounted) return;
 
   if (result.deleted) {
@@ -29,6 +29,8 @@ Future<void> openUploadAssetScreen(
       adminSnack(context, '${asset.title} dihapus dari katalog.');
     }
     store.tab = 1;
+    adminSnack(context, 'Katalog diperbarui.');
+    context.go(AppRouter.adminCatalog);
     return;
   }
 
@@ -50,6 +52,7 @@ Future<void> openUploadAssetScreen(
         ? '${updated.title} ditambahkan ke katalog.'
         : '${updated.title} diperbarui.',
   );
+  context.go(AppRouter.adminCatalog);
 }
 
 /// Halaman formulir unggah/edit model 3D pada panel admin.
@@ -64,10 +67,7 @@ class UploadAssetScreen extends StatefulWidget {
 
 class UploadResult {
   const UploadResult.saved(this.asset, {this.uploaded}) : deleted = false;
-  const UploadResult.deleted()
-      : asset = null,
-        uploaded = null,
-        deleted = true;
+  const UploadResult.deleted() : asset = null, uploaded = null, deleted = true;
 
   final AdminAsset? asset;
 
@@ -125,7 +125,7 @@ class _UploadAssetScreenState extends State<UploadAssetScreen> {
       text: asset == null
           ? ''
           : '${asset.title} siap pakai untuk cinematic maupun game engine. '
-              'Topologi bersih, UV unwrapped, dan tekstur PBR resolusi tinggi.',
+                'Topologi bersih, UV unwrapped, dan tekstur PBR resolusi tinggi.',
     );
     _publish = asset?.active ?? false;
     _format = asset?.format ?? '.glb';
@@ -149,9 +149,9 @@ class _UploadAssetScreenState extends State<UploadAssetScreen> {
   }
 
   void _snack(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
-
 
   Future<void> _pickModel() async {
     final result = await FilePicker.platform.pickFiles(
@@ -259,7 +259,10 @@ class _UploadAssetScreenState extends State<UploadAssetScreen> {
     final asset = _buildAsset(publish: publish);
     Navigator.pop(
       context,
-      UploadResult.saved(asset, uploaded: _buildUploaded(asset, publish: publish)),
+      UploadResult.saved(
+        asset,
+        uploaded: _buildUploaded(asset, publish: publish),
+      ),
     );
   }
 
@@ -282,7 +285,10 @@ class _UploadAssetScreenState extends State<UploadAssetScreen> {
               Navigator.pop(dialogContext);
               Navigator.pop(context, const UploadResult.deleted());
             },
-            child: const Text('Hapus', style: TextStyle(color: AppColors.error)),
+            child: const Text(
+              'Hapus',
+              style: TextStyle(color: AppColors.error),
+            ),
           ),
         ],
       ),
@@ -898,11 +904,7 @@ class _UploadAssetScreenState extends State<UploadAssetScreen> {
             runSpacing: 8,
             children: [
               for (final f in const ['.glb'])
-                _CheckPill(
-                  label: f,
-                  checked: true,
-                  onTap: () {},
-                ),
+                _CheckPill(label: f, checked: true, onTap: () {}),
             ],
           ),
           const SizedBox(height: 14),
@@ -1467,7 +1469,9 @@ class _LicenseTab extends StatelessWidget {
           duration: const Duration(milliseconds: 150),
           padding: const EdgeInsets.symmetric(vertical: 7),
           decoration: BoxDecoration(
-            color: selected ? AppColors.surfaceContainerLowest : Colors.transparent,
+            color: selected
+                ? AppColors.surfaceContainerLowest
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(7),
             boxShadow: selected
                 ? [
@@ -1493,10 +1497,3 @@ class _LicenseTab extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
