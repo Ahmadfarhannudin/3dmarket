@@ -36,19 +36,19 @@ class _AdminSettingsScreenState extends State<AdminSettingsScreen> {
             icon: Icons.group_outlined,
             title: 'Kelola Pengguna & Kreator',
             subtitle: '1.420 akun â€¢ 12 permohonan baru',
-            onTap: () => context.push(AppRouter.adminUsers),
+            onTap: () => context.go(AppRouter.adminUsers),
           ),
           AdminSettingsRowData(
             icon: Icons.category_outlined,
             title: 'Kelola Kategori & Taksonomi',
             subtitle: '8 kategori aktif',
-            onTap: () => context.push(AppRouter.adminCategories),
+            onTap: () => context.go(AppRouter.adminCategories),
           ),
           AdminSettingsRowData(
             icon: Icons.view_carousel_outlined,
             title: 'Kelola Banner & Promosi',
             subtitle: '3 banner aktif',
-            onTap: () => context.push(AppRouter.adminBanners),
+            onTap: () => context.go(AppRouter.adminBanners),
           ),
         ]),
         _settingsSection('Penyimpanan & Validasi', [

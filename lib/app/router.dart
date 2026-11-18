@@ -56,9 +56,9 @@ class AppRouter {
   static const adminEdit = '/admin/catalog/edit';
   static const adminOrders = '/admin/orders';
   static const adminOrderDetail = '/admin/order-detail';
-  static const adminUsers = '/admin/users';
-  static const adminBanners = '/admin/banners';
-  static const adminCategories = '/admin/categories';
+  static const adminUsers = '/admin/settings/users';
+  static const adminBanners = '/admin/settings/banners';
+  static const adminCategories = '/admin/settings/categories';
   static const adminSettings = '/admin/settings';
 
   /// 兼容原 onGenerate，供需要时调用
@@ -305,19 +305,6 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const AdminDashboardScreen(initialTab: 3),
     ),
     GoRoute(
-      path: AppRouter.adminUpload,
-      name: AppRouter.adminUpload,
-      builder: (context, state) => const UploadAssetScreen(),
-    ),
-    GoRoute(
-      path: AppRouter.adminEdit,
-      name: AppRouter.adminEdit,
-      builder: (context, state) {
-        final asset = state.extra as AdminAsset?;
-        return UploadAssetScreen(asset: asset);
-      },
-    ),
-    GoRoute(
       path: AppRouter.adminUsers,
       name: AppRouter.adminUsers,
       builder: (context, state) => const AdminUsersScreen(),
@@ -331,6 +318,19 @@ final GoRouter router = GoRouter(
       path: AppRouter.adminBanners,
       name: AppRouter.adminBanners,
       builder: (context, state) => const AdminBannersScreen(),
+    ),
+    GoRoute(
+      path: AppRouter.adminUpload,
+      name: AppRouter.adminUpload,
+      builder: (context, state) => const UploadAssetScreen(),
+    ),
+    GoRoute(
+      path: AppRouter.adminEdit,
+      name: AppRouter.adminEdit,
+      builder: (context, state) {
+        final asset = state.extra as AdminAsset?;
+        return UploadAssetScreen(asset: asset);
+      },
     ),
   ],
 );

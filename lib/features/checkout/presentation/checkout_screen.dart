@@ -22,6 +22,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   String _method = 'qris';
   bool _processing = false;
 
+  bool get _isFree => priceValue(widget.asset?.price ?? '') == 0;
+
   String get _methodLabel => switch (_method) {
     'qris' => 'QRIS Instan (Bebas Biaya)',
     'va' => 'Virtual Account Bank',
@@ -48,6 +50,19 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     context.push(AppRouter.paymentStatus);
   }
 
+  Future<void> _downloadFree() async {
+    setState(() => _processing = true);
+    await Future<void>.delayed(const Duration(milliseconds: 800));
+    if (!mounted) return;
+    setState(() => _processing = false);
+
+    PurchaseStore.instance.record(
+      asset: widget.asset,
+      paymentMethod: 'Unduhan Gratis',
+    );
+    context.push(AppRouter.paymentStatus);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,9 +78,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           ),
           onPressed: () => Navigator.of(context).maybePop(),
         ),
-        title: const Text(
-          'Checkout Lisensi',
-          style: TextStyle(
+        title: Text(
+          _isFree ? 'Unduh Instan' : 'Checkout Lisensi',
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: AppColors.onSurface,
@@ -78,8 +93,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       ),
       bottomNavigationBar: _PayBar(
         processing: _processing,
-        onPay: _pay,
+        onPay: _isFree ? _downloadFree : _pay,
         totalLabel: _totalLabel,
+        isFree: _isFree,
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
@@ -87,69 +103,71 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           _StepRow(),
           const SizedBox(height: 16),
           _OrderCard(asset: widget.asset),
-          const SizedBox(height: 20),
-          Row(
-            children: [
-              const Expanded(
-                child: Text(
-                  'Pilih Metode Pembayaran',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.onSurface,
+          if (!_isFree) ...[
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                const Expanded(
+                  child: Text(
+                    'Pilih Metode Pembayaran',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.onSurface,
+                    ),
                   ),
                 ),
-              ),
-              Icon(Icons.bolt, size: 14, color: AppColors.primary),
-              const SizedBox(width: 2),
-              Text(
-                'Verifikasi Otomatis',
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.primary,
+                Icon(Icons.bolt, size: 14, color: AppColors.primary),
+                const SizedBox(width: 2),
+                Text(
+                  'Verifikasi Otomatis',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primary,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          _MethodCard(
-            value: 'qris',
-            group: _method,
-            title: 'Instan QRIS',
-            badge: 'REKOMENDASI',
-            trailing: 'Bebas Admin',
-            body: 'Pindai barcode langsung via GoPay, OVO, Dana, ShopeePay, atau BCA Mobile.',
-            chips: const ['QRIS 2.0', 'GoPay', 'Dana', '+3 Lainnya'],
-            onChanged: (v) => setState(() => _method = v),
-          ),
-          _MethodCard(
-            value: 'va',
-            group: _method,
-            title: 'Virtual Account Bank',
-            icon: Icons.account_balance_outlined,
-            body: 'Transfer instan dengan kode pembayaran unik verifikasi tanpa jeda.',
-            chips: const ['BCA', 'Mandiri', 'BNI', 'BRI'],
-            onChanged: (v) => setState(() => _method = v),
-          ),
-          _MethodCard(
-            value: 'ewallet',
-            group: _method,
-            title: 'E-Wallet Terhubung',
-            icon: Icons.account_balance_wallet_outlined,
-            body: 'Otentikasi cepat dalam 1 klik ke aplikasi dompet digital terpasang.',
-            chips: const ['GoPay Direct', 'ShopeePay'],
-            onChanged: (v) => setState(() => _method = v),
-          ),
-          _MethodCard(
-            value: 'cc',
-            group: _method,
-            title: 'Kartu Kredit / Debit Online',
-            icon: Icons.credit_card,
-            body: 'Visa, Mastercard, JCB berteknologi 3D Secure OTP.',
-            chips: const [],
-            onChanged: (v) => setState(() => _method = v),
-          ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            _MethodCard(
+              value: 'qris',
+              group: _method,
+              title: 'Instan QRIS',
+              badge: 'REKOMENDASI',
+              trailing: 'Bebas Admin',
+              body: 'Pindai barcode langsung via GoPay, OVO, Dana, ShopeePay, atau BCA Mobile.',
+              chips: const ['QRIS 2.0', 'GoPay', 'Dana', '+3 Lainnya'],
+              onChanged: (v) => setState(() => _method = v),
+            ),
+            _MethodCard(
+              value: 'va',
+              group: _method,
+              title: 'Virtual Account Bank',
+              icon: Icons.account_balance_outlined,
+              body: 'Transfer instan dengan kode pembayaran unik verifikasi tanpa jeda.',
+              chips: const ['BCA', 'Mandiri', 'BNI', 'BRI'],
+              onChanged: (v) => setState(() => _method = v),
+            ),
+            _MethodCard(
+              value: 'ewallet',
+              group: _method,
+              title: 'E-Wallet Terhubung',
+              icon: Icons.account_balance_wallet_outlined,
+              body: 'Otentikasi cepat dalam 1 klik ke aplikasi dompet digital terpasang.',
+              chips: const ['GoPay Direct', 'ShopeePay'],
+              onChanged: (v) => setState(() => _method = v),
+            ),
+            _MethodCard(
+              value: 'cc',
+              group: _method,
+              title: 'Kartu Kredit / Debit Online',
+              icon: Icons.credit_card,
+              body: 'Visa, Mastercard, JCB berteknologi 3D Secure OTP.',
+              chips: const [],
+              onChanged: (v) => setState(() => _method = v),
+            ),
+          ],
           const SizedBox(height: 8),
           Container(
             padding: const EdgeInsets.all(14),
@@ -675,10 +693,12 @@ class _PayBar extends StatelessWidget {
     required this.processing,
     required this.onPay,
     required this.totalLabel,
+    this.isFree = false,
   });
   final bool processing;
   final VoidCallback onPay;
   final String totalLabel;
+  final bool isFree;
 
   @override
   Widget build(BuildContext context) {
@@ -693,94 +713,100 @@ class _PayBar extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            children: [
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'TOTAL TAGIHAN',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 0.6,
-                      color: AppColors.onSurfaceVariant,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(width: 8),
-              Flexible(
-                child: Text(
-                  totalLabel,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.onSurface,
-                    height: 1.1,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [AppColors.primary, Color(0xFF2259BF)],
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ElevatedButton.icon(
-                    onPressed: processing ? null : onPay,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                      disabledBackgroundColor: Colors.transparent,
-                      foregroundColor: AppColors.onPrimary,
-                      minimumSize: const Size.fromHeight(48),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    icon: processing
-                        ? const SizedBox(
-                            width: 16,
-                            height: 16,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: AppColors.onPrimary,
-                            ),
-                          )
-                        : const Icon(Icons.lock_outline, size: 16),
-                    label: Text(
-                      processing ? 'Memproses...' : 'Bayar Sekarang',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.verified_user, size: 13, color: AppColors.tertiary),
-              SizedBox(width: 4),
-              Text(
-                'Enkripsi SSL 256-Bit • Terverifikasi Aman',
+          if (!isFree) ...[
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'TOTAL TAGIHAN',
                 style: TextStyle(
                   fontSize: 10,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.6,
                   color: AppColors.onSurfaceVariant,
                 ),
               ),
-            ],
+            ),
+            const SizedBox(height: 2),
+          ],
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              totalLabel,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                color: AppColors.onSurface,
+                height: 1.1,
+              ),
+            ),
           ),
+          const SizedBox(height: 12),
+          DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [AppColors.primary, Color(0xFF2259BF)],
+              ),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: ElevatedButton.icon(
+              onPressed: processing ? null : onPay,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                disabledBackgroundColor: Colors.transparent,
+                foregroundColor: AppColors.onPrimary,
+                minimumSize: const Size.fromHeight(48),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              icon: processing
+                  ? const SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: AppColors.onPrimary,
+                      ),
+                    )
+                  : Icon(
+                      isFree
+                          ? Icons.cloud_download_outlined
+                          : Icons.lock_outline,
+                      size: 16,
+                    ),
+              label: Text(
+                processing
+                    ? 'Memproses...'
+                    : isFree
+                    ? 'Unduh Sekarang'
+                    : 'Bayar Sekarang',
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          ),
+          if (!isFree) ...[
+            const SizedBox(height: 6),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.verified_user, size: 13, color: AppColors.tertiary),
+                SizedBox(width: 4),
+                Text(
+                  'Enkripsi SSL 256-Bit • Terverifikasi Aman',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: AppColors.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ],
       ),
     );

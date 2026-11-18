@@ -57,6 +57,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
   @override
   Widget build(BuildContext context) {
     final record = _record;
+    final isCommercial = (record?.itemPrice ?? 89000) > 0;
     final title = record?.title ?? 'Cyberpunk Cybernetic Arm Rigged';
     final format = record?.format ?? '.glb';
     final size = record?.sizeLabel ?? '—';
@@ -92,7 +93,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
         children: [
-          const _SuccessHero(),
+          _SuccessHero(isCommercial: isCommercial),
           const SizedBox(height: 8),
           Container(
             padding: const EdgeInsets.all(16),
@@ -229,106 +230,108 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 14),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: AppColors.surfaceContainer,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.key,
-                            size: 14,
-                            color: AppColors.tertiary,
-                          ),
-                          const SizedBox(width: 4),
-                          const Expanded(
-                            child: Text(
-                              'KUNCI LISENSI KOMERSIAL',
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: 0.6,
-                                color: AppColors.onSurfaceVariant,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 6,
-                              vertical: 2,
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppColors.tertiaryFixed.withValues(
-                                alpha: 0.4,
-                              ),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: const Text(
-                              'Perpetual',
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.tertiary,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Row(
+                if (isCommercial) ...[
+                  const SizedBox(height: 14),
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: AppColors.surfaceContainer,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
                           children: [
-                            Expanded(
+                            const Icon(
+                              Icons.key,
+                              size: 14,
+                              color: AppColors.tertiary,
+                            ),
+                            const SizedBox(width: 4),
+                            const Expanded(
                               child: Text(
-                                _license,
-                                style: const TextStyle(
-                                  fontFamily: 'monospace',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  letterSpacing: 0.4,
-                                  color: AppColors.onSurface,
+                                'KUNCI LISENSI KOMERSIAL',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 0.6,
+                                  color: AppColors.onSurfaceVariant,
                                 ),
                               ),
                             ),
-                            TextButton.icon(
-                              onPressed: _copy,
-                              style: TextButton.styleFrom(
-                                foregroundColor: _copied
-                                    ? const Color(0xFF1B5E20)
-                                    : AppColors.primary,
-                                visualDensity: VisualDensity.compact,
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 6,
+                                vertical: 2,
                               ),
-                              icon: Icon(
-                                _copied ? Icons.check : Icons.content_copy,
-                                size: 14,
+                              decoration: BoxDecoration(
+                                color: AppColors.tertiaryFixed.withValues(
+                                  alpha: 0.4,
+                                ),
+                                borderRadius: BorderRadius.circular(4),
                               ),
-                              label: Text(
-                                _copied ? 'Tersalin!' : 'Salin Kode',
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
+                              child: const Text(
+                                'Perpetual',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.tertiary,
                                 ),
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  _license,
+                                  style: const TextStyle(
+                                    fontFamily: 'monospace',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: 0.4,
+                                    color: AppColors.onSurface,
+                                  ),
+                                ),
+                              ),
+                              TextButton.icon(
+                                onPressed: _copy,
+                                style: TextButton.styleFrom(
+                                  foregroundColor: _copied
+                                      ? const Color(0xFF1B5E20)
+                                      : AppColors.primary,
+                                  visualDensity: VisualDensity.compact,
+                                ),
+                                icon: Icon(
+                                  _copied ? Icons.check : Icons.content_copy,
+                                  size: 14,
+                                ),
+                                label: Text(
+                                  _copied ? 'Tersalin!' : 'Salin Kode',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),
@@ -364,9 +367,13 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
                       Text(
                         (record?.description.trim().isNotEmpty ?? false)
                             ? record!.description.trim()
-                            : 'File arsip menyertakan berkas $format ($size) '
+                            : isCommercial
+                            ? 'File arsip menyertakan berkas $format ($size) '
                                   'beserta metadata teknis lengkap yang siap dipakai '
-                                  'untuk proyek komersial klien maupun personal.',
+                                  'untuk proyek komersial klien maupun personal.'
+                            : 'Aset ini bersifat gratis untuk penggunaan personal '
+                                  'maupun edukasi. Dilarang mendistribusikan ulang '
+                                  'file mentah tanpa izin.',
                         style: const TextStyle(
                           fontSize: 12,
                           height: 1.45,
@@ -426,66 +433,75 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
             ),
           ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: () =>
-                      InvoicePdfGenerator.showPreview(context, _documentRecord),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: AppColors.primary,
-                    side: BorderSide(
-                      color: AppColors.primary.withValues(alpha: 0.45),
+          if (isCommercial) ...[
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () => InvoicePdfGenerator.showPreview(
+                      context,
+                      _documentRecord,
                     ),
-                    minimumSize: const Size.fromHeight(44),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.primary,
+                      side: BorderSide(
+                        color: AppColors.primary.withValues(alpha: 0.45),
+                      ),
+                      minimumSize: const Size.fromHeight(44),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
-                  ),
-                  icon: const Icon(Icons.receipt_long_outlined, size: 18),
-                  label: const Text(
-                    'Faktur',
-                    style: TextStyle(
-                      fontSize: 13.5,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: () =>
-                      LicensePdfGenerator.showPreview(context, _documentRecord),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: AppColors.primary,
-                    side: BorderSide(
-                      color: AppColors.primary.withValues(alpha: 0.45),
-                    ),
-                    minimumSize: const Size.fromHeight(44),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  icon: const Icon(Icons.workspace_premium_outlined, size: 18),
-                  label: const Text(
-                    'Sertifikat Lisensi',
-                    style: TextStyle(
-                      fontSize: 13.5,
-                      fontWeight: FontWeight.w600,
+                    icon: const Icon(Icons.receipt_long_outlined, size: 18),
+                    label: const Text(
+                      'Faktur',
+                      style: TextStyle(
+                        fontSize: 13.5,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 4),
-          const Text(
-            'Kedua dokumen dapat dipreview lalu diunduh sebagai PDF.',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 11, color: AppColors.onSurfaceVariant),
-          ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () => LicensePdfGenerator.showPreview(
+                      context,
+                      _documentRecord,
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.primary,
+                      side: BorderSide(
+                        color: AppColors.primary.withValues(alpha: 0.45),
+                      ),
+                      minimumSize: const Size.fromHeight(44),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    icon: const Icon(
+                      Icons.workspace_premium_outlined,
+                      size: 18,
+                    ),
+                    label: const Text(
+                      'Sertifikat Lisensi',
+                      style: TextStyle(
+                        fontSize: 13.5,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            const Text(
+              'Kedua dokumen dapat dipreview lalu diunduh sebagai PDF.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 11, color: AppColors.onSurfaceVariant),
+            ),
+          ],
         ],
       ),
     );
@@ -493,7 +509,8 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
 }
 
 class _SuccessHero extends StatelessWidget {
-  const _SuccessHero();
+  const _SuccessHero({this.isCommercial = true});
+  final bool isCommercial;
 
   @override
   Widget build(BuildContext context) {
@@ -555,14 +572,17 @@ class _SuccessHero extends StatelessWidget {
               color: AppColors.surfaceContainer,
               borderRadius: BorderRadius.circular(999),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                CircleAvatar(radius: 4, backgroundColor: Color(0xFF2E7D32)),
-                SizedBox(width: 6),
+                const CircleAvatar(
+                  radius: 4,
+                  backgroundColor: Color(0xFF2E7D32),
+                ),
+                const SizedBox(width: 6),
                 Text(
-                  'TRANSAKSI TERVALIDASI',
-                  style: TextStyle(
+                  isCommercial ? 'TRANSAKSI TERVALIDASI' : 'UNDUHAN BERHASIL',
+                  style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.6,
@@ -573,10 +593,12 @@ class _SuccessHero extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          const Text(
-            'Pembayaran Berhasil Dikonfirmasi',
+          Text(
+            isCommercial
+                ? 'Pembayaran Berhasil Dikonfirmasi'
+                : 'File Siap Diunduh',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w700,
               color: AppColors.onSurface,
@@ -584,10 +606,12 @@ class _SuccessHero extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Terima kasih atas pembelian Anda. Hak lisensi komersial dan file produksi aset 3D telah siap diakses secara instan.',
+          Text(
+            isCommercial
+                ? 'Terima kasih atas pembelian Anda. Hak lisensi komersial dan file produksi aset 3D telah siap diakses secara instan.'
+                : 'Aset gratis telah ditambahkan ke koleksi Anda. Anda dapat mengunduh file produksi sekarang.',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               height: 1.45,
               color: AppColors.onSurfaceVariant,

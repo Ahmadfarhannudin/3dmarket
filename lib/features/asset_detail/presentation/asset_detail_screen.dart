@@ -7,6 +7,8 @@ import 'package:_3dmarket/core/constants/app_colors.dart';
 import 'package:_3dmarket/core/navigation/main_tab.dart';
 import 'package:_3dmarket/core/data/asset_catalog.dart';
 import 'package:_3dmarket/core/utils/model_source.dart';
+import 'package:_3dmarket/core/data/purchase_store.dart';
+import 'package:_3dmarket/features/auth/domain/auth_session.dart';
 import 'package:_3dmarket/features/wishlist/domain/wishlist_state.dart';
 
 class AssetDetailScreen extends StatefulWidget {
@@ -75,7 +77,30 @@ class _AssetDetailScreenState extends State<AssetDetailScreen> {
     );
   }
 
-  void _buy() => context.push(AppRouter.checkout, extra: _asset);
+  void _buy() {
+    final asset = _asset;
+    if (asset == null) return;
+
+    if (asset.isFree) {
+      if (!AuthSession.instance.isLoggedIn) {
+        context.go(AppRouter.login);
+        return;
+      }
+      PurchaseStore.instance.record(
+        asset: asset,
+        paymentMethod: 'Unduhan Gratis',
+      );
+      _toast('${asset.title} masuk ke Aset Saya. Mengunduh...');
+      context.go(AppRouter.myAssets);
+      return;
+    }
+
+    if (!AuthSession.instance.isLoggedIn) {
+      context.go(AppRouter.login);
+      return;
+    }
+    context.push(AppRouter.checkout, extra: asset);
+  }
 
   @override
   Widget build(BuildContext context) {

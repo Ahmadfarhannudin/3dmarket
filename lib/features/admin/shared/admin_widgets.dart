@@ -1,5 +1,7 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:_3dmarket/app/router.dart';
 import 'package:_3dmarket/core/constants/app_colors.dart';
 
 /// Menampilkan pesan singkat dengan mengganti snackbar yang sedang tampil.
@@ -320,7 +322,10 @@ class AdminMetricCard extends StatelessWidget {
               Container(
                 width: 26,
                 height: 26,
-                decoration: BoxDecoration(color: iconBg, shape: BoxShape.circle),
+                decoration: BoxDecoration(
+                  color: iconBg,
+                  shape: BoxShape.circle,
+                ),
                 child: Icon(icon, size: 14, color: iconColor),
               ),
             ],
@@ -359,6 +364,7 @@ class AdminMetricCard extends StatelessWidget {
     );
   }
 }
+
 class AdminBar extends StatelessWidget {
   const AdminBar({super.key, required this.fill, required this.emphasize});
 
@@ -391,8 +397,12 @@ class AdminBar extends StatelessWidget {
                       colors: [AppColors.primary, Color(0xFF3366CC)],
                     )
                   : null,
-              color: emphasize ? null : AppColors.primary.withValues(alpha: 0.80),
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(5)),
+              color: emphasize
+                  ? null
+                  : AppColors.primary.withValues(alpha: 0.80),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(5),
+              ),
             ),
             alignment: Alignment.topCenter,
             padding: EdgeInsets.only(top: emphasize ? 5 : 0),
@@ -412,6 +422,7 @@ class AdminBar extends StatelessWidget {
     );
   }
 }
+
 class AdminAssetThumb extends StatelessWidget {
   const AdminAssetThumb({
     super.key,
@@ -484,6 +495,7 @@ class AdminAssetThumb extends StatelessWidget {
     );
   }
 }
+
 class AdminPill extends StatelessWidget {
   const AdminPill({super.key, required this.label, this.dot = false});
 
@@ -501,10 +513,7 @@ class AdminPill extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (dot) ...[
-            const AdminPulseDot(),
-            const SizedBox(width: 5),
-          ],
+          if (dot) ...[const AdminPulseDot(), const SizedBox(width: 5)],
           Text(
             label.toUpperCase(),
             style: const TextStyle(
@@ -521,6 +530,7 @@ class AdminPill extends StatelessWidget {
     );
   }
 }
+
 class AdminPulseDot extends StatefulWidget {
   const AdminPulseDot({super.key});
 
@@ -557,12 +567,9 @@ class _AdminPulseDotState extends State<AdminPulseDot>
     );
   }
 }
+
 class AdminEmptyState extends StatelessWidget {
-  const AdminEmptyState({
-    super.key,
-    required this.icon,
-    required this.message,
-  });
+  const AdminEmptyState({super.key, required this.icon, required this.message});
 
   final IconData icon;
   final String message;
@@ -667,7 +674,13 @@ class AdminPageScaffold extends StatelessWidget {
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () => Navigator.maybePop(context),
+                    onPressed: () {
+                      if (context.canPop()) {
+                        context.pop();
+                      } else {
+                        context.go(AppRouter.adminSettings);
+                      }
+                    },
                     icon: const Icon(
                       Icons.arrow_back,
                       size: 21,
@@ -842,5 +855,3 @@ void showAdminInfoSheet(
     ),
   );
 }
-
-
